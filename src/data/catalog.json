@@ -20,7 +20,10 @@
       "description": "Posicionamento, conteúdo e comunicação de marca.",
       "icon": "megaphone",
       "subcategories": [
-        { "id": "conteudo-e-escrita", "name": "Conteúdo e escrita" }
+        {
+          "id": "conteudo-e-escrita",
+          "name": "Conteúdo e escrita"
+        }
       ]
     },
     {
@@ -60,8 +63,14 @@
       "description": "Adoção, governação e redesenho do trabalho com IA.",
       "icon": "sparkles",
       "subcategories": [
-        { "id": "planeamento-e-priorizacao", "name": "Planeamento e priorização" },
-        { "id": "governanca-e-operacoes", "name": "Governação e operações" }
+        {
+          "id": "planeamento-e-priorizacao",
+          "name": "Planeamento e priorização"
+        },
+        {
+          "id": "governanca-e-operacoes",
+          "name": "Governação e operações"
+        }
       ]
     },
     {
@@ -70,9 +79,93 @@
       "description": "Prospecção, propostas e inteligência comercial.",
       "icon": "handshake",
       "subcategories": [
-        { "id": "processos-comerciais", "name": "Processos comerciais" }
+        {
+          "id": "processos-comerciais",
+          "name": "Processos comerciais"
+        }
       ]
     }
   ],
-  "skills": []
+  "skills": [
+    {
+      "id": "sistemas-agenticos-instrucoes",
+      "name": "Instruções para agentes",
+      "shortDescription": "Estruture prompts, contexto, skills e regras de mudança para agentes de IA.",
+      "description": "Um framework para projetar instruções de agentes como artefatos de configuração, definir hierarquias de autoridade e decidir o que pertence ao prompt, a uma skill ou ao contexto recuperável.",
+      "icon": "book-open-text",
+      "version": "1.0.0",
+      "categoryId": "ti",
+      "subcategoryId": "arquitetura-desenvolvimento",
+      "installName": "sistemas-agenticos-instrucoes",
+      "createdAt": "2026-11-24",
+      "updatedAt": "2026-11-24",
+      "origin": {
+        "kind": "atomica",
+        "license": "CC-BY-4.0",
+        "distribution": "package"
+      },
+      "releaseProof": {
+        "method": "initial-audit",
+        "sourceCommit": "42d698260b5bc7c2fd50d5dad4535145718d9897",
+        "digest": "7fb610733bdc3706d2921c2a92e427c56bd19fd3e1afd40556f1bf33fa296a22"
+      },
+      "files": [
+        {
+          "path": "SKILL.md",
+          "updatedAt": "2026-11-24"
+        },
+        {
+          "path": "LICENSE",
+          "updatedAt": "2026-11-24"
+        },
+        {
+          "path": "evals/evals.json",
+          "updatedAt": "2026-11-24"
+        },
+        {
+          "path": "references/instruction-authority-and-context-assembly.md",
+          "updatedAt": "2026-11-24"
+        },
+        {
+          "path": "references/progressive-disclosure-and-skill-selection.md",
+          "updatedAt": "2026-11-24"
+        },
+        {
+          "path": "references/prompt-lifecycle-and-evaluation.md",
+          "updatedAt": "2026-11-24"
+        },
+        {
+          "path": "references/system-prompt-as-configuration.md",
+          "updatedAt": "2026-11-24"
+        }
+      ],
+      "documents": [
+        {
+          "path": "SKILL.md",
+          "title": "Engenharia de Instruções Agentic",
+          "content": "---\nname: sistemas-agenticos-instrucoes\ndescription: \"Framework para projetar instruções de agentes como artefatos de configuração: system prompt, hierarquia de autoridade, contexto recuperável, skills e lifecycle de mudança. Use ao criar, revisar, versionar ou depurar system prompts, decidir o que pertence ao prompt, skill ou contexto, ou tratar conflito entre instruções. Não define cache/tokens, sandbox/ferramentas ou autorização.\"\n---\n\n# Engenharia de Instruções Agentic\n\n## Quando usar\n\n- Projetar ou revisar um system prompt para um agente em produção.\n- Separar invariantes, políticas, procedimentos e contexto específico de tarefa.\n- Definir precedência, proveniência e carregamento just-in-time de instruções.\n- Decidir se um procedimento recorrente deve se tornar uma skill.\n- Versionar e avaliar mudança de prompt junto com modelo e harness.\n\n## Quando não usar\n\n- Para cache, compactação, orçamento de tokens ou escolha de modelo: use `sistemas-agenticos-eficiencia`.\n- Para sandbox, execução de ferramentas, state machine ou MCP: use `sistemas-agenticos-harness`.\n- Para permissões, conteúdo não confiável ou enforcement: use `sistemas-agenticos-seguranca`.\n\n## Modelo mental\n\nInstruções são configuração comportamental de um componente probabilístico, não uma barreira de segurança nem um depósito de documentação. Mantenha o prompt-base pequeno e estável; carregue procedimentos e contexto quando forem necessários; aplique regras críticas fora do modelo.\n\n| Tipo | Finalidade | Local preferido |\n|---|---|---|\n| Constituição | Identidade, limites persistentes e invariantes | System prompt estável |\n| Policy | Regras verificáveis e requisitos de risco | Controle determinístico + prompt resumido |\n| Procedure | Fluxo especializado reutilizável | Skill carregada sob demanda |\n| Task context | Dados e estado relevantes à tarefa atual | Montagem just-in-time |\n\n## Referências\n\n| Tema | Arquivo |\n|---|---|\n| System prompt como configuração | `references/system-prompt-as-configuration.md` |\n| Autoridade e montagem de contexto | `references/instruction-authority-and-context-assembly.md` |\n| Disclosure progressivo e seleção de skills | `references/progressive-disclosure-and-skill-selection.md` |\n| Lifecycle e avaliação de prompts | `references/prompt-lifecycle-and-evaluation.md` |\n\n## Como usar\n\n1. Classifique cada instrução na tabela acima e remova duplicações.\n2. Declare a origem, a precedência e a validade do contexto antes de entregá-lo ao modelo.\n3. Versione a configuração completa que altera comportamento: prompt, modelo, harness, skills e políticas relevantes.\n4. Avalie resultado e trajetória antes de promover uma mudança; consulte Observabilidade para os sinais e Segurança para enforcement.\n\n## Anti-padrões\n\n| Anti-padrão | Risco |\n|---|---|\n| Megaprompt | Custo, conflito e instruções irrelevantes a cada chamada |\n| Prompt como controle de acesso | Conteúdo ou modelo contorna uma regra que deveria ser determinística |\n| Contexto sem proveniência | Dado obsoleto ou não confiável ganha autoridade indevida |\n| Otimização sobre um único caso | Regressão fora do conjunto que gerou a mudança |\n"
+        },
+        {
+          "path": "references/instruction-authority-and-context-assembly.md",
+          "title": "Autoridade e Montagem de Contexto",
+          "content": "# Autoridade e Montagem de Contexto\n\nContexto deve carregar origem, escopo, data e nível de confiança. Conteúdo externo, memória recuperada e entrada do usuário são dados para avaliar, não autorização para mudar políticas.\n\nMonte somente o contexto necessário para a decisão atual. Quando instruções divergirem, preserve invariantes de maior autoridade, registre a divergência e peça esclarecimento quando ela alterar risco ou objetivo.\n\nConsulte `sistemas-agenticos-seguranca` para enforcement e `sistemas-agenticos-memoria` para freshness, ACL e reconciliação.\n"
+        },
+        {
+          "path": "references/progressive-disclosure-and-skill-selection.md",
+          "title": "Disclosure Progressivo e Seleção de Skills",
+          "content": "# Disclosure Progressivo e Seleção de Skills\n\nUse metadata para descoberta, instruções completas apenas após seleção e recursos somente quando a tarefa os exigir. Isso reduz contexto irrelevante sem esconder regras críticas.\n\nPromova um procedimento a skill quando ele for recorrente, tiver gatilho reconhecível, contrato de saída e validação repetível. Mantenha uma instrução curta no prompt quando ela for um invariante que se aplica a toda interação.\n\n## Fonte primária\n\n- [Google: Building ADK Agents with Skills](https://developers.googleblog.com/en/developers-guide-to-building-adk-agents-with-skills/)\n"
+        },
+        {
+          "path": "references/prompt-lifecycle-and-evaluation.md",
+          "title": "Lifecycle e Avaliação de Prompts",
+          "content": "# Lifecycle e Avaliação de Prompts\n\nUma alteração de prompt é uma mudança de configuração. Registre versão, hipótese, conjunto de avaliação, modelo, harness, skills e resultado. Compare com baseline antes de promover e mantenha caminho de rollback.\n\nAvalie tanto o resultado final quanto a trajetória quando o agente usa ferramentas. Use validadores determinísticos para contratos objetivos, rubricas independentes para qualidade semântica e revisão humana antes de tornar um score semântico um gate rígido.\n\nConsulte `sistemas-agenticos-observabilidade` para tracing e `sistemas-agenticos-metodologias` para rollout e ADR.\n"
+        },
+        {
+          "path": "references/system-prompt-as-configuration.md",
+          "title": "System Prompt como Configuração",
+          "content": "# System Prompt como Configuração\n\nO system prompt define invariantes comportamentais, mas mudanças pequenas podem interagir com modelo, ferramentas e contexto. Trate-o como artefato versionado, revisável e testável.\n\n- Mantenha apenas identidade, limites persistentes e regras que o modelo precisa conhecer em toda tarefa.\n- Mova procedimentos extensos para skills; mova dados específicos para contexto recuperável.\n- Não use texto instrucional como única defesa para ações sensíveis: aplique controles determinísticos no boundary adequado.\n\n## Fontes primárias\n\n- [OpenAI: Harness engineering](https://openai.com/index/harness-engineering/)\n"
+        }
+      ]
+    }
+  ]
 }
