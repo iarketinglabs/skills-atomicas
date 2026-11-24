@@ -1,0 +1,71 @@
+{
+  "skill_name": "content-hooks",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crie hooks para uma newsletter B2B sobre reducao de retrabalho em equipes financeiras. Publico: controllers. Objetivo: atrair leitores qualificados. Nao temos estatisticas proprietarias.",
+      "expected_output": "Opcoes textuais variadas que nao inventem numeros, resultados ou provas.",
+      "files": [],
+      "expectations": [
+        "Declara ou respeita a ausencia de estatisticas proprietarias.",
+        "Apresenta mais de um mecanismo de hook.",
+        "Mantem a promessa compativel com a newsletter."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Adapte a ideia 'mostrar como um cafe aprende com os pedidos perdidos' para abertura falada, texto em tela e capa de video vertical. Tom: direto e local.",
+      "expected_output": "Tres adaptacoes coordenadas, cada uma adequada a sua modalidade.",
+      "files": [],
+      "expectations": [
+        "Distingue abertura falada, texto em tela e direcao de capa.",
+        "A capa comunica uma ideia visual focal.",
+        "Nao afirma regra atual de plataforma como garantia."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Revise este hook: 'O segredo que fez uma pequena loja faturar 10x em uma semana'. Nao temos fonte para o resultado. Reescreva para um artigo educativo.",
+      "expected_output": "Diagnostico do risco de clickbait e reescritas que removam a alegacao nao comprovada.",
+      "files": [],
+      "expectations": [
+        "Aponta a falta de evidencia para o resultado declarado.",
+        "Explica o risco de promessa enganosa.",
+        "Oferece reescritas concretas sem resultado inventado."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Crie cinco hooks para um post organico de LinkedIn sobre uma consultora que percebeu que mapear quem decide cada etapa pode reduzir retrabalho. Nao temos numeros, nomes de clientes ou resultados autorizados.",
+      "expected_output": "Opcoes variadas de primeira linha para LinkedIn, com promessa sustentavel e riscos explicitos.",
+      "files": [],
+      "expectations": [
+        "Varia mecanismos como contraste, cena, tarefa e decisao pessoal.",
+        "Nao inventa numeros, clientes, experiencia ou causalidade.",
+        "Cada opcao explica mecanismo, promessa e risco."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Revise este hook para LinkedIn: 'O segredo que fez uma loja faturar 10x em uma semana'. O autor nao possui fonte para o resultado e quer manter a atencao sem clickbait.",
+      "expected_output": "Diagnostico curto e reescritas educativas que trocam curiosidade vazia por uma lacuna verificavel.",
+      "files": [],
+      "expectations": [
+        "Nomeia a alegacao quantitativa e causal sem fonte.",
+        "Remove ou transforma o resultado nao comprovado em pergunta, exemplo ou hipotese.",
+        "Mantem o hook compativel com um texto que entrega criterios de analise."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Crie um hook escaneavel para LinkedIn sobre equipes que confundem atividade com progresso. Deve conter contraste e encaminhar uma CTA conversacional, sem afirmar uma regra do algoritmo.",
+      "expected_output": "Uma entrada curta, clara e especifica, seguida de mecanismo, promessa e CTA proporcional.",
+      "files": [],
+      "expectations": [
+        "A primeira linha comunica a tensao sem introducao generica.",
+        "O contraste nao inventa dado nem transforma uma hipotese em fato.",
+        "A CTA convida experiencia ou aplicacao, nao engajamento artificial."
+      ]
+    }
+  ]
+}
