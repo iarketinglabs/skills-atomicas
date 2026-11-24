@@ -71,6 +71,8 @@ export function validateCatalog(data) {
     check(semver.valid(s.version), 'Versão SemVer inválida.');
     check(iso(s.createdAt) && iso(s.updatedAt) && Date.parse(s.createdAt)<=Date.parse(s.updatedAt), 'Datas da skill inválidas.');
     const origin=s.origin;
+    const proof=s.releaseProof;
+    check(proof && ['initial-audit','github-comment'].includes(proof.method) && /^[a-f0-9]{40}$/.test(proof.sourceCommit) && /^[a-f0-9]{64}$/.test(proof.digest), 'Prova de revisão de release ausente ou inválida.');
     check(origin && ['atomica','third-party'].includes(origin.kind) && ['package','reference-only'].includes(origin.distribution), 'Origem inválida.');
     check(origin.kind !== 'third-party' || repo(origin.repositoryUrl), 'Repositório original inválido.');
     check(!origin.repositoryUrl || repo(origin.repositoryUrl), 'URL de repositório inválida.');

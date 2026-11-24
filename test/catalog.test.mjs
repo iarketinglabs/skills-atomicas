@@ -6,7 +6,8 @@ const categories = [{id:'ti', name:'TI', description:'Tecnologia', icon:'cpu', s
 const sample = {
   id:'amostra', name:'Documentação técnica', installName:'documentacao-tecnica', shortDescription:'Organiza referências.', description:'Documenta decisões.',
   icon:'book-open',version:'1.0.0',categoryId:'ti',subcategoryId:'dados',createdAt:'2026-11-01',updatedAt:'2026-11-23',
-  origin:{kind:'atomica',license:'CC BY 4.0',distribution:'package'},
+  origin:{kind:'atomica',license:'CC-BY-4.0',distribution:'package'},
+  releaseProof:{method:'initial-audit',sourceCommit:'a'.repeat(40),digest:'b'.repeat(64)},
   files:[{path:'SKILL.md',updatedAt:'2026-11-01'}, {path:'references/guia.md',updatedAt:'2026-11-23'}],
   documents:[{path:'SKILL.md',title:'Documentação',content:'## Começar'}]
 };

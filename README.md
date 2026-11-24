@@ -17,7 +17,7 @@ O servidor de desenvolvimento utiliza o caminho `/skills-atomicas/`. O build ger
 
 ## Catálogo público
 
-O processo de promoção envia para este repositório apenas versões revistas. O manifesto `src/data/catalog.json` contém as categorias e as fichas aprovadas; os ficheiros de cada pacote ficam em `public/skills/<id>/`. Pedidos de inclusão e revisões de conteúdo são preparados em privado.
+O processo de promoção envia para este repositório apenas versões revistas. O manifesto `src/data/catalog.json` contém as categorias, as fichas aprovadas e uma prova de integridade que o build confere contra os ficheiros do pacote. Os ficheiros de cada pacote ficam em `public/skills/<id>/`. Pedidos de inclusão e revisões de conteúdo são preparados em privado.
 
 Referências externas sem autorização de redistribuição apresentam apenas a identificação e a ligação ao repositório original. A licença de cada pacote é disponibilizada na respetiva ficha e no próprio pacote.
 
