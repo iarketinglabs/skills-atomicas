@@ -1,0 +1,4 @@
+interface:
+  display_name: "Priorização e Roadmap de IA"
+  short_description: "Priorize iniciativas e roadmaps de IA com evidência"
+  default_prompt: "Use $priorizacao-roadmap-ia para comparar iniciativas e entregar um roadmap de IA com valor, evidências, capacidade, risco e governança proporcional."
