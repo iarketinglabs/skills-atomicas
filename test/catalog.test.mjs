@@ -18,7 +18,7 @@ test('aceita o catálogo vazio e uma versão aprovada',()=>{
 });
 test('exige ícones distintos e subcategorias nas filiações',()=>{
   const icons=['atom','audio-lines','award','badge','banknote','bell','bike','book','box','brain','brush','bug','cake','camera','car','cat','chart-bar','check','circle','clock','cloud'];
-  const skills=icons.map((icon,i)=>({...sample,id:'skill-'+i,icon}));
+  const skills=icons.map((icon,i)=>({...sample,id:'skill-'+i,installName:'skill-'+i,icon}));
   assert.doesNotThrow(()=>validateCatalog({categories,skills:skills.slice(0,20)}));
   assert.doesNotThrow(()=>validateCatalog({categories,skills}));
   assert.throws(()=>validateCatalog({categories,skills:skills.map((s,i)=>i===20?({...s,subcategoryId:undefined}):s)}),/subcategoria/i);
