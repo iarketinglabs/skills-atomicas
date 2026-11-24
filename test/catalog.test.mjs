@@ -6,7 +6,8 @@ const categories = [{id:'ti', name:'TI', description:'Tecnologia', icon:'cpu', s
 const sample = {
   id:'amostra', name:'Documentação técnica', installName:'documentacao-tecnica', shortDescription:'Organiza referências.', description:'Documenta decisões.',
   icon:'book-open',version:'1.0.0',categoryId:'ti',subcategoryId:'dados',createdAt:'2026-11-01',updatedAt:'2026-11-23',
-  origin:{kind:'atomica',license:'CC BY 4.0',distribution:'package'},
+  origin:{kind:'atomica',license:'CC-BY-4.0',distribution:'package'},
+  releaseProof:{method:'initial-audit',sourceCommit:'a'.repeat(40),digest:'b'.repeat(64)},
   files:[{path:'SKILL.md',updatedAt:'2026-11-01'}, {path:'references/guia.md',updatedAt:'2026-11-23'}],
   documents:[{path:'SKILL.md',title:'Documentação',content:'## Começar'}]
 };
@@ -17,7 +18,7 @@ test('aceita o catálogo vazio e uma versão aprovada',()=>{
 });
 test('exige ícones distintos e subcategorias nas filiações',()=>{
   const icons=['atom','audio-lines','award','badge','banknote','bell','bike','book','box','brain','brush','bug','cake','camera','car','cat','chart-bar','check','circle','clock','cloud'];
-  const skills=icons.map((icon,i)=>({...sample,id:'skill-'+i,icon}));
+  const skills=icons.map((icon,i)=>({...sample,id:'skill-'+i,installName:'skill-'+i,icon}));
   assert.doesNotThrow(()=>validateCatalog({categories,skills:skills.slice(0,20)}));
   assert.doesNotThrow(()=>validateCatalog({categories,skills}));
   assert.throws(()=>validateCatalog({categories,skills:skills.map((s,i)=>i===20?({...s,subcategoryId:undefined}):s)}),/subcategoria/i);
