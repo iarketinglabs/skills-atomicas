@@ -1,0 +1,17 @@
+---
+import Frame from '../../components/Frame.astro';
+import Icon from '../../components/Icon.astro';
+import SkillCard from '../../components/SkillCard.astro';
+import {categories,skills,route} from '../../lib/site.mjs';
+export function getStaticPaths(){return categories.map(area=>({params:{id:area.id},props:{area}}));}
+const {area}=Astro.props;
+const membershipFor=skill=>[{categoryId:skill.categoryId,subcategoryId:skill.subcategoryId},...(skill.memberships||[])].find(m=>m.categoryId===area.id);
+const entries=skills.filter(skill=>membershipFor(skill)).map(skill=>({...skill,activeSubcategoryId:membershipFor(skill).subcategoryId})).sort((a,b)=>a.name.localeCompare(b.name,'pt'));
+const groups=area.subcategories.map(g=>({...g,skills:entries.filter(s=>s.activeSubcategoryId===g.id)})).filter(g=>g.skills.length);
+---
+<Frame title={area.name} description={area.description}><div class="wrap body-page">
+<nav class="crumb" aria-label="Caminho de navegação"><a href={route('')}>Catálogo</a><Icon name="chevron-right" size={14}/><span aria-current="page">{area.name}</span></nav>
+<header class="page-head"><span class={'icon-tile large tint-'+area.id}><Icon name={area.icon} size={35}/></span><div><p class="eyebrow">Área de trabalho</p><h1>{area.name}</h1><p>{area.description}</p></div></header>
+<section class="area-skills"><div class="section-title"><h2>Skills desta área</h2><span class="section-count">{entries.length} {entries.length===1?'skill':'skills'}</span></div>
+{entries.length===0 ? <div class="empty"><Icon name="library" size={29}/><h3>Ainda não há skills publicadas nesta área.</h3><a href={route('#areas')}>Explorar outras áreas <Icon name="arrow-right" size={16}/></a></div> : entries.length>20 ? groups.map(g=><section class="skill-group"><h3>{g.name}</h3><div class="skill-grid">{g.skills.map(skill=><SkillCard skill={skill}/>)}</div></section>) : <div class="skill-grid">{entries.map(skill=><SkillCard skill={skill}/>)}</div>}
+</section></div></Frame>

@@ -1,0 +1,6 @@
+---
+import Icon from './Icon.astro';
+import {skillUrl} from '../lib/site.mjs';
+const {skill}=Astro.props;
+---
+<a class="skill-card" href={skillUrl(skill.id)}><span class="icon-tile"><Icon name={skill.icon}/></span><div><h3>{skill.name}</h3><p>{skill.shortDescription || 'Referência ao repositório original.'}</p><small>{skill.origin.distribution==='reference-only'?'Referência externa':'v'+skill.version}</small></div><Icon name="arrow-right" size={18}/></a>

@@ -1,0 +1,78 @@
+{
+  "categories": [
+    {
+      "id": "gestao-de-negocio",
+      "name": "Gestão de Negócio",
+      "description": "Estratégia, metas e processos para gerir e desenvolver negócios.",
+      "icon": "briefcase",
+      "subcategories": []
+    },
+    {
+      "id": "juridico",
+      "name": "Jurídico",
+      "description": "Contratos e organização de requisitos jurídicos.",
+      "icon": "scale",
+      "subcategories": []
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing",
+      "description": "Posicionamento, conteúdo e comunicação de marca.",
+      "icon": "megaphone",
+      "subcategories": [
+        { "id": "conteudo-e-escrita", "name": "Conteúdo e escrita" }
+      ]
+    },
+    {
+      "id": "produto",
+      "name": "Produto",
+      "description": "Descoberta e evolução de produtos e experiências.",
+      "icon": "package",
+      "subcategories": []
+    },
+    {
+      "id": "ti",
+      "name": "Tecnologia e Engenharia",
+      "description": "Arquitetura, dados e ferramentas para construir sistemas fiáveis.",
+      "icon": "cpu",
+      "subcategories": [
+        {
+          "id": "modelos-dados-conhecimento",
+          "name": "Modelos, dados e conhecimento"
+        },
+        {
+          "id": "arquitetura-desenvolvimento",
+          "name": "Arquitetura e desenvolvimento"
+        },
+        {
+          "id": "infraestrutura-integracao",
+          "name": "Infraestrutura e integração"
+        },
+        {
+          "id": "governanca-operacoes-qualidade",
+          "name": "Governação, operações e qualidade"
+        }
+      ]
+    },
+    {
+      "id": "transformacao-de-ia",
+      "name": "Transformação de IA",
+      "description": "Adoção, governação e redesenho do trabalho com IA.",
+      "icon": "sparkles",
+      "subcategories": [
+        { "id": "planeamento-e-priorizacao", "name": "Planeamento e priorização" },
+        { "id": "governanca-e-operacoes", "name": "Governação e operações" }
+      ]
+    },
+    {
+      "id": "vendas",
+      "name": "Vendas",
+      "description": "Prospecção, propostas e inteligência comercial.",
+      "icon": "handshake",
+      "subcategories": [
+        { "id": "processos-comerciais", "name": "Processos comerciais" }
+      ]
+    }
+  ],
+  "skills": []
+}

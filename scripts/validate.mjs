@@ -1,0 +1,8 @@
+import {readFileSync} from 'node:fs';
+import {validateCatalog} from '../src/lib/catalog.mjs';
+import {validatePackages} from './packages.mjs';
+import {scanPackages} from './privacy.mjs';
+const catalog = validateCatalog(JSON.parse(readFileSync('src/data/catalog.json','utf8').replace(/^\uFEFF/, '')));
+validatePackages(catalog);
+scanPackages(catalog);
+console.log('Catálogo validado: '+catalog.skills.length+' skills.');

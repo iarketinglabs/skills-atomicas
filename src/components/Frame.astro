@@ -1,0 +1,29 @@
+---
+import {Image,getImage} from 'astro:assets';
+import logo from '../assets/atomica.png';
+import Icon from './Icon.astro';
+import {route,publicRepo} from '../lib/site.mjs';
+import '../styles/global.css';
+const {title='Skills Atomicas',description='Explore o catálogo de skills da Atomica para agentes de IA.'}=Astro.props;
+const mark=await getImage({src:logo,width:64,format:'png'});
+const home=route('');
+---
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#f7efd9" /><meta name="description" content={description} />
+<link rel="canonical" href={new URL(Astro.url.pathname,Astro.site)} />
+<link rel="icon" type="image/png" href={mark.src} />
+<link rel="preload" href={route('fonts/Jost.ttf')} as="font" type="font/ttf" crossorigin="anonymous" />
+<title>{title==='Skills Atomicas'?title:title+' · Skills Atomicas'}</title>
+</head>
+<body>
+<a class="skip" href="#conteudo">Saltar para o conteúdo</a>
+<header class="mast"><div class="wrap mast-inner">
+ <a class="wordmark" href={home} aria-label="Atomica — página inicial"><Image src={logo} alt="" width={42} height={42} format="webp" />Atomica</a>
+ <nav aria-label="Navegação principal"><a class="nav-cat" href={home+'#areas'}><Icon name="library" size={17}/> Catálogo</a><a class="nav-git" href={publicRepo}>GitHub <Icon name="arrow-up-right" size={16}/></a></nav>
+</div></header>
+<main id="conteudo" tabindex="-1"><slot /></main>
+<footer><div class="wrap foot-inner"><a class="foot-mark" href={home}><Image src={logo} width={24} height={24} alt="" format="webp" />Skills Atomicas</a><a href={publicRepo}>Repositório público <Icon name="arrow-up-right" size={15}/></a></div></footer>
+</body></html>

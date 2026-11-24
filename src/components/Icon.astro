@@ -1,0 +1,10 @@
+---
+import {readFileSync} from 'node:fs';
+import {join} from 'node:path';
+import {iconFolder,iconName} from '../lib/catalog.mjs';
+const {name,size=24}=Astro.props;
+const key=iconName(name);
+if (!/^[a-z\d]+(?:-[a-z\d]+)*$/.test(key)) throw new Error('Ícone inválido');
+const svg=readFileSync(join(iconFolder,key+'.svg'),'utf8').replace(/^[\s\S]*?<svg/, '<svg').replace(/width="24"/,'width="'+size+'"').replace(/height="24"/,'height="'+size+'"');
+---
+<span class="icon" aria-hidden="true" set:html={svg} />

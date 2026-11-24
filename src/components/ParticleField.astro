@@ -1,0 +1,19 @@
+<div class="particle-field" aria-hidden="true"><canvas></canvas></div>
+<script>
+import {animateParticles} from '../lib/particles';
+const stage=document.querySelector<HTMLElement>('.particle-field');
+const canvas=stage?.querySelector('canvas');
+if(stage && canvas) {
+ const preference=matchMedia('(prefers-reduced-motion: reduce)');
+ let cleanup: undefined | (()=>void); let visible=false;
+ const sync=()=>{
+   if(visible && !document.hidden && !preference.matches) {if(!cleanup) cleanup=animateParticles(canvas);}
+   else if(cleanup){cleanup();cleanup=undefined;}
+ };
+ const observer=new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;sync();});
+ observer.observe(stage);
+ preference.addEventListener('change',sync);
+ document.addEventListener('visibilitychange',sync);
+ window.addEventListener('pagehide',()=>{cleanup?.();cleanup=undefined;});
+}
+</script>

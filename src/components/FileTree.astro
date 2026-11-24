@@ -1,0 +1,8 @@
+---
+import Icon from './Icon.astro';
+import {dateLabel} from '../lib/site.mjs';
+const {nodes,sourceUrl,depth=0}=Astro.props;
+---
+<ul class="file-tree">
+{nodes.map(node=><li>{node.children ? <details open={depth===0}><summary><Icon name="folder" size={16}/> {node.name}</summary><Astro.self nodes={node.children} sourceUrl={sourceUrl} depth={depth+1}/></details> : <div class="file-line"><a href={sourceUrl+'/'+node.path.split('/').map(encodeURIComponent).join('/')}><Icon name="file-text" size={15}/> {node.name}</a><time datetime={node.updatedAt}>{dateLabel(node.updatedAt)}</time></div>}</li>)}
+</ul>

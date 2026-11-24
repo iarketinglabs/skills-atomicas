@@ -1,0 +1,55 @@
+---
+import {Image} from 'astro:assets';
+import controlRoom from '../assets/control-room.png';
+import Frame from '../components/Frame.astro';
+import AreaCard from '../components/AreaCard.astro';
+import ParticleField from '../components/ParticleField.astro';
+import Icon from '../components/Icon.astro';
+import {categories,skills,categoryUrl,skillUrl} from '../lib/site.mjs';
+const searchItems=[
+ ...categories.map(a=>({name:a.name,summary:a.description,type:'Área',url:categoryUrl(a.id),keywords:a.id})),
+ ...skills.map(s=>({name:s.name,summary:s.shortDescription,type:'Skill',url:skillUrl(s.id),keywords:[s.id,...[{categoryId:s.categoryId,subcategoryId:s.subcategoryId},...(s.memberships||[])].flatMap(m=>[categories.find(a=>a.id===m.categoryId)?.name,m.subcategoryId])].join(' ')}))
+];
+---
+<Frame>
+<section class="hero"><ParticleField/><div class="wrap hero-grid">
+<div class="hero-copy"><p class="eyebrow"><span></span> Biblioteca de agentes de IA</p>
+<h1>Skills <em>Atomicas</em></h1><p class="hero-intro">Encontre instruções, guias e ferramentas para o seu agente de IA. Explore as skills por área de trabalho.</p>
+<form role="search" autocomplete="off" class="search-box" action="#resultados">
+<Icon name="search" size={22}/><label for="pesquisa" class="sr-only">Pesquisar skills ou áreas</label><input id="pesquisa" name="q" type="search" placeholder="Pesquisar skills ou áreas" /><button type="submit" aria-label="Pesquisar"><Icon name="arrow-right" size={20}/></button>
+</form>
+</div>
+<div class="hero-art"><Image src={controlRoom} alt="" widths={[420,680,960]} sizes="(max-width: 760px) 100vw, 44vw" format="webp" loading="eager" fetchpriority="high" /></div>
+</div></section>
+<div class="wrap content-wrap">
+<section id="resultados" class="results" hidden tabindex="-1"><div class="section-title"><h2>Resultados da pesquisa</h2><button type="button" id="limpar">Limpar pesquisa</button></div><p id="search-count" role="status"></p><ul class="results-list"></ul></section>
+<section id="areas" class="areas"><div class="section-title"><h2>Explore por área</h2><span class="section-count">{categories.length} áreas</span></div>
+<div class="area-grid">{categories.map(area=><AreaCard area={area} count={skills.filter(s=>s.categoryId===area.id||(s.memberships||[]).some(m=>m.categoryId===area.id)).length}/>)}</div>
+</section>
+</div>
+<template id="search-index">{JSON.stringify(searchItems)}</template>
+<script>
+const form=document.querySelector<HTMLFormElement>('.search-box')!;
+const input=document.querySelector<HTMLInputElement>('#pesquisa')!;
+const panel=document.querySelector<HTMLElement>('#resultados')!;
+const areas=document.querySelector<HTMLElement>('#areas')!;
+const list=panel.querySelector('ul')!;
+const status=document.querySelector<HTMLElement>('#search-count')!;
+const index=JSON.parse(document.querySelector<HTMLTemplateElement>('#search-index')!.content.textContent || '[]');
+const fold=(s:string)=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt');
+function render(){
+ const query=fold(input.value.trim());
+ panel.hidden=!query; areas.hidden=!!query; list.replaceChildren(); if(!query){status.textContent='';return;}
+ const results=index.filter((x:any)=>fold([x.name,x.summary,x.keywords].join(' ')).includes(query));
+ status.textContent=results.length===0?'Nenhum resultado. Experimente outra palavra.':results.length+' '+(results.length===1?'resultado':'resultados');
+ for(const item of results){
+   const li=document.createElement('li'),a=document.createElement('a'),title=document.createElement('strong'),type=document.createElement('small');
+   a.href=item.url;title.textContent=item.name;type.textContent=item.type;a.append(title,type);li.append(a);list.append(li);
+ }
+}
+input.addEventListener('input',render);
+form.addEventListener('submit',e=>{e.preventDefault();render();if(input.value.trim()){panel.focus();panel.scrollIntoView({block:'start'});}else{input.focus();}});
+document.querySelector('#limpar')!.addEventListener('click',()=>{input.value='';render();input.focus();});
+const query=new URLSearchParams(location.search).get('q');if(query){input.value=query;render();}
+</script>
+</Frame>

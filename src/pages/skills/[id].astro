@@ -1,0 +1,38 @@
+---
+import Frame from '../../components/Frame.astro';
+import Icon from '../../components/Icon.astro';
+import FileTree from '../../components/FileTree.astro';
+import {categories,skills,route,categoryUrl,publicRepo,dateLabel,install,downloadUrl} from '../../lib/site.mjs';
+import {treeFromFiles} from '../../lib/catalog.mjs';
+import {docId,renderDocument} from '../../lib/markdown.mjs';
+export function getStaticPaths(){return skills.map(skill=>({params:{id:skill.id},props:{skill}}));}
+const {skill}=Astro.props;
+const area=categories.find(a=>a.id===skill.categoryId);
+const memberships=[{categoryId:skill.categoryId,subcategoryId:skill.subcategoryId},...(skill.memberships||[])].map(m=>({area:categories.find(a=>a.id===m.categoryId),sub:categories.find(a=>a.id===m.categoryId)?.subcategories.find(s=>s.id===m.subcategoryId)}));
+const packaged=skill.origin.distribution==='package';
+const sourceUrl=publicRepo+'/blob/main/public/skills/'+skill.id;
+const agents=[['codex','Codex'],['claude-code','Claude Code'],['cursor','Cursor']];
+---
+<Frame title={skill.name} description={skill.shortDescription || 'Referência externa no catálogo Skills Atomicas.'}><div class="wrap body-page">
+<nav class="crumb" aria-label="Caminho de navegação"><a href={route('')}>Catálogo</a><Icon name="chevron-right" size={14}/><a href={categoryUrl(area.id)}>{area.name}</a><Icon name="chevron-right" size={14}/><span aria-current="page">{skill.name}</span></nav>
+<header class="page-head detail-head"><span class="icon-tile large"><Icon name={skill.icon} size={34}/></span><div><div class="tags">{memberships.map(({area:tagArea,sub:tagSub})=><span class="tag-pair"><a href={categoryUrl(tagArea.id)}>{tagArea.name}</a><span>{tagSub.name}</span></span>)}</div><h1>{skill.name}</h1>{skill.shortDescription&&<p>{skill.shortDescription}</p>}</div></header>
+<div class="detail-grid"><div class="detail-flow">
+{packaged && <section class="doc-section"><h2>Sobre a skill</h2><p class="prose">{skill.description}</p></section>}
+{packaged && skill.documents.length>0 && <section class="doc-section"><h2>Documentação</h2>{skill.documents.map((doc,i)=><details open={i===0} class="document" id={docId(doc.path)}><summary>{doc.title}</summary><article class="prose" set:html={renderDocument(doc.content,doc,skill.documents,sourceUrl,skill.files)}/></details>)}</section>}
+{packaged && <section class="doc-section"><h2>Pastas e ficheiros</h2><p class="muted">Cada ficheiro mostra a data da sua última atualização.</p><FileTree nodes={treeFromFiles(skill.files)} sourceUrl={sourceUrl}/></section>}
+{!packaged&&<section class="doc-section"><h2>Referência externa</h2><a class="button" href={skill.origin.repositoryUrl}>Ver repositório original <Icon name="arrow-up-right" size={17}/></a></section>}
+</div><aside class="detail-side">
+{packaged&&<section class="install-panel"><h2>Instalar a skill</h2><label for="agent">Agente de IA</label><select id="agent">{agents.map(([id,name])=><option value={id} data-command={install(skill,id)}>{name}</option>)}</select><pre><code id="command">{install(skill,'codex')}</code></pre><button class="button" id="copy" type="button"><Icon name="copy" size={17}/> Copiar comando</button><span role="status" id="copy-status"></span><a class="download" href={downloadUrl(skill)} download><Icon name="download" size={18}/> Descarregar ZIP · v{skill.version}</a></section>}
+<section class="metadata"><h2>Detalhes</h2><dl><dt>Versão</dt><dd>{skill.version}</dd><dt>Origem</dt><dd>{skill.origin.kind==='atomica'?'Autoria da Atomica':'Agregada de terceiros'}</dd>{skill.origin.repositoryUrl&&<><dt>Repositório original</dt><dd><a href={skill.origin.repositoryUrl}>{new URL(skill.origin.repositoryUrl).pathname.slice(1)}</a></dd></>}
+{skill.origin.license&&<><dt>Licença</dt><dd>{skill.origin.license}</dd></>}<dt>Criação no catálogo</dt><dd><time datetime={skill.createdAt}>{dateLabel(skill.createdAt)}</time></dd><dt>Última atualização</dt><dd><time datetime={skill.updatedAt}>{dateLabel(skill.updatedAt)}</time></dd></dl></section>
+</aside></div></div>
+<script>
+const agent=document.querySelector<HTMLSelectElement>('#agent'),command=document.querySelector<HTMLElement>('#command'),status=document.querySelector<HTMLElement>('#copy-status');
+if(agent && command && status) {
+ agent.addEventListener('change',()=>{command.textContent=agent.selectedOptions[0].dataset.command || '';status.textContent='';});
+ document.querySelector('#copy')?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(command.textContent || '');status.textContent='Comando copiado.';}catch{const selection=window.getSelection(),range=document.createRange();range.selectNodeContents(command);selection?.removeAllRanges();selection?.addRange(range);status.textContent='Comando selecionado. Use o atalho de cópia.';}});
+}
+function reveal(){const node=document.getElementById(location.hash.slice(1));if(node instanceof HTMLDetailsElement){node.open=true;node.scrollIntoView();}}
+addEventListener('hashchange',reveal);if(location.hash)reveal();
+</script>
+</Frame>

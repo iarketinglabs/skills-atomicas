@@ -1,0 +1,10 @@
+import data from '../data/catalog.json';
+export const {categories,skills}=data;
+export const base = import.meta.env.BASE_URL.replace(/\/$/,'');
+export const route = path => base+'/'+path.replace(/^\//,'');
+export const categoryUrl = id => route('categorias/'+id+'/');
+export const skillUrl = id => route('skills/'+id+'/');
+export const downloadUrl = s => route('downloads/'+s.id+'-'+s.version+'.zip');
+export const publicRepo = 'https://github.com/iarketinglabs/skills-atomicas';
+export const dateLabel = d => new Intl.DateTimeFormat('pt-PT',{day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(d));
+export const install = (skill,agent) => 'npx skills add '+publicRepo+'/tree/main/public/skills/'+skill.id+' --skill '+(skill.installName || skill.id)+' --agent '+agent;

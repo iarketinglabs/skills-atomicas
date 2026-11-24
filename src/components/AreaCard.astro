@@ -1,0 +1,9 @@
+---
+import Icon from './Icon.astro';
+import {categoryUrl} from '../lib/site.mjs';
+const {area,count}=Astro.props;
+---
+<a class="area-card" href={categoryUrl(area.id)}>
+ <div class="card-top"><span class={'icon-tile tint-'+area.id}><Icon name={area.icon} size={25}/></span><Icon name="arrow-up-right" size={19}/></div>
+ <h3>{area.name}</h3><p>{area.description}</p><span class="card-count">{count} {count===1?'skill':'skills'}</span>
+</a>
