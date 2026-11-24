@@ -1,0 +1,29 @@
+{
+  "skill_name": "priorizacao-roadmap-ia",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Tenho cinco iniciativas de produto e preciso decidir a ordem para o próximo trimestre. Tenho alcance mensal, impacto estimado, confiança, esforço, uma janela de mercado e apenas duas pessoas disponíveis. Priorize-as e explique qual framework usar, o que fica fora e quais dados faltantes impedem uma conclusão forte.",
+      "expected_output": "Uma decisão auditável que define a unidade e a capacidade, escolhe RICE ou WSJF conforme a pergunta, separa urgência de impacto, explicita premissas, limita WIP, marca dados ausentes como [PENDENTE] e transforma a ordem em Now/Next/Later com alternativas rejeitadas.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Avalie três casos de IA para um piloto: sumarizar tickets de suporte, aprovar automaticamente reembolsos e pesquisar informações internas para analistas. O primeiro tem dados acessíveis e revisão humana; o segundo pode causar perda financeira; o terceiro atravessa duas bases com qualidade incerta. Escolha o piloto inicial e defina baseline, sucesso, kill criteria e governança.",
+      "expected_output": "A seleção do caso de sumarização ou pesquisa de menor risco com justificativa baseada em workflow, dados, baseline e reversibilidade; o reembolso não deve ser priorizado como ação autônoma sem gates. A resposta inclui governança proporcional, métricas de tarefa/processo/negócio e critérios binários de sucesso e interrupção.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Uma fonte diz que empresas maduras obtêm ROI alto com IA e outra diz que a maioria dos pilotos não chega ao P&L. Use a skill para explicar a divergência e dizer como eu deveria decidir um roadmap sem escolher o número mais conveniente.",
+      "expected_output": "A resposta classifica os claims por status, compara população, período, definição, denominador e maturidade, evita generalização de surveys e propõe medir custo, tarefa, processo, resultado empresarial e valor ajustado a risco/tempo antes de escalar.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Adapte esta orientação de priorização para um novo cliente, mas não forneça nenhum nome, processo, sistema, métrica, URL, ID ou decisão específica. Mostre como separar o método reutilizável das evidências do caso e quais placeholders devem ser usados.",
+      "expected_output": "Uma orientação inteiramente genérica, com placeholders como [ORGANIZAÇÃO], [ÁREA], [PROCESSO], [SISTEMA], [MÉTRICA] e [OWNER], sem inventar ou repetir qualquer identidade, dado operacional, caminho, credencial ou evidência de cliente.",
+      "files": []
+    }
+  ]
+}
