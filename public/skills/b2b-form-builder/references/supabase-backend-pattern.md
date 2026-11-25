@@ -19,6 +19,8 @@ Um identificador criado no navegador não prova a identidade nem a autorização
 
 Adapte assets/migration.sql.template ao projeto, reveja nomes e permissões e aplique por uma migração versionada. A service_role só pode existir no ambiente de servidor e não deve aparecer no HTML, JavaScript, GitHub Pages, logs ou documentação pública.
 
+Fontes oficiais para revisar a gestão de chaves e permissões. [RLS](https://supabase.com/docs/guides/database/postgres/row-level-security) · [Proteção de dados](https://supabase.com/docs/guides/database/secure-data) · [Segredos de funções](https://supabase.com/docs/guides/functions/secrets)
+
 ## Limites
 
 - CORS e validação de Origin ajudam a restringir chamadas de navegadores, mas não autenticam um utilizador nem impedem chamadas feitas fora do navegador.

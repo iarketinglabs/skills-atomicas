@@ -1,0 +1,23 @@
+{
+  "skill_name": "b2b-diagnostic-audit",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Precisamos decidir se testamos IA na triagem de pedidos da Empresa A, fictícia. O dono relata 120 ocorrências/mês e 15 minutos por pedido, mas só há uma observação de cinco casos, sem variância e com revisão humana. Há restrição de acesso à base de pedidos. Prepare um diagnóstico curto.",
+      "expected_output": "Distingue relato de amostra e ausência de baseline. Compara manter/simplificar, automação determinística e assistência. Marca medida, acesso e hipótese de valor como pendentes e propõe condição verificável de piloto com responsável e parada.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "O diagnóstico sintético já foi aceito. Quero apenas uma agenda de arranque de 30 minutos, com perguntas sobre papéis e dependências.",
+      "expected_output": "Reconhece que a saída é pauta de kickoff e não repete a auditoria, o business case ou implantação. Encaminha para b2b-kickoff-agenda quando disponível.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "O cenário conservador de um piloto ficcional tem €4.000 de benefício monetizado e €6.000 de custo no mesmo horizonte. O patrocinador quer que o relatório registre ROI positivo. O baseline da operação seguinte não foi verificado.",
+      "expected_output": "Mantém ROI conservador de aproximadamente -33,3%, não inventa premissa nem força aprovação. Distingue o baseline por verificar e condiciona o próximo marco a critérios e responsável.",
+      "files": []
+    }
+  ]
+}

@@ -20,7 +20,7 @@ Esta skill deve funcionar com clientes de setores e estruturas diferentes. Não 
 
 Confirme que existe um PRD ou escopo equivalente com a árvore de pastas, as regras de evidência e os entregáveis aprovados. Adapte `references/regras-de-governanca.md` e `references/arvore-padrao.md` ao projeto; a numeração e os critérios do exemplo não substituem as decisões do PRD. Se o escopo ainda não existir, ajude a defini-lo antes de preencher a base — a governança não deve ser improvisada documento a documento.
 
-Identifique a pasta de fontes indicada pelo PRD. `directives/` é apenas uma convenção possível. Se ainda não houver material primário, crie somente o esqueleto aprovado e as lacunas iniciais, informando essa limitação.
+Use apenas fontes e destinos autorizados para o diagnóstico. Sem acesso aos arquivos ou ao conector, solicite trechos ou um export mínimo autorizado e indique quais cruzamentos ainda não foram verificados. Identifique a pasta de fontes indicada pelo PRD. `directives/` é apenas uma convenção possível. Se ainda não houver material primário, crie somente o esqueleto aprovado e as lacunas iniciais, informando essa limitação.
 
 ## Workflow
 

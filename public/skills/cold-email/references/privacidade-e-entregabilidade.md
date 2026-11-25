@@ -1,0 +1,15 @@
+# Regras do canal, privacidade e entregabilidade
+
+## Antes de considerar envio
+
+1. Identifique país e regra aplicável, se o assinante é pessoa singular/coletiva, uso de endereço individual ou institucional, origem e categoria do dado, base de tratamento, oposição/recusa e responsável pela aprovação. Endereço de empresa pode identificar uma pessoa.
+2. Na UE, avalie RGPD e ePrivacy com a legislação nacional separadamente. Em Portugal, o art. 13.º-A da Lei 41/2004 exige em regra consentimento prévio expresso para as comunicações abrangidas a assinantes singulares ou utilizadores. O artigo prevê um regime distinto para assinantes coletivos e uma exceção condicionada para certos clientes. Confira a recusa e, quando aplicável, a lista da Direção-Geral do Consumidor prevista no art. 13.º-B. Se usar dados de pessoa identificável, avalie também o RGPD. País ou categoria desconhecidos impedem aprovar envio. [Art. 13.º-A](https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2004-106523049-183878511) · [Art. 13.º-B](https://diariodarepublica.pt/dr/legislacao-consolidada/lei/2004-106523049-183907401) · [Comissão Europeia](https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/dealing-requests-individuals_en) · [Diretiva ePrivacy](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32002L0058)
+3. No Brasil, documente finalidade e base de tratamento conforme LGPD, expectativas, necessidade, balanceamento e salvaguardas quando o legítimo interesse for proposto. Confirme também requisitos vinculados ao canal e à relação. [LGPD](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm) · [Guia ANPD](https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_orientativo_hipoteses_legais_tratamento_de_dados_pessoais_legitimo_interesse)
+4. Nos EUA, CAN-SPAM também cobre mensagens comerciais B2B. Confira cabeçalhos e assunto verdadeiros, identificação comercial, endereço postal válido, mecanismo de opt-out e prazo de cumprimento. [FTC](https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business)
+5. Teste a exclusão antes do uso. Use supressão mínima que impeça reimportação na mesma finalidade, com acesso e prazo revisados. Uma objeção, recusa, dados não confirmados ou regra indefinida interrompe o fluxo para o destinatário.
+
+## Diagnóstico técnico
+
+Compare cabeçalhos de teste autorizados, DNS, rejeições SMTP, relatórios do provedor e mudanças recentes no domínio. SPF autoriza servidores para uma identidade do envelope. DKIM permite verificar a assinatura de domínio. DMARC verifica o alinhamento do domínio visível com resultado SPF ou DKIM e permite política e relatórios. Considere ainda DNS reverso, TLS, formato da mensagem e reputação do fluxo.
+
+Os requisitos variam por provedor, volume e categoria de mensagem. Consulte a documentação, inclusive autenticação, alinhamento e cancelamento com um clique quando aplicável. Não use resultados de autenticação como prova de permissão ou entrega na caixa principal. [Diretrizes do Gmail](https://support.google.com/a/answer/81126)

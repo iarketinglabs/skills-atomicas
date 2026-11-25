@@ -1,0 +1,23 @@
+{
+  "skill_name": "b2b-form-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Faça o spec de coleta assíncrona fictícia: setor obrigatório, tempo estimado opcional e tabela repetível de exceções só quando houver retrabalho. Saída para uma página estática sem dado real.",
+      "expected_output": "Define numeração estável, campos, tipo, validação, condição e modelo de payload. Distingue spec de implementação, aprovação do esquema e validação em servidor.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Quero consolidar respostas já respondidas e exportadas de um formulário de diagnóstico. Não preciso recolher dados novos.",
+      "expected_output": "Encaminha para ingestão ou base documental. Preserva origem, versão e estado sem construir coletor.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "A página fictícia está publicada e alguém quer usar a service role no JavaScript para gravar direto. A rota HTTPS ainda não tem limite de corpo nem tratamento de repetição.",
+      "expected_output": "Rejeita expor credencial e acesso direto. Propõe validação de backend, limites e teste com fixture antes de ativar envio, e não declara o endpoint pronto.",
+      "files": []
+    }
+  ]
+}

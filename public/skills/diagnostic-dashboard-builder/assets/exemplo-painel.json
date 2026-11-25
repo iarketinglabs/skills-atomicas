@@ -1,0 +1,50 @@
+{
+  "titulo": "Diagnóstico de operações — demonstração",
+  "resumo": "Validar a amostra de handoff antes de iniciar comparação de alternativas.",
+  "atualizado_em": "2026-11-25",
+  "classificacao": "sintetico",
+  "marcos": [
+    {
+      "titulo": "Mapa do processo atual",
+      "estado": "concluido",
+      "responsavel": "Operações",
+      "proximo": "Revisão concluída no ciclo fictício.",
+      "documentos": [
+        "mapa-atual"
+      ]
+    },
+    {
+      "titulo": "Baseline de tempo",
+      "estado": "bloqueado",
+      "responsavel": "Análise",
+      "proximo": "Confirmar amostra comparável.",
+      "documentos": [
+        "plano-de-coleta"
+      ]
+    }
+  ],
+  "documentos": [
+    {
+      "id": "mapa-atual",
+      "titulo": "Mapa do processo atual",
+      "area": "Operações",
+      "versao": "v1",
+      "estado": "revisto",
+      "texto": "Fonte F-01: observação simulada.\n\nEntrada: solicitação de reposição.\nTransferência: Operações envia a lista para revisão.\nSaída: autorização do lote.\n\nCaso fictício e exclusivamente demonstrativo.",
+      "relacionados": [
+        "plano-de-coleta"
+      ]
+    },
+    {
+      "id": "plano-de-coleta",
+      "titulo": "Plano de coleta do baseline",
+      "area": "Medição",
+      "versao": "v0",
+      "estado": "preliminar",
+      "texto": "Fonte F-02: plano simulado.\n\nColetar início e fim por ocorrência. Registar período, unidade, volume elegível e exceções.\n\nA amostra está pendente.",
+      "relacionados": [
+        "mapa-atual"
+      ]
+    }
+  ]
+}

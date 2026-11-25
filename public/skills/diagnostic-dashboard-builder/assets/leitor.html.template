@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{titulo}}</title>
+  <style>
+    :root { color-scheme: light; font: 100%/1.55 system-ui, sans-serif; color: #172c26; background: #f0f5f2; }
+    body { margin: 0; }
+    header, main { box-sizing: border-box; width: min(100%, 72rem); margin: auto; padding: 1.25rem clamp(1rem, 5vw, 4rem); }
+    header { background: #15382d; color: #f6fffa; }
+    h1, h2, h3, p { margin: .45em 0; overflow-wrap: anywhere; }
+    small { display: block; }
+    .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+    .cards li, .doc { background: white; border: 1px solid #c6d4ca; border-radius: .6rem; padding: 1rem; min-width: 0; }
+    .doc { margin: .75rem 0; }
+    .doc:target { border: 2px solid #206a4d; }
+    summary { cursor: pointer; font-weight: 650; }
+    small, .meta { font-size: .9em; }
+    a { color: #145f45; overflow-wrap: anywhere; }
+    :focus-visible { outline: .18rem solid #8d4023; outline-offset: .2rem; }
+    label { display: block; margin-top: .5rem; }
+    input { box-sizing: border-box; font: inherit; width: min(100%, 22rem); padding: .4rem; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; border-inline-start: .2rem solid #80ae99; padding-inline-start: .8rem; }
+    nav ul { padding-inline-start: 1.25rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <small>{{classificacao}} · Atualizado em {{atualizado_em}}</small>
+    <h1>{{titulo}}</h1>
+    <p>{{resumo}}</p>
+  </header>
+  <main>
+    <section aria-labelledby="roadmap">
+      <h2 id="roadmap">Marcos e próximos passos</h2>
+      {{marcos}}
+    </section>
+    <section aria-labelledby="biblioteca">
+      <h2 id="biblioteca">Documentos</h2>
+      <div id="filtro" hidden>
+        <label for="busca">Filtrar por título ou área</label>
+        <input id="busca" type="search" autocomplete="off">
+        <p id="quantidade" role="status"></p>
+      </div>
+      {{documentos}}
+    </section>
+  </main>
+  <script>
+    const form = document.querySelector('#filtro');
+    const search = document.querySelector('#busca');
+    const result = document.querySelector('#quantidade');
+    const docs = [...document.querySelectorAll('.doc')];
+    const normalize = (value) => value.toLocaleLowerCase('pt').normalize('NFD').replace(/\p{M}/gu, '');
+    function filter() {
+      const term = normalize(search.value.trim());
+      let count = 0;
+      for (const doc of docs) {
+        doc.hidden = !normalize(doc.dataset.lookup).includes(term);
+        if (!doc.hidden) count += 1;
+      }
+      result.textContent = count ? count + ' documento(s) visível(is)' : 'Nenhum documento encontrado.';
+    }
+    function openTarget() {
+      const target = document.getElementById(location.hash.slice(1));
+      if (!target?.matches('.doc')) return;
+      if (target.hidden) {
+        search.value = '';
+        filter();
+      }
+      target.querySelector('details').open = true;
+      target.querySelector('summary').focus({ preventScroll: true });
+      target.scrollIntoView({ block: 'start' });
+    }
+    if (docs.length) {
+      form.hidden = false;
+      search.addEventListener('input', filter);
+      filter();
+      window.addEventListener('hashchange', openTarget);
+      document.querySelector('main').addEventListener('click', (event) => {
+        const link = event.target.closest('a[href^="#doc-"]');
+        if (link?.hash === location.hash) openTarget();
+      });
+      openTarget();
+    }
+  </script>
+</body>
+</html>

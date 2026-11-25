@@ -60,7 +60,7 @@ A migração SQL é uma referência versionada, não uma migração já aplicada
 
 ## Passo 4 — Decidir e Executar a Publicação
 
-Leia `references/github-pages-publishing.md` **antes** de escrever qualquer commit de publicação, não depois. A decisão pública-vs-privada muda a arquitetura: verifique se o repositório do cliente já é público e se a conta tem um plano que publica GitHub Pages a partir de repositório privado (Pro/Team/Enterprise). Se nenhuma das duas condições for verdadeira, decida com o usuário entre (a) tornar o repositório público, (b) fazer upgrade de plano, ou (c) criar um repositório espelho público só com os arquivos de publicação, ou (d) publicar num provedor que não exige repositório público (Cloudflare Pages/Netlify/Vercel apontando para a pasta de publicação).
+Leia `references/github-pages-publishing.md` antes de escolher arquitetura e artefatos. Verifique separadamente a origem de build e a visibilidade do site. Para uma interface pública, considere um espelho com apenas os arquivos aprovados ou um host configurado para a pasta estática. Para acesso restrito, use autenticação e autorização compatíveis com os requisitos do cliente. Mantenha o repositório do cliente e seu histórico com a visibilidade definida para o projeto.
 
 Se a rota escolhida for o repositório espelho público, use `scripts/sync-mirror-repo.sh` para preparar, numa branch de revisão limpa, apenas arquivos regulares explicitamente escolhidos sob `docs/`. O script valida o limite de caminho e deixa as alterações staged; não clona, faz commit nem envia push. Revise `git diff --cached`, execute as verificações de privacidade e abra um pull request. Nunca publique respostas de clientes, diretivas, histórico, arquivos gerados ou segredos.
 

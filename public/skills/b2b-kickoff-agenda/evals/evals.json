@@ -1,0 +1,23 @@
+{
+  "skill_name": "b2b-kickoff-agenda",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Monte a pauta de 45 minutos para o Projeto X, fictício. A aprovação A1 cobre duas áreas, uma fonte de dados e início depois do acesso. A operação quer validar métrica de tempo de fila. O responsável por aprovar o acesso não foi identificado.",
+      "expected_output": "Organiza quatro blocos que totalizam 45 minutos. Distingue escopo da pendência, pede papel mínimo e canal seguro, inclui dono a confirmar, medição e ação pós-reunião.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "A reunião de kickoff fictícia ocorreu ontem. Preciso de uma ata, mas tenho apenas a pauta que estava prevista.",
+      "expected_output": "Distingue pauta de ata. Solicita evidência da reunião ou cria minuta marcada com decisões e presenças a confirmar sem promover perguntas a decisões.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Contrato fictício assinado prevê uma integração. No CRM de exemplo consta três e uma reunião posterior sugere duas. Não tenho acesso ao CRM nesta sessão. Prepare as questões de arranque.",
+      "expected_output": "Preserva a base assinada como vigente, mantém ampliações como divergências com data/origem e responsável pela decisão. Indica limite do acesso, sem inventar confirmação ou esconder a divergência.",
+      "files": []
+    }
+  ]
+}

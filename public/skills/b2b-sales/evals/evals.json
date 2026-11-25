@@ -1,0 +1,23 @@
+{
+  "skill_name": "b2b-sales",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Qualifique uma venda fictícia de consultoria. Operações relata que a triagem manual demora dois dias. Há champion que marcou uma reunião, porém CFO, orçamento, concorrência interna e compras ainda não foram confirmados.",
+      "expected_output": "Escolhe discovery e qualificação proporcionais à complexidade. Mapeia champion e aprovador separadamente, pede validar baseline e alternativa interna e não eleva forecast a compromisso.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Monte um e-mail frio individual para um diretor com base num comunicado fictício. Ainda não há oportunidade ativa.",
+      "expected_output": "Encaminha para o fluxo de e-mail frio. Pode esclarecer oferta e hipótese, sem aplicar qualificação MEDDPICC ou afirmar que há oportunidade.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Coloque a conta fictícia em Compromisso. A proposta abriu duas vezes e o contato sumiu. Nosso CRM não tem critérios de categoria nem data da próxima conversa.",
+      "expected_output": "Não usa abertura como decisão. Propõe manter ou requalificar com evidência e próximo passo, explicita falta de critérios e não grava alterações de CRM.",
+      "files": []
+    }
+  ]
+}
