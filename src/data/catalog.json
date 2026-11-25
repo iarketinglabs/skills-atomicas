@@ -1114,10 +1114,6 @@
           "updatedAt": "2026-11-24"
         },
         {
-          "path": "references/compliance-sources.md",
-          "updatedAt": "2026-11-24"
-        },
-        {
           "path": "references/offer-specifics.md",
           "updatedAt": "2026-11-24"
         },
@@ -1131,6 +1127,10 @@
         },
         {
           "path": "SKILL.md",
+          "updatedAt": "2026-11-24"
+        },
+        {
+          "path": "references/compliance-sources.md",
           "updatedAt": "2026-11-24"
         }
       ],
@@ -3160,11 +3160,15 @@
       },
       "files": [
         {
-          "path": "evals/evals.json",
+          "path": "SKILL.md",
           "updatedAt": "2026-11-24"
         },
         {
           "path": "LICENSE",
+          "updatedAt": "2026-11-24"
+        },
+        {
+          "path": "evals/evals.json",
           "updatedAt": "2026-11-24"
         },
         {
@@ -3181,10 +3185,6 @@
         },
         {
           "path": "references/system-prompt-as-configuration.md",
-          "updatedAt": "2026-11-24"
-        },
-        {
-          "path": "SKILL.md",
           "updatedAt": "2026-11-24"
         }
       ],
@@ -4182,15 +4182,15 @@
       },
       "files": [
         {
+          "path": "SKILL.md",
+          "updatedAt": "2026-11-24"
+        },
+        {
           "path": "agents/openai.yaml",
           "updatedAt": "2026-11-24"
         },
         {
           "path": "evals/evals.json",
-          "updatedAt": "2026-11-24"
-        },
-        {
-          "path": "LICENSE",
           "updatedAt": "2026-11-24"
         },
         {
@@ -4202,7 +4202,7 @@
           "updatedAt": "2026-11-24"
         },
         {
-          "path": "SKILL.md",
+          "path": "LICENSE",
           "updatedAt": "2026-11-24"
         }
       ],
