@@ -1,29 +1,23 @@
-# Formatos Suportados e Prioridade por Subpasta
+# Seleção de fontes e capacidades de importação
 
-## Extensões aceitas pelo upload de arquivo (`source_add`, `source_type=file`)
+## Formato de origem
 
-PDF, TXT, MD, DOCX, CSV, EPUB, MP3, M4A, WAV, AAC, OGG, OPUS, MP4, JPG, JPEG, PNG, GIF, WEBP.
+O suporte do produto varia por interface, tipo de conta e edição. O conector escolhido pode expor um subconjunto e ter regras diferentes para acesso a arquivos. Confira o suporte atual na conta em que o notebook vive e na documentação da ferramenta efetivamente usada. A interface web atualmente lista, entre outros, Google Docs, Slides e Sheets, PDF, Markdown, CSV, PowerPoint e tipos de áudio ou imagem. [Tipos e limites de fontes no Google](https://support.google.com/gemininotebook/answer/16215270?co=GENIE.Platform%3DDESKTOP&hl=en)
 
-Fora dessa lista (ex.: `.pptx`, `.xlsx`, `.key`, `.numbers`), o arquivo binário não pode ser enviado diretamente como fonte de arquivo. Alternativas, em ordem de preferência:
-
-1. Usar o `.md` irmão gerado por `populate-directives` (contém o texto extraído) — sempre a primeira opção.
-2. Se o arquivo estiver no Google Drive e o valor visual for indispensável (ex.: apresentação com gráficos que a equipe quer ver no Studio), usar `source_add` com `source_type=drive` e `doc_type` correspondente (`doc`, `slides`, `sheets`, `pdf`) em vez de tentar subir o binário local.
-3. Converter para PDF antes de subir, apenas se o usuário pedir explicitamente e nenhuma das opções acima resolver.
-
-Fontes com imagem (PDF, JPG, PNG etc.) alimentam o pipeline de recorte visual do Studio — gráficos, fotos e diagramas podem aparecer como apoio visual em vídeos gerados a partir do notebook. Isso é um motivo válido para subir o PDF além do `.md`, mas não substitui o `.md`.
-
-## Prioridade por Subpasta de `directives/`
-
-Ao decidir o que subir quando o usuário pede "todas as fontes relevantes" sem detalhar:
-
-| Prioridade | Subpasta | Por quê entra primeiro |
+| Material | Priorize quando | Valide |
 |---|---|---|
-| Alta | `meetings/` | Registra decisões e contexto direto do cliente — maior densidade decisória |
-| Alta | `presentations/` (versão `.md`) | O que foi formalmente apresentado como proposta/solução |
-| Alta | `sales-intelligence/` | Dossiê consolidado de decisores, histórico comercial e CRM |
-| Média | `sheets/`, `forms/` | Dados estruturados (respostas de discovery, planilhas de escopo) |
-| Média | `emails/`, `messages/` | Combinados informais e pendências — útil, mas mais ruidoso |
-| Baixa | `notes/`, `docs/`, `prototypes/` | Contexto complementar; incluir só se o usuário pedir cobertura completa |
-| Fora do escopo desta skill | `contracts/`, `approvals/` | Normalmente têm sensibilidade jurídica/financeira — só subir se o usuário pedir explicitamente |
+| Markdown ou texto autorizado | Perguntas sobre decisões e texto bem estruturado | Comprimento, origem, data e autoria. |
+| PDF ou apresentação | Gráfico, tabela ou disposição visual muda a interpretação | Formato suportado na superfície, extração observada e qualidade das fontes citadas. |
+| Planilha | É importante citar colunas e recortes | Importação suportada, fidelidade do recorte e ausência de abas fora do escopo. |
+| Arquivo do Drive | O compartilhamento e o acesso no notebook estão autorizados | Comportamento de atualização, origem selecionada e perda de acesso. |
+| Página web ou áudio | A fonte é permitida e o texto ou transcrição disponíveis respaldam a consulta | Conteúdo realmente importado, idioma e cobertura. |
 
-Subpastas de prioridade "Alta" são o padrão razoável quando o usuário não especifica escopo. Para as demais, confirme antes de incluir.
+Para um par Markdown e binário com o mesmo conteúdo, selecione a versão que atende à consulta. Envie ambos somente se cada versão contribuir com evidência diferente. Se o formato local não funcionar naquela ferramenta, use o equivalente autorizado por outra superfície ou um recorte permitido. Conversões podem perder layout e semântica. Verifique a versão convertida antes de enviar.
+
+## Organização do material
+
+Uma pasta existente pode conter atas, apresentações, formulários ou materiais operacionais. Priorize o que sustenta as perguntas acordadas. Exclua rascunhos vazios e duplicatas. Documentos jurídicos ou registros com dados pessoais e comerciais entram só no escopo aprovado para aquela conta. Quando a lista for extensa, registre a correspondência entre fonte original, versão verificada e fonte no notebook em uma tabela privada de acompanhamento.
+
+Arquivos estruturais e extratos têm papéis distintos. Mantenha a identificação do original nos extratos. Trate atualização automática, reprocessamento, edição ou remoção conforme o recurso realmente disponível. Um `upload aceito` só comprova recepção. Confira a possibilidade de consulta antes de marcar a fonte como pronta.
+
+[Gerenciamento de fontes na API Enterprise](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/api-notebooks-sources) · [Verificação de citações no chat](https://support.google.com/gemininotebook/answer/16179559)

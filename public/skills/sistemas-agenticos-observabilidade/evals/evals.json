@@ -1,1 +1,46 @@
-{"skill_name":"sistemas-agenticos-observabilidade","evals":[{"id":1,"prompt":"Instrumente um agente que usa ferramentas e apresenta falhas silenciosas.","expected_output":"Define trace, versão, ferramentas, resultado e avaliação de trajetória.","files":[],"expectations":["Separa resultado final de trajetória.","Prevê redação de dados sensíveis."]},{"id":2,"prompt":"Defina retries e backoff.","expected_output":"Direciona política de recuperação para Resiliência.","files":[],"expectations":["Indica sistemas-agenticos-resiliencia.","Não inventa limites fixos."]},{"id":3,"prompt":"Compare duas versões de prompt que alteraram o comportamento do agente.","expected_output":"Exige identidade composta e comparação contra baseline.","files":[],"expectations":["Registra prompt, modelo e harness.","Avalia resultado e trajetória."]}]}
+{
+  "skill_name": "sistemas-agenticos-observabilidade",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Instrumente um agente que usa ferramentas e apresenta falhas silenciosas.",
+      "expected_output": "Define trace, versão, ferramentas, resultado e avaliação de trajetória.",
+      "files": [],
+      "expectations": [
+        "Separa resultado final de trajetória.",
+        "Prevê redação de dados sensíveis."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Defina retries e backoff.",
+      "expected_output": "Direciona política de recuperação para Resiliência.",
+      "files": [],
+      "expectations": [
+        "Indica sistemas-agenticos-resiliencia.",
+        "Não inventa limites fixos."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Compare duas versões de prompt que alteraram o comportamento do agente.",
+      "expected_output": "Exige identidade composta e comparação contra baseline.",
+      "files": [],
+      "expectations": [
+        "Registra prompt, modelo e harness.",
+        "Avalia resultado e trajetória."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Quero guardar em produção todos os prompts, o conteúdo dos arquivos lidos e o raciocínio do modelo para investigar um erro. O backend de traces está disponível e duas execuções sintéticas podem ser usadas.",
+      "expected_output": "Define uma trajetória observável com eventos operacionais, correlação e conteúdo mínimo. Propõe teste com execuções intercaladas para demonstrar contexto e redação.",
+      "files": [],
+      "expectations": [
+        "Não promete acesso ao raciocínio interno do modelo.",
+        "Não exporta prompts, arquivos e payloads brutos por padrão.",
+        "Distingue decisão registrada, retorno de ferramenta e efeito confirmado."
+      ]
+    }
+  ]
+}

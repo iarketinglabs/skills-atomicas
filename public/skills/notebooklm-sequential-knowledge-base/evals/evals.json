@@ -1,0 +1,37 @@
+{
+  "skill_name": "notebooklm-sequential-knowledge-base",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Tenho três tópicos no notebook fictício Acervo Aurora. A primeira página Markdown já foi validada, a segunda falta e a terceira ainda não foi consultada. Tenho um conector que identifica o notebook e devolve resposta final com citações. Como retomo?",
+      "expected_output": "Plano de retomada que preserva o primeiro arquivo, consulta só o segundo e o terceiro na ordem definida e condiciona cada avanço a resposta, fonte e escrita verificadas.",
+      "files": [],
+      "expectations": [
+        "Confirma notebook e fontes selecionadas antes de consultar.",
+        "Determina os itens a partir do inventário e preserva o primeiro arquivo.",
+        "Registra evidência verificável fora do guia e mantém a ordem."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Ainda não existe um notebook e quero carregar quatro documentos autorizados para o montar. Esta skill serve para isso?",
+      "expected_output": "Encaminha para a preparação/importação de fontes e indica que a extração começa depois de um notebook existente ter fontes prontas.",
+      "files": [],
+      "expectations": [
+        "Distingue criação/importação de extração sequencial.",
+        "Não afirma que executou uma consulta ou criação."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "O segundo tema voltou com uma proposta de relatório futuro. Dei retry mas a autenticação expirou. O primeiro Markdown já existe e quero preencher os restantes agora.",
+      "expected_output": "Entrega parcial com primeiro arquivo preservado, segundo como bloqueado e demais pendentes. Orienta reautenticação pelo caminho suportado ou fluxo manual autorizado.",
+      "files": [],
+      "expectations": [
+        "Não grava a proposta como guia.",
+        "Não inventa respostas nem avança ao terceiro tema.",
+        "Não pede cookies, credenciais ou login por ferramenta indisponível."
+      ]
+    }
+  ]
+}

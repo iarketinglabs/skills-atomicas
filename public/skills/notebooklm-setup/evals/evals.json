@@ -1,0 +1,37 @@
+{
+  "skill_name": "notebooklm-setup",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Quero reaproveitar o notebook fictício Aurora e enviar duas atas autorizadas. Uma fonte com o mesmo título de uma das atas já existe e o ficheiro local mudou. A outra fonte ainda não existe. O conector pode adicionar e listar estados.",
+      "expected_output": "Reconcilia o notebook, sinaliza o título igual com versão divergente e envia apenas o item novo autorizado. Reporta seu estado real de processamento.",
+      "files": [],
+      "expectations": [
+        "Mantém a fonte existente sem substituir.",
+        "Evita decidir identidade por título apenas.",
+        "Distingue envio aceito e fonte pronta."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "As atas já estão no notebook e quero gerar um Markdown por tema, consultando um tema de cada vez.",
+      "expected_output": "Encaminha para o fluxo de extração de conhecimento e preserva as fontes já carregadas.",
+      "files": [],
+      "expectations": [
+        "Distingue sincronização de fontes de consulta por tema.",
+        "Não importa nem recria o notebook."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "O meu NotebookLM aceita o PDF pela interface web, mas o MCP remoto não enxerga o caminho local. Quero que você sincronize agora e confirme que a fonte já pode ser consultada.",
+      "expected_output": "Explica a diferença entre capacidade de produto e acesso do conector, oferece importação manual ou superfície autorizada, e deixa o estado pendente até confirmar prontidão.",
+      "files": [],
+      "expectations": [
+        "Não envia o caminho local ao conector como se fosse um arquivo acessível.",
+        "Não marca como pronto sem observação.",
+        "Pede somente a ação manual ou dado faltante necessário."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "skill_name": "system-documentation-keeper",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Implementei no sistema fictício Aurora um webhook de inventário com validação de assinatura, repetição e deduplicação. O PRD aprovado descrevia polling. Como atualizo a documentação viva?",
+      "expected_output": "Atualiza os tópicos de integração e fluxo com a versão implementada, vincula provas e decisão, e mantém o PRD como artefato histórico do marco.",
+      "files": [],
+      "expectations": [
+        "Documenta contrato atual, erros, idempotência e operação verificáveis.",
+        "Distingue estado atual da intenção do PRD.",
+        "Não inclui segredo nem materializa uma execução que não foi observada."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Quero escrever a primeira especificação para um fluxo que só será desenvolvido no próximo marco. Posso documentá-lo já como fluxo do produto?",
+      "expected_output": "Direciona para PRD/spec e mantém planos e estado observado distinguíveis.",
+      "files": [],
+      "expectations": [
+        "Não registra a proposta como comportamento existente.",
+        "Pode indicar um ADR se houver decisão já tomada."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Só tenho acesso ao diff e uma captura sem versão do painel. Havia um runbook antigo. Querem que eu diga que a tarefa em produção roda às 08h e que o alerta chega à equipe.",
+      "expected_output": "Declara o que o diff sustenta, identifica configuração ativa e teste de entrega ainda pendentes e propõe revisão dos tópicos existentes.",
+      "files": [],
+      "expectations": [
+        "Não infere o horário ou o envio real a partir do diff.",
+        "Pede evidência proporcional para validar ambiente e versão.",
+        "Preserva a utilidade do runbook e marca as lacunas."
+      ]
+    }
+  ]
+}

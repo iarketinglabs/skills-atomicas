@@ -7,7 +7,7 @@ description: "Framework para instrumentar, avaliar e melhorar agentes de IA em p
 
 ## Quando Usar
 
-- Instrumentar um agente para reconstruir a árvore de decisão de uma execução que falhou.
+- Instrumentar um agente para reconstruir a trajetória observável de uma execução que falhou.
 - Decidir quais métricas realmente indicam se um agente está funcionando bem.
 - Desenhar quando e como um agente deve pedir aprovação humana, sem travar toda a automação.
 - Auditar e reverter ações de um agente no nível do sistema de arquivos.
@@ -24,7 +24,7 @@ description: "Framework para instrumentar, avaliar e melhorar agentes de IA em p
 Um erro de software tradicional pode quebrar com uma exceção visível e diretamente capturável. Um agente também pode falhar de forma silenciosa: gera texto bem formatado, código que compila ou uma resposta educada, mas logicamente errada ou fora de escopo. Como o mesmo objetivo pode ser alcançado por caminhos de ferramentas distintos, comparar uma execução contra um único caminho esperado gera falsos negativos. Isso exige um ciclo de observação diferente do APM convencional.
 
 ### O ciclo de três estágios
-1. **Trace:** capturar a árvore completa de decisão — cada chamada de ferramenta, cada passo de raciocínio, sob um identificador de execução unificado (Agent Run ID). Ver `references/tracing-inputs-outputs.md`.
+1. **Trace:** registrar operações observáveis, resultados, versões e efeitos sob uma referência de execução. Colete o mínimo necessário e inspecione o que a instrumentação realmente exporta. Ver `references/tracing-inputs-outputs.md`.
 2. **Avaliar:** medir se o que aconteceu foi bom — nos três eixos de assertividade, performance e custo, com um avaliador independente (LLM-as-a-Judge) fazendo a checagem de qualidade que uma métrica numérica sozinha não captura. Ver `references/assertiveness-and-performance-metrics.md` e `assets/llm-as-a-judge-pattern.md`.
 3. **Melhorar:** transformar o que foi observado em mudança real — curadoria de exemplos, ajuste de prompt versionado, calibração de quanto o agente pode operar sozinho. Ver `assets/continuous-improvement-loop.md`, `references/human-in-the-loop-approval-gates.md` e `references/prompt-and-architecture-versioning.md`.
 
@@ -51,6 +51,8 @@ Um erro de software tradicional pode quebrar com uma exceção visível e direta
 - **Convenções de Telemetria Agentic:** padronizar atributos de modelo, tokens, ferramentas, resultado e release sem acoplamento a fornecedor. Ver `references/agent-telemetry-semantic-conventions.md`.
 
 ## Como Usar Esta Skill
+
+Na ausência de acesso autorizado ao runtime ou ao backend, entregue o desenho da instrumentação e os critérios de prova. Para configurar coleta, painéis e sondas de serviços, consulte a skill observabilidade-stack-atomica quando disponível.
 
 1. Leia o Framework Mental antes de abrir qualquer reference — o ciclo Trace → Avaliar → Melhorar é a lente que organiza os cinco arquivos.
 2. O padrão LLM-as-a-Judge e o Ciclo de Melhoria Contínua são assets compartilhados por múltiplos arquivos — leia-os uma vez, não a cada reference que os cita.

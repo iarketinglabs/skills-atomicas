@@ -81,7 +81,7 @@ Cada `label` vira um divisor visual dentro das colunas do quadro (e aparece no p
 ## Como instanciar num projeto novo
 
 ```bash
-# a partir da raiz da skill (.agents/skills/sistemas-agenticos-testes-qa/)
+# a partir da raiz do pacote da skill
 node scripts/instantiate-kanban-dashboard.mjs --target /caminho/do/projeto/.../dashboard
 cd /caminho/do/projeto/.../dashboard
 node build-data.mjs

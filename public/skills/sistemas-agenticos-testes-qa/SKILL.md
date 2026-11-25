@@ -115,4 +115,4 @@ Se um requisito crítico estiver falhando, sem evidência ou sem controle de rec
 - [Avaliação agêntica](references/agentic-quality-evaluation.md)
 - [Checklists e templates](references/checklists-and-templates.md)
 - [Evidência e fontes](references/evidence-and-sources.md)
-- [Dashboard kanban do caderno de testes](references/kanban-dashboard.md)
+- [Dashboard kanban do caderno de testes](references/kanban-dashboard.md). Para criar uma cópia local com Node.js e permissão de escrita no destino, use o script [instantiate-kanban-dashboard.mjs](scripts/instantiate-kanban-dashboard.mjs) na raiz do pacote. Sem terminal, siga a opção de cópia manual.
