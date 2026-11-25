@@ -8,11 +8,15 @@ import json
 import re
 from pathlib import Path
 
-TITLE = re.compile(r"^ {0,3}#[ \t]+\S")
-SECOND_TITLE = re.compile(r"^ {0,3}#(?:[ \t]|$)")
+HEADING = re.compile(r"^ {0,3}(#{1,6})(?:[ \t]+(.*))?$")
+CLOSING_HASHES = re.compile(r"(?:^|[ \t]+)#+[ \t]*$")
+SETEXT_MARKER = re.compile(r"^ {0,3}=+[ \t]*$")
 FENCE = re.compile(r"^ {0,3}(~{3,}|`{3,})(.*)$")
-WRAPPER_HEADING = re.compile(r"^ {0,3}##[ \t]+(consulta|resposta)[ \t#]*$", re.IGNORECASE)
-TRANSPORT_FIELDS = {"answer", "conversation_id", "sources_used", "citations", "status"}
+TRANSPORT_METADATA = {"conversation_id", "sources_used", "citations"}
+
+
+def heading_title(heading: re.Match[str]) -> str:
+    return CLOSING_HASHES.sub("", heading[2] or "").strip()
 
 
 def has_transport_envelope(body: str) -> bool:
@@ -22,63 +26,78 @@ def has_transport_envelope(body: str) -> bool:
         parsed = json.loads(body)
     except json.JSONDecodeError:
         return False
-    return isinstance(parsed, dict) and bool(parsed.keys() & TRANSPORT_FIELDS)
+    if not isinstance(parsed, dict):
+        return False
+    metadata = parsed.keys() & TRANSPORT_METADATA
+    return len(metadata) >= 2 or (bool(metadata) and "answer" in parsed)
 
 
-def structure_errors(text: str) -> list[str]:
+def inspect_structure(text: str) -> tuple[list[str], list[str]]:
     if not text.strip():
-        return ["arquivo vazio"]
+        return ["arquivo vazio"], []
 
     lines = text.splitlines()
     errors = []
-    if not TITLE.match(lines[0]):
-        errors.append("H1 ausente na primeira linha")
+    review = []
+    first_heading = HEADING.fullmatch(lines[0])
+    has_initial_h1 = first_heading is not None and first_heading[1] == "#"
+    if not has_initial_h1 or not heading_title(first_heading):
+        errors.append("H1 ATX com título na primeira linha é obrigatório")
 
-    body = "\n".join(lines[1:]) if TITLE.match(lines[0]) else text
-    if not body.strip():
-        errors.append("corpo vazio")
-    if has_transport_envelope(body.strip()):
+    body_lines = lines[1:] if has_initial_h1 else lines
+    if has_transport_envelope("\n".join(body_lines).strip()):
         errors.append("objeto JSON de transporte")
 
-    headings = set()
+    sections = set()
+    has_body = False
     duplicate_title = False
+    has_setext_marker = False
     fence = ""
-    for line in lines[1:]:
-        fence_match = FENCE.match(line)
-        if fence_match:
-            marker, rest = fence_match.groups()
-            if fence:
-                if marker[0] == fence[0] and len(marker) >= len(fence) and not rest.strip():
-                    fence = ""
-                continue
-            if marker[0] != chr(96) or chr(96) not in rest:
-                fence = marker
-                continue
+    for line in body_lines:
+        fence_match = FENCE.fullmatch(line)
         if fence:
+            if fence_match and fence_match[1].startswith(fence) and not fence_match[2].strip():
+                fence = ""
+            elif line.strip():
+                has_body = True
             continue
-        if SECOND_TITLE.match(line):
-            duplicate_title = True
-        wrapper = WRAPPER_HEADING.match(line)
-        if wrapper:
-            headings.add(wrapper.group(1).casefold())
+        if fence_match and (fence_match[1][0] == "~" or chr(96) not in fence_match[2]):
+            fence = fence_match[1]
+            continue
 
+        heading = HEADING.fullmatch(line)
+        if heading:
+            if heading[1] == "#":
+                duplicate_title = True
+            if heading[1] == "##":
+                sections.add(heading_title(heading).casefold())
+        elif SETEXT_MARKER.fullmatch(line):
+            has_setext_marker = True
+        elif line.strip():
+            has_body = True
+
+    if not has_body:
+        errors.append("corpo vazio")
     if duplicate_title:
-        errors.append("mais de um H1")
-    if headings == {"consulta", "resposta"}:
-        errors.append("seções do invólucro Consulta/Resposta")
+        errors.append("mais de um H1 ATX")
+    if has_setext_marker:
+        errors.append("marcador Setext fora de código; use títulos ATX")
+    if {"consulta", "resposta"} <= sections:
+        review.append("Confira se Consulta e Resposta são seções técnicas ou um invólucro de extração.")
     if fence:
         errors.append("cerca de código sem fechamento")
-    return errors
+    return errors, review
 
 
-def validate(path: Path) -> tuple[bool, list[str]]:
+def validate(path: Path) -> tuple[bool, list[str], list[str]]:
     try:
         text = path.read_text(encoding="utf-8")
     except UnicodeDecodeError:
-        return False, ["UTF-8 inválido"]
+        return False, ["UTF-8 inválido"], []
     except OSError:
-        return False, ["arquivo ilegível"]
-    return bool(text.strip()), structure_errors(text)
+        return False, ["arquivo ilegível"], []
+    errors, review = inspect_structure(text)
+    return bool(text.strip()), errors, review
 
 
 def collect_files(path: Path) -> list[Path]:
@@ -100,7 +119,7 @@ def main() -> int:
     files = collect_files(args.path)
     nonempty = invalid = 0
     for file in files:
-        has_text, errors = validate(file)
+        has_text, errors, review = validate(file)
         nonempty += int(has_text)
         invalid += int(bool(errors))
         relative = file.relative_to(args.path) if args.path.is_dir() else file.name
@@ -108,6 +127,8 @@ def main() -> int:
             print(f"INVALID {relative}: {', '.join(errors)}")
         else:
             print(f"OK {relative}")
+        for note in review:
+            print(f"REVIEW {relative}: {note}")
 
     print(f"COUNT={len(files)}\nNONEMPTY={nonempty}\nVALID={len(files) - invalid}\nINVALID={invalid}")
     if args.expected_count is not None:
