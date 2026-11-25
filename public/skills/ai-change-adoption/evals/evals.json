@@ -1,0 +1,65 @@
+{
+  "skill_name": "ai-change-adoption",
+  "evals": [
+    {
+      "id": "initial-readiness",
+      "prompt": "Uma organização quer usar IA para reduzir o retrabalho em uma equipe administrativa nos próximos meses. A liderança apoia a ideia, mas não há inventário de processos, dados de tempo de ciclo, política de uso nem definição clara dos papéis afetados. Crie um kit de adoção responsável.",
+      "expected_output": "Um kit que evita inventar maturidade ou retorno, organiza a descoberta mínima, propõe um diagnóstico multidimensional e um piloto condicionado à evidência e à governança necessárias.",
+      "assertions": [
+        "Separa fatos fornecidos, hipóteses e informações pendentes.",
+        "Inclui um plano de coleta que associa cada lacuna a uma decisão ou responsável por papel.",
+        "Não promete produtividade, ROI ou conformidade.",
+        "Define condições de entrada e revisão para um piloto, em vez de impor um cronograma arbitrário."
+      ],
+      "files": []
+    },
+    {
+      "id": "informal-use-and-resistance",
+      "prompt": "Uma área já usa ferramentas de IA por conta própria para resumir documentos e redigir respostas. Parte das pessoas teme perder autonomia e relata não saber o que pode compartilhar. A direção quer proibir todo uso não autorizado imediatamente. Produza um kit de adoção e gestão da mudança.",
+      "expected_output": "Um kit que investiga o uso informal e os riscos sem culpar indivíduos, propõe caminhos seguros, comunicação, suporte, revisão humana e governança proporcional.",
+      "assertions": [
+        "Trata o uso informal como sinal de necessidade ou atrito a investigar, não apenas como infração.",
+        "Diferencia limites de dados, revisão humana, responsáveis e escalonamento de risco.",
+        "Aborda autonomia percebida e resistência com escuta, participação e comunicação específica.",
+        "Não recomenda vigilância invasiva ou punição como resposta padrão."
+      ],
+      "files": []
+    },
+    {
+      "id": "governed-scaling",
+      "prompt": "Após dois pilotos de IA assistida, uma organização quer expandir para três áreas. Há patrocinador executivo, champions voluntários e relatos de melhoria, mas as métricas usam períodos diferentes, a revisão humana varia e ninguém definiu quando pausar uma automação. Elabore um kit para escalar com responsabilidade.",
+      "expected_output": "Um kit de expansão que padroniza evidência e decisão sem tratar relatos como prova conclusiva, fortalece papéis e capacitação e define controles e métricas proporcionais ao impacto.",
+      "assertions": [
+        "Identifica limitações de comparabilidade e atribuição nas métricas existentes.",
+        "Define papéis, suporte aos champions e condições de avanço por contexto.",
+        "Inclui indicadores de adoção, comportamento, qualidade, valor e segurança com linhas de base ou limitações explícitas.",
+        "Inclui condição de pausa ou ajuste para usos com maior autonomia."
+      ],
+      "files": []
+    },
+    {
+      "id": "identity-driven-resistance",
+      "prompt": "Uma equipe de especialistas seniores (redatores, analistas ou outra função cuja expertise é central à identidade profissional) está resistindo fortemente à introdução de IA generativa em seu trabalho. A liderança está otimista e acredita que o ROI já está comprovado, mas quem executa o trabalho relata insegurança, medo de desvalorização e falta de clareza sobre o que muda no papel de cada um. Produza um kit de adoção e gestão da mudança.",
+      "expected_output": "Um kit que reconhece a resistência como reação a uma ameaça de identidade profissional, investiga a divergência de percepção entre liderança e quem executa antes de agir, e propõe redesenho de papel, participação e clareza sobre o que permanece humano, em vez de apenas mais comunicação ou treinamento técnico.",
+      "assertions": [
+        "Trata a resistência como sinal ligado à identidade e à perda percebida, não como oposição irracional ou problema de atitude.",
+        "Investiga e nomeia a divergência de percepção entre liderança/patrocinadores e quem executa antes de recomendar escala.",
+        "Propõe redesenho de papel e clareza sobre o que permanece de julgamento humano, não apenas comunicação ou treinamento de ferramenta.",
+        "Não cita nenhum framework nomeado (ADKAR, Kotter, etc.) como certificação ou receita obrigatória a seguir."
+      ],
+      "files": []
+    },
+    {
+      "id": "shadow-ai-and-cognitive-load",
+      "prompt": "Uma organização descobriu que várias equipes já usam ferramentas de IA não homologadas para acelerar entregas, e ao mesmo tempo os times que usam as ferramentas aprovadas relatam estar exaustos de revisar volume alto de conteúdo gerado por IA. A liderança quer aumentar a automação rapidamente. Produza um kit de adoção e governança responsável.",
+      "expected_output": "Um kit que responde ao uso não homologado com camadas complementares (tecnológica, processual e cultural) em vez de proibição simples, e que trata a fadiga de auditoria e o risco de atrofia de habilidade como efeitos a monitorar antes de aumentar a automação, não apenas como reclamação a ignorar.",
+      "assertions": [
+        "Estrutura a resposta ao uso não homologado em mais de uma camada (tecnológica, processual, cultural), não apenas em bloqueio ou proibição.",
+        "Nomeia fadiga por auditoria constante e risco de atrofia de habilidade como efeitos a monitorar, ligados à forma como o trabalho foi redesenhado.",
+        "Recomenda calibrar o ritmo de expansão da automação à evidência desses efeitos, em vez de aumentar delegação apenas por pressão de velocidade.",
+        "Não promete produtividade ou redução de custo como resultado automático da automação."
+      ],
+      "files": []
+    }
+  ]
+}

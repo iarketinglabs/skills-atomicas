@@ -1,0 +1,48 @@
+{
+  "skill_name": "b2b-pitch-deck",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Cenário sintético de avaliação: crie um pitch de 30 minutos para uma apresentação pós-diagnóstico de consultoria estratégica. O cliente fictício é uma empresa de serviços financeiros com 500 funcionários, cujo principal problema é variabilidade de execução entre regionais. O público-alvo é o diretor comercial (sponsor) e o CFO (economic buyer). Estruture como roteiro de slides com título e conteúdo-chave de cada slide. Inclua a recomendação no primeiro slide, impacto quantificado apenas se houver dados fornecidos ou premissas explicitamente rotuladas, abordagem em fases, prova análoga verificável ou lacuna de evidência e próximos passos objetivos.",
+      "expected_output": "Roteiro de 10-14 slides com estrutura answer-first. Slide 1 deve conter recomendação clara (ex: padronizar discovery e deal review). Deve haver slide de impacto econômico com números ou ranges. Deve haver abordagem em fases com entregáveis. Deve haver prova (case ou benchmark análogo). Último slide deve ter próximo passo específico (data, dono, artefato). Linguagem deve ser executiva, não vendor-centric.",
+      "files": [],
+      "expectations": [
+        "A recomendação aparece no primeiro ou segundo slide",
+        "Há slide(s) com impacto econômico quantificado ou range estimado",
+        "A abordagem está estruturada em fases com entregáveis concretos",
+        "Há prova autorizada e verificável ou a lacuna é declarada sem inventar case ou benchmark",
+        "O último slide define próximo passo específico com data, dono ou artefato",
+        "A linguagem é buyer-centric (foca no problema do cliente), não vendor-centric (não abre com histórico da consultoria)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Cenário sintético de avaliação, sem relação com a Atomica: revise o rascunho de pitch e avalie com notas de 1 a 5 nos critérios da rubrica, apontando o que cortar, provar e mover para apêndice. Deck fictício da Consultoria Exemplo: Slide 1: 'Quem somos — fundada em 2023, 30 consultores, atua em 5 países'. Slide 2: 'Nossos serviços — Estratégia, Operações, Tecnologia, Capacitação'. Slide 3: 'Case de sucesso — Cliente X aumentou receita em 40%'. Slide 4: 'Nossa metodologia — 4 fases genéricas'. Slide 5: 'Investimento — a partir de 80 mil unidades monetárias'. Slide 6: 'Obrigado — Qualquer dúvida, fico à disposição'.",
+      "expected_output": "Avaliação crítica estruturada com notas 1-5 nos critérios da rubrica (clareza, relevância, diagnóstico, narrativa, evidência, valor econômico, adequação ao decisor, qualidade dos slides, fechamento). Deve identificar falhas graves: abertura vendor-centric, ausência de diagnóstico do cliente, ausência de business case, fechamento fraco. Deve sugerir cortes concretos (ex: remover slide de 'quem somos' do início) e o que adicionar (ex: custo da inação, próximo passo específico).",
+      "files": [],
+      "expectations": [
+        "A avaliação usa uma rubrica com notas de 1 a 5 em múltiplos critérios",
+        "Identifica como não verificadas as alegações sintéticas sobre a Consultoria Exemplo e não as apresenta como fatos da Atomica",
+        "Identifica que a abertura é vendor-centric e recomenda mover 'quem somos' para apêndice ou final",
+        "Aponta ausência de diagnóstico específico do problema do cliente",
+        "Aponta ausência de business case ou valor econômico quantificado",
+        "Aponta fechamento fraco ('qualquer dúvida') e sugere próximo passo específico",
+        "Fornece recomendações acionáveis de corte, prova e reposicionamento"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Cenário sintético de avaliação, sem relação com a Atomica: adapte o seguinte pitch-base para uma indústria de manufatura fictícia com 2.000 funcionários e alta rotatividade na média gerência. Mantenha a tese central. Pitch-base: 'Nossa leitura é que o principal gargalo não é esforço comercial, mas variabilidade de diagnóstico entre regionais; isso pode afetar ciclo, conversão e qualidade das propostas. Recomendamos uma consultoria de 12 semanas para padronizar discovery, business case e ritos de deal review. O investimento proposto é de 120 mil unidades monetárias e o retorno esperado pelo fornecedor é redução de 20% no ciclo de vendas.' Trate preço e retorno como hipóteses fornecidas, não como fatos verificados.",
+      "expected_output": "Pitch adaptado mantendo a estrutura answer-first e a tese central de 'padronização de execução'. Deve trocar o contexto para manufatura e alta rotatividade na média gerência. Deve ajustar métricas e riscos para o setor (ex: tempo de ramp-up, inconsistência de processo, perda de know-how). Deve manter a recomendação no início e incluir próximo passo específico. A linguagem deve falar para CHRO + COO, não apenas para diretor comercial.",
+      "files": [],
+      "expectations": [
+        "Mantém a tese central de padronização/execução consistente",
+        "Adapta o contexto para manufatura com alta rotatividade na média gerência",
+        "Troca métricas e riscos para realidade do setor e não apresenta números sintéticos como resultados comprovados",
+        "Abre com recomendação executiva",
+        "Inclui impacto econômico ou custo da inação contextualizado",
+        "Fecha com próximo passo específico"
+      ]
+    }
+  ]
+}

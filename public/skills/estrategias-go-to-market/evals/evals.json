@@ -1,0 +1,53 @@
+{
+  "skill_name": "estrategias-go-to-market",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Estamos lançando um produto novo (sem componente de IA) e nosso plano é 'vender para qualquer empresa que precise de mais eficiência operacional, de pequenos negócios a grandes corporações, em qualquer setor'. Já temos algumas dezenas de clientes pagantes distribuídos nesses perfis bem diferentes. Ajude a desenhar o GTM para os próximos dois trimestres, incluindo contratação de um time de vendas maior.",
+      "expected_output": "Uma resposta que não aceita a segmentação ampla como ponto de partida: identifica que 'qualquer empresa que precise de X' dilui produto, mensagem e distribuição, recomenda usar STP/ICP para escolher um segmento inicial (beachhead) a partir dos clientes pagantes existentes, exige evidência de PMF triangulada (mais de uma lente) antes de recomendar contratação agressiva de vendas, e cita o padrão de premature scaling como risco de escalar antes de validar.",
+      "files": [],
+      "expectations": [
+        "Não aceita a segmentação ampla ('qualquer empresa, qualquer setor') como base do GTM sem questionar.",
+        "Recomenda escolher um segmento/beachhead inicial via STP ou ICP antes de expandir.",
+        "Exige ou propõe triangular evidência de PMF antes de recomendar contratação agressiva de vendas.",
+        "Menciona o risco de escalar (contratação, canais, aquisição) antes de evidência de PMF/retenção."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Somos uma startup B2B SaaS early-stage. A liderança quer montar um time de outbound sales completo (SDRs + AEs) desde o dia um porque 'em B2B sempre precisa de time de vendas para fechar negócio'. Avalie essa premissa e recomende uma motion.",
+      "expected_output": "Uma resposta que desafia a premissa binária 'B2B sempre precisa de vendas primeiro', cita evidência de que a preferência de compradores B2B é omnichannel (parte relevante prefere experiência sem representante de vendas, uso de múltiplos canais ao longo da jornada), recomenda avaliar a unidade real de decisão, risco percebido, ACV e capacidade de autoatendimento antes de fixar a motion, e sugere considerar PLG ou modelo híbrido como alternativa ou complemento ao invés de montar um time de outbound completo por padrão.",
+      "files": [],
+      "expectations": [
+        "Questiona explicitamente a premissa de que B2B exige necessariamente motion 'vendas primeiro'.",
+        "Cita evidência de comportamento omnichannel ou preferência por experiência sem representante de vendas.",
+        "Recomenda avaliar a unidade real de decisão, risco e ACV antes de fixar a motion.",
+        "Considera PLG ou modelo híbrido como alternativa, não apenas SLG completo."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Queremos construir todo o nosso GTM de 2027 em torno de agentes de IA que conduzem o ciclo de compra do início ao fim de forma autônoma, porque 'a IA já roda o GTM sozinha hoje'. Avalie essa premissa e recomende como estruturar o orçamento de GTM para o próximo ano.",
+      "expected_output": "Uma resposta que classifica compra autônoma por agentes e agentes conduzindo jornadas comerciais completas como emergente/previsão, não validado, cita a estatística de que menos de 10% das organizações escalaram IA em qualquer função, distingue claims institucionais (McKinsey/Gartner/Forrester) de estatísticas de operador/vendor menos verificadas, e recomenda concentrar a maior parte do orçamento em usos já validados de IA (pesquisa, conteúdo, personalização, sales intelligence) tratando agentic commerce pleno como aposta/experimento, não como base do plano.",
+      "files": [],
+      "expectations": [
+        "Classifica agentes conduzindo o ciclo de compra completo como emergente/previsão, não como validado.",
+        "Cita a estatística de que menos de 10% das organizações escalaram IA em qualquer função.",
+        "Recomenda concentrar orçamento em usos de IA já validados (pesquisa, conteúdo, personalização) em vez de apostar tudo em agentic commerce.",
+        "Não apresenta estatísticas de operador/vendor (ex.: multiplicadores de conversão, CAGR específico) como fato consolidado sem qualificação."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Vamos expandir nosso produto de pagamentos, hoje só vendido no Brasil, para Portugal. O plano é reaproveitar 100% da estratégia de checkout e de canais de aquisição que já funciona no Brasil, assumindo que 'é o mesmo idioma, então o mercado se comporta igual'.",
+      "expected_output": "Uma resposta que rejeita a premissa de mercado único por idioma comum, aponta a diferença de escala (~19x) entre Brasil e Portugal, recomenda perfilar Portugal separadamente (MB WAY e Multibanco como métodos de checkout estruturais em vez de replicar Pix/cartão, RGPD + Lei 58/2019 em vez de LGPD, canais dominantes distintos), e separa comportamento observado de estereótipo cultural.",
+      "files": [],
+      "expectations": [
+        "Rejeita explicitamente a suposição de que idioma comum implica comportamento de mercado igual.",
+        "Menciona a diferença de escala populacional entre Brasil e Portugal.",
+        "Cita MB WAY e/ou Multibanco como infraestrutura de pagamento distinta a considerar em Portugal, em vez de assumir Pix/cartão.",
+        "Menciona o regime de proteção de dados distinto (RGPD/Lei 58/2019 vs. LGPD)."
+      ]
+    }
+  ]
+}

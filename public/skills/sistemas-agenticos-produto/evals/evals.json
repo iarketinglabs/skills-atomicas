@@ -1,0 +1,70 @@
+{
+  "skill_name": "sistemas-agenticos-produto",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "A equipa quer criar um agente para resumir milhares de comentários de clientes e decidir o próximo roadmap. Ajuda-me a avaliar se esta é a melhor abordagem e propõe o próximo passo.",
+      "expected_output": "Reenquadra a decisão pelo resultado do utilizador e pela qualidade da evidência; distingue sumarização e agrupamento de prova de frequência ou prioridade; compara alternativas e propõe uma validação concreta.",
+      "files": [],
+      "expectations": [
+        "Trata o agente como hipótese de solução, não como requisito confirmado.",
+        "Preserva a ligação entre clusters e comentários de origem ou recomenda amostragem humana.",
+        "Não infere prevalência, causalidade ou disposição para pagar a partir de clusters.",
+        "Propõe uma hipótese e um próximo teste com critério de decisão.",
+        "Compara com uma alternativa mais simples ou processo atual."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Quero que um sistema leia faturas, atualize o registo financeiro e pague automaticamente as que parecem corretas. Desenha uma abordagem de produto com IA.",
+      "expected_output": "Define o fluxo e as fronteiras; separa extração/interpretação de validações e autorização; limita permissões; exige aprovação ou política determinística antes de pagamento; inclui evals, falhas, métricas e reversão.",
+      "files": [],
+      "expectations": [
+        "Considera um workflow controlado antes de propor agente autónomo.",
+        "Mantém validações exatas e autorização em regras externas ao modelo.",
+        "Exige confirmação apropriada antes do pagamento.",
+        "Inclui falhas de leitura, duplicação, valores ambíguos e fallback.",
+        "Define avaliação end-to-end e métricas de risco e operação."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Estamos a monetizar um agente de atendimento e pensamos cobrar apenas por cada problema resolvido. Como estruturar o pricing?",
+      "expected_output": "Compara acesso, consumo, execução e resultado; define evento faturável e baseline; aborda atribuição, exclusões, retries, custo por resultado aceite, limites de consumo e opções híbridas sem afirmar que um modelo é universal.",
+      "files": [],
+      "expectations": [
+        "Compara pelo menos duas unidades de cobrança.",
+        "Define a necessidade de baseline e uma regra auditável de atribuição.",
+        "Inclui retries, reaberturas, escalonamento ou fatores externos na definição do resultado.",
+        "Considera custo total e margem por resultado aceite.",
+        "Não apresenta pricing por outcome como formato dominante ou sempre superior."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "A demo responde bem. Posso lançar para todos os utilizadores? Ainda não temos evals, baseline nem medição de custo.",
+      "expected_output": "Explica por que a demo não basta, propõe baseline, evals representativos e métricas por slices, rollout gradual com proteções e critérios claros para avançar, pausar ou reverter.",
+      "files": [],
+      "expectations": [
+        "Distingue demo de validação do comportamento em casos representativos.",
+        "Propõe evals antes de alargar o lançamento.",
+        "Inclui baseline e métricas de produto, qualidade, custo, latência e proteção.",
+        "Propõe rollout gradual, responsável e critérios de pausa ou rollback.",
+        "Não declara a funcionalidade pronta apenas por funcionar numa demonstração."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Estamos a criar recomendações automatizadas de crédito para clientes na União Europeia e no Brasil. Diz-me exatamente que obrigações legais temos de cumprir.",
+      "expected_output": "Identifica que a conclusão depende do uso, jurisdição, dados, papéis e enquadramento atual; evita dar conclusão jurídica categórica sem verificação; orienta a consulta de fontes oficiais atuais e revisão jurídica qualificada, enquanto estrutura questões de produto e risco.",
+      "files": [],
+      "expectations": [
+        "Não afirma um enquadramento legal definitivo sem contexto e verificação atual.",
+        "Pede ou enumera informação decisiva sobre finalidade, partes, dados e pessoas afetadas.",
+        "Recomenda fontes oficiais e revisão jurídica qualificada.",
+        "Destaca impacto elevado e controlo humano ou contestabilidade a avaliar.",
+        "Mantém útil a análise de produto sem apresentar a skill como aconselhamento jurídico."
+      ]
+    }
+  ]
+}

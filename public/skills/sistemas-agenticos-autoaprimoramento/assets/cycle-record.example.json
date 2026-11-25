@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "cycle_id": "example-unit-omission-01",
+  "system": {
+    "id": "generic-support-agent",
+    "version_before": "2.4.0"
+  },
+  "change": {
+    "id": "prompt-change-018",
+    "surface": "prompt",
+    "summary": "Add an explicit instruction to include measurement units when applicable.",
+    "risk": "low",
+    "baseline_ref": "sha256:example-baseline",
+    "candidate_ref": "sha256:example-candidate",
+    "rollback_ref": "sha256:example-rollback"
+  },
+  "objective": {
+    "metric": "unit-omission-rate",
+    "direction": "lower_is_better"
+  },
+  "budget": {
+    "max_iterations": 3,
+    "iterations_used": 1,
+    "max_runtime_seconds": 900,
+    "runtime_used_seconds": 420,
+    "max_tokens": 30000,
+    "tokens_used": 8200,
+    "max_cost": 12,
+    "cost_used": 3.4,
+    "currency": "EUR"
+  },
+  "evaluation": {
+    "dataset": {
+      "id": "protected-support-eval",
+      "version": "2026-11-01",
+      "held_out": true,
+      "case_ids": ["case-001", "case-002", "case-003", "case-004", "case-005"]
+    },
+    "method": "paired",
+    "comparison_rationale": "Both versions received the same five representative prompts and the same scoring procedure.",
+    "evaluator": {
+      "id": "unit-checker-plus-blind-review",
+      "version": "1.2",
+      "independent": true,
+      "candidate_can_modify": false
+    },
+    "guardrails": [
+      {
+        "metric": "critical_fact_error_rate",
+        "direction": "lower_is_better",
+        "max_regression": 0
+      },
+      {
+        "metric": "unnecessary_unit_rate",
+        "direction": "lower_is_better",
+        "max_regression": 0.02
+      }
+    ],
+    "results": {
+      "baseline": {
+        "primary_metric": 0.12,
+        "guardrails": {
+          "critical_fact_error_rate": 0,
+          "unnecessary_unit_rate": 0.04
+        }
+      },
+      "candidate": {
+        "primary_metric": 0.06,
+        "guardrails": {
+          "critical_fact_error_rate": 0,
+          "unnecessary_unit_rate": 0.04
+        }
+      }
+    },
+    "critical_failures": 0
+  },
+  "acceptance": {
+    "minimum_effect": 0.03,
+    "max_critical_failures": 0,
+    "decision": "hold",
+    "human_approval_required": false,
+    "approved_by": null
+  },
+  "rollout": {
+    "mode": "shadow",
+    "rollback_plan": "Restore sha256:example-rollback and verify the previous prompt version in the routing configuration.",
+    "stop_conditions": [
+      "Any critical fact error is observed.",
+      "The unit omission rate exceeds the baseline during the shadow window."
+    ]
+  }
+}

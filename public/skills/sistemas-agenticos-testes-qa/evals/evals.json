@@ -1,0 +1,74 @@
+{
+  "skill_name": "sistemas-agenticos-testes-qa",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Preciso montar a estratégia de QA para uma API com regras de negócio, integrações externas e uma jornada crítica de aprovação. Como estruturo os testes antes do release?",
+      "expected_output": "Triagem orientada a risco com test basis, oráculos, testes de componente, contratos/integração, E2E crítico, critérios de aceitação, exploração e gates de release; sem propor uma proporção universal de pirâmide.",
+      "files": [],
+      "expectations": [
+        "Separa QA, QC e testing.",
+        "Relaciona cada teste a risco, fronteira e oráculo.",
+        "Inclui limites/partições ou tabela de decisão quando aplicável.",
+        "Inclui contratos, timeouts, retries e idempotência nas integrações.",
+        "Verifica estado final, side effects e critérios de saída."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Quero avaliar um agente que lê e-mails, chama ferramentas e atualiza registros ao longo de vários turnos. O que preciso medir antes de liberar?",
+      "expected_output": "Plano que avalia tarefa, trials, configuração, estado inicial, outcome real, trajetória, tools, permissões, multi-turn, recuperação, segurança, orçamento, trace e regressão.",
+      "files": [],
+      "expectations": [
+        "Distingue transcript/resposta do estado real e side effects.",
+        "Propõe trials independentes e versionamento das variáveis.",
+        "Cobre tool selection, argumentos, autorização, erros, retry e duplicação.",
+        "Cobre prompt injection indireta via e-mail e exfiltração.",
+        "Inclui critérios de escalada, rollback/disable path e observabilidade."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Gere um script k6 para testar spike e soak de uma API e defina p95, VUs e thresholds.",
+      "expected_output": "Roteamento para ai-stress-testing, pois a decisão principal é carga/performance e geração de script.",
+      "files": [],
+      "expectations": [
+        "Não tenta substituir a skill de stress por uma estratégia genérica.",
+        "Indica ai-stress-testing como skill primária."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Crie uma rubrica LLM-as-Judge, dataset e pipeline para medir faithfulness de um RAG.",
+      "expected_output": "Roteamento para ai-evals, pois a decisão principal é harness, métrica, dataset e judge semântico.",
+      "files": [],
+      "expectations": [
+        "Não reimplementa toda a infraestrutura de evals.",
+        "Indica ai-evals como skill primária e pode mencionar gates determinísticos como interface."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Uma release de um agente passa no benchmark, mas às vezes envia uma mensagem duplicada e não há trace das confirmações humanas. Posso liberar?",
+      "expected_output": "Não liberar sem investigação: falha de side effect/idempotência e lacuna de observabilidade; exigir estado final, trace de confirmação, regressão, controle de blast radius e decisão documentada.",
+      "files": [],
+      "expectations": [
+        "Não aceita benchmark ou resposta final como prova suficiente.",
+        "Classifica risco de duplicação e observabilidade insuficiente.",
+        "Propõe teste de retry/rede interrompida e verificação direta do estado.",
+        "Exige owner, rollback/disable path e nova regressão antes do go-live."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Depois de um incidente reproduzível, quero apenas ajustar o prompt e encerrar o ticket.",
+      "expected_output": "Recusar encerramento incompleto: classificar primeira falha causal, preservar trace sanitizado, criar caso de regressão/invariante, corrigir controles apropriados e executar a suite novamente.",
+      "files": [],
+      "expectations": [
+        "Diferencia prompt de tool, política, autorização, estado, ambiente e observabilidade.",
+        "Transforma o incidente em eval/regressão.",
+        "Pede evidência de execução antes de declarar correção."
+      ]
+    }
+  ]
+}

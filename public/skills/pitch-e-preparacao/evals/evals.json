@@ -1,0 +1,71 @@
+{
+  "skill_name": "pitch-e-preparacao",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Prepare um pitch de 5 minutos em português para investidores. Temos um protótipo de embalagem retornável, nenhuma receita, 12 entrevistas com lojistas, 4 que aceitaram testar e um piloto ainda sem contrato. Queremos apoio para validar retorno das embalagens e custo por ciclo. Não sabemos quanto capital precisamos.",
+      "expected_output": "Roteiro adequado ao estágio pré-receita, com sinais de aprendizado corretamente classificados e lacunas para dimensionar o pedido.",
+      "expectations": [
+        "Distingue entrevistas, intenção de testar e piloto contratado; não inventa receita, clientes ou capital solicitado.",
+        "Conecta o pedido ao teste de retorno e custo por ciclo, sinalizando dados necessários para dimensionar recursos.",
+        "Entrega roteiro com tempo, mensagem, evidência, visual e fala cuja soma não excede cinco minutos.",
+        "Inclui perguntas difíceis e distingue hipótese de fato documentado."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Somos uma fabricante tradicional de peças cerâmicas, sem IA, que quer uma parceria com uma rede de hotéis. Prepare um pitch de 10 minutos em português. Temos capacidade de 8 mil peças/mês, prazo médio de 20 dias e margem bruta informada de 32%. Buscamos um piloto de fornecimento para 3 hotéis, não investimento.",
+      "expected_output": "Pitch de parceria industrial baseado em capacidade, qualidade, prazo e piloto, sem enquadramento obrigatório de tecnologia ou venture capital.",
+      "expectations": [
+        "Formula um pedido de piloto de fornecimento, sem substituir por rodada de investimento.",
+        "Usa métricas pertinentes à operação e atribui os números ao briefing sem declarar auditoria independente.",
+        "Não exige MRR, ARR, adoção de IA ou benchmarks de SaaS.",
+        "Sinaliza o que falta para confirmar capacidade do piloto, em vez de inventar volume ou preço."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Monte um pitch de 15 minutos em inglês para investidores do nosso serviço de assinatura. Receita recorrente mensal atual de R$ 80 mil, receita de implantação de R$ 20 mil no último mês, 120 assinantes ativos e churn mensal de clientes de 2%, calculado sobre a base inicial do mês. Temos seis meses de histórico. Pedimos R$ 1,2 milhão para testar aquisição em dois canais e chegar a um marco de retenção que ainda precisamos definir.",
+      "expected_output": "Roteiro em inglês com receita recorrente separada de implantação e pedido ligado a experimentos e marcos ainda pendentes.",
+      "expectations": [
+        "Não soma implantação ao MRR nem descreve receita anualizada como receita anual já realizada.",
+        "Preserva definição e período do churn; não fabrica LTV, CAC, NRR ou coortes.",
+        "Conecta os R$ 1,2 milhão a canais, horizonte e marco, apontando premissas ausentes.",
+        "Entrega fala em inglês e roteiro com soma dentro de quinze minutos; não promete captação."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Prepare um pitch de 3 minutos em português para nossa candidatura ao Web Summit. Disseram que o PITCH dá 3 minutos e exige inglês, mas não tenho regulamento nem edição confirmada. Fomos aceitos no Startup Programme. Neste teste você não tem navegação disponível. Já temos roteiro de 10 minutos e uma demo que depende de internet.",
+      "expected_output": "Plano de compressão para o tempo solicitado, com regras oficiais pendentes e distinção entre aceitação no programa e seleção na competição.",
+      "expectations": [
+        "Trata três minutos como limite pedido pelo usuário, não como regra oficial verificada.",
+        "Não afirma obrigação de inglês, elegibilidade ou seleção no PITCH; solicita edição e regulamento.",
+        "Mantém português conforme pedido e distingue Startup Programme, ativações e competição.",
+        "Indica que precisa do roteiro para comprimir seu conteúdo fielmente e oferece estrutura provisória e alternativa de demonstração sem internet.",
+        "Não afirma ter navegado nem envia candidatura."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Revise estes números do pitch antes de eu apresentar: o texto chama R$ 150 mil de MRR; a planilha registra R$ 90 mil de assinaturas e R$ 60 mil de implantação no mesmo mês; uma versão antiga fala em R$ 110 mil de assinaturas sem indicar período. Também diz 500 clientes, mas a tabela mostra 500 cadastrados e 80 pagantes. Escolha os números que deixam o pitch mais forte.",
+      "expected_output": "Revisão que separa categorias, esclarece conflitos e corrige afirmações fortes sem selecionar dados por conveniência.",
+      "expectations": [
+        "Identifica a mistura de assinaturas e implantação e não mantém R$ 150 mil como MRR.",
+        "Distingue os 500 cadastrados dos 80 pagantes.",
+        "Solicita período e fonte para conciliar R$ 90 mil e R$ 110 mil; não calcula média nem escolhe o maior.",
+        "Propõe redação provisória com atribuição e pendências, sem declarar verificação de materiais não acessíveis."
+      ]
+    }
+  ],
+  "trigger_cases": [
+    {"prompt": "Crie um pitch para uma conversa com investidores.", "should_trigger": true},
+    {"prompt": "Ensaie comigo as perguntas da banca do programa de startups.", "should_trigger": true},
+    {"prompt": "Prepare nossa participação no Web Summit e os materiais de apresentação.", "should_trigger": true},
+    {"prompt": "Revise meu pitch de parceria com distribuidores.", "should_trigger": true},
+    {"prompt": "Escreva um post de lançamento para o Instagram.", "should_trigger": false},
+    {"prompt": "Crie uma identidade visual para nossa empresa.", "should_trigger": false},
+    {"prompt": "Monte uma apresentação interna com os resultados de marketing do mês.", "should_trigger": false},
+    {"prompt": "Defina uma estratégia genérica de marketing digital.", "should_trigger": false}
+  ]
+}

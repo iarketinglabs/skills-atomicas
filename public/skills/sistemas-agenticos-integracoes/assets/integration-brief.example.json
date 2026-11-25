@@ -1,0 +1,72 @@
+{
+  "title": "Exemplo sintético: sincronização de estado entre dois sistemas",
+  "objective": "Manter o sistema de suporte informado sobre alterações confirmadas no estado de pedidos.",
+  "scope": {
+    "in_scope": ["Atualizações de estado confirmadas"],
+    "out_of_scope": ["Alterar dados financeiros", "Criar pedidos"]
+  },
+  "owner": "Equipa responsável pelo fluxo",
+  "participants": [
+    {
+      "name": "Sistema de pedidos",
+      "role": "Fonte autoritativa do estado do pedido",
+      "responsibility": "Publica alterações confirmadas"
+    },
+    {
+      "name": "Sistema de suporte",
+      "role": "Consumidor de consulta",
+      "responsibility": "Apresenta estado e data de atualização"
+    }
+  ],
+  "flows": [
+    {
+      "name": "Atualização de estado",
+      "source": "Sistema de pedidos",
+      "destination": "Sistema de suporte",
+      "direction": "Unidirecional",
+      "trigger": "Estado do pedido alterado e confirmado",
+      "pattern": "Webhook ou fila; confirmar suporte e comparar custos de recuperação",
+      "data_and_semantics": "Identificador opaco do pedido, novo estado permitido e instante da alteração; sem dados pessoais",
+      "freshness": "Até 15 minutos; validar necessidade com a equipa utilizadora",
+      "expected_volume": "Desconhecido; recolher volume normal e pico antes de escolher limites",
+      "ordering": "Por pedido, se o destino não conseguir ignorar atualização mais antiga",
+      "deduplication": "Usar identificador estável do evento e estado/versionamento da origem",
+      "idempotency": "Atualizar o estado para o valor confirmado; repetição não deve criar novo efeito",
+      "failure_handling": "Retentativas limitadas para falhas transitórias; inspeção de falha permanente",
+      "reconciliation": "Comparar periodicamente os pedidos alterados na janela de retenção"
+    }
+  ],
+  "contracts": {
+    "format_and_version": "Contrato versionado com estado enumerado e validação no destino",
+    "compatibility_policy": "Adicionar estados exige consumidores tolerantes ou migração coordenada",
+    "contract_owner": "Responsáveis dos dois sistemas"
+  },
+  "security": {
+    "data_classification": "Metadados operacionais não pessoais",
+    "identity_and_authentication": "Credencial de serviço limitada ao endpoint de atualização",
+    "authorization": "Apenas atualizar o sistema de suporte; sem permissões de leitura financeira",
+    "secret_handling": "Segredo gerido e rotacionável fora de logs e repositório",
+    "retention_and_deletion": "Manter apenas a retenção operacional aprovada"
+  },
+  "operations": {
+    "support_owner": "Equipa responsável pelo fluxo",
+    "signals_and_alerts": "Idade de atualização, falhas, atraso e eventos não conciliados",
+    "correlation": "Identificador opaco do evento e do pedido",
+    "recovery_and_replay": "Redrive autorizado após verificar estado da origem e deduplicação"
+  },
+  "rollout": {
+    "acceptance_criteria": [
+      "Atualização permitida é visível dentro da janela acordada",
+      "Evento repetido não produz efeito adicional",
+      "Evento inválido é rejeitado e observado",
+      "Falha transitória pode ser recuperada sem perder o estado final"
+    ],
+    "migration": "Ativar primeiro para um subconjunto controlado depois de contrato e permissões validados",
+    "rollback_or_recovery": "Pausar entrega, corrigir causa e reconciliar antes de retomar"
+  },
+  "open_questions": [
+    "Qual é o volume de pico observado?",
+    "O destino suporta validação e idempotência por pedido?",
+    "Qual é o período necessário para reconciliação?"
+  ]
+}

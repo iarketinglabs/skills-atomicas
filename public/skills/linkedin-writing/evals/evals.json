@@ -1,0 +1,64 @@
+{
+  "skill_name": "linkedin-writing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Escreva um post longo para LinkedIn em portugues para uma consultora de operacoes. Tese: mapear quem decide cada etapa pode reduzir retrabalho. Nao temos numeros, nomes de clientes ou resultados autorizados.",
+      "expected_output": "Diagnostico separado de um post escaneavel, especifico e honesto, com CTA conversacional.",
+      "files": [],
+      "expectations": [
+        "Declara a tese como premissa ou hipotese, sem inventar reducao quantificada.",
+        "Usa arquitetura problema, mecanismo, aplicacao e limite.",
+        "Entrega paragrafos curtos, lista somente quando util e CTA proporcional.",
+        "Separa diagnostico, texto final, riscos e proximos testes."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Revise para LinkedIn o hook 'O segredo que fez uma pequena loja faturar 10x em uma semana'. O autor nao tem fonte para o resultado. Preserve a atencao, mas remova clickbait e causalidade inventada.",
+      "expected_output": "Diagnostico do risco e reescritas que ensinam a avaliar um case sem repetir a alegacao.",
+      "files": [],
+      "expectations": [
+        "Identifica numero, causalidade e contexto ausentes.",
+        "Nao trata 10x como fato ou prova.",
+        "Oferece pelo menos duas reescritas compativeis com um texto educativo."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Transforme a ideia 'ensinar cinco praticas para uma equipe trabalhar melhor' em um post escaneavel de LinkedIn, com uma cena curta, cinco praticas acionaveis e CTA conversacional. Nao invente uma experiencia pessoal.",
+      "expected_output": "Post em portugues com tese, cena explicitamente generica, cinco itens distintos e CTA de aplicacao.",
+      "files": [],
+      "expectations": [
+        "Nao apresenta a cena como relato real do autor.",
+        "Cada pratica tem acao ou criterio, nao apenas slogan.",
+        "A estrutura tem progressao visivel e nao depende de hashtags ou promessas de alcance.",
+        "A CTA pergunta qual pratica sera testada ou qual obstaculo existe."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Escreva um post de LinkedIn a partir deste caso autorizado e anonimizado: uma equipe revisava a mesma entrega varias vezes porque o criterio de pronto nao estava definido. Nao ha numeros nem permissao para identificar a empresa. Inclua um limite para a recomendacao.",
+      "expected_output": "Caso com antes, friccao, mudanca, aprendizado e limite, sem transformar o relato em prova universal.",
+      "files": [],
+      "expectations": [
+        "Preserva anonimato e nao inventa resultado quantitativo.",
+        "Distingue o que o caso mostra do que continua hipotese.",
+        "Inclui uma consequencia pratica e uma limitacao contextual.",
+        "Fecha com CTA de experiencia comparavel, nao pedido vazio de comentario."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Analise dois rascunhos de post para LinkedIn: A tem uma tese clara, tres paragrafos densos e uma CTA generica; B tem muitos emojis, promessa de alcance e uma lista de dez dicas sem mecanismo. Recomende qual base usar e reescreva a estrutura.",
+      "expected_output": "Diagnostico comparativo que escolhe pela qualidade da tese e da entrega, nao por suposta preferencia do algoritmo.",
+      "files": [],
+      "expectations": [
+        "Explica que A pode ser melhor base, mas precisa de segmentacao e CTA especifica.",
+        "Identifica promessa algoritmica e lista sem mecanismo em B.",
+        "Propoe uma estrutura de post com hook, rehook, desenvolvimento, limite e CTA.",
+        "Nao afirma que um formato ou tamanho garante desempenho."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "skill_name": "sistemas-agenticos-arquitetura-software",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Uma plataforma SaaS de agendamento de equipas de campo tem seis pessoas em engenharia, poucos clientes iniciais e cerca de 1.000 tarefas de despacho por dia, mas as projeções de carga são incertas. Precisa de isolamento entre organizações, disponibilidade de 99,9% e p95 inferior a 500 ms nas vistas de despacho. A direção pediu microserviços e event sourcing por considerar que isso torna o produto 'enterprise-grade'. A revisão da arquitetura é amanhã; a equipa já investiu três semanas a separar serviços e a configurar um broker, e o patrocinador espera aprovar esse desenho. Recomende uma arquitetura inicial, opções e condições observáveis que fariam a decisão mudar.",
+      "expected_output": "Uma decisão condicionada aos requisitos e às fronteiras reais do domínio; compara distribuição com uma opção mais simples, explicita o custo operacional e de consistência, evita tratar rótulos 'enterprise-grade' como requisito e não transforma o esforço já investido em prova de adequação. Define medições e gatilhos para rever a decisão.",
+      "files": [],
+      "expectations": [
+        "Explicita factos, pressupostos e dados em falta que podem alterar a recomendação.",
+        "Compara pelo menos uma topologia distribuída com uma opção coesa de menor complexidade operacional.",
+        "Avalia isolamento por organização, disponibilidade e latência com critérios verificáveis, sem inventar resultados ou limites de escala.",
+        "Não justifica microserviços ou event sourcing apenas por escala, moda ou requisito 'enterprise-grade'.",
+        "Define condições observáveis para rever a decisão, sem impor um limiar universal de tamanho de equipa."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Desenhe a arquitetura de um assistente que pesquisa documentos privados de compras, prepara ordens de compra e pode enviá-las a fornecedores. A proposta atual dá ao modelo acesso amplo ao espaço de trabalho e uma ferramenta genérica de execução de comandos; as instruções do prompt devem impedir ações inseguras. Identifique componentes, fronteiras de confiança, controles e validações necessários.",
+      "expected_output": "Uma arquitetura em que identidade, autorização, validação de dados e efeitos externos são controlados fora do modelo; limita ferramentas e dados ao mínimo necessário, protege isolamento e segredos, define revisão humana proporcional ao impacto e observa e avalia os fluxos.",
+      "files": [],
+      "expectations": [
+        "Não trata instruções no prompt como mecanismo suficiente de autorização ou segurança.",
+        "Separa recuperação de leitura, preparação de ordem e envio externo em capacidades e permissões distintas.",
+        "Aplica controlo de acesso antes de recuperar documentos e preserva o isolamento entre organizações.",
+        "Descreve validação determinística, limites de execução e confirmação ou revisão humana para o envio, conforme o risco.",
+        "Inclui observabilidade, avaliações de qualidade e segurança, limites de custo ou ciclos e tratamento de falhas."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Uma base de conhecimento multi-organização contém 30.000 documentos que mudam diariamente. As respostas precisam de citações verificáveis e cada pessoa só pode consultar documentos autorizados. Compare contexto longo, recuperação de informação e uma abordagem híbrida. Recomende como decidir sem assumir um fornecedor ou um método universal.",
+      "expected_output": "Uma comparação contextual que considera atualização, autorização, rastreabilidade, qualidade de recuperação, latência, custo e volume de contexto; propõe uma avaliação com dados representativos antes de escolher, mantendo a autorização como regra externa ao modelo.",
+      "files": [],
+      "expectations": [
+        "Não declara RAG nem contexto longo como vencedor universal.",
+        "Inclui controlo de acesso no momento da recuperação e validação das citações contra as fontes.",
+        "Propõe um conjunto de avaliação representativo que mede relevância, fidelidade, cobertura, latência e custo.",
+        "Considera frescura dos documentos, particionamento por autorização e consequências de falhas de recuperação.",
+        "Explicita evidências que fariam a escolha mudar."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Uma aplicação de marcação de consultas precisa guardar por dois anos quem alterou cada registo e permitir desfazer a última alteração. Leituras e escritas têm padrões semelhantes; não há consultas temporais, consumidores orientados a eventos ou necessidade de reconstruir estados a partir de eventos. Uma pessoa interessada propõe CQRS e event sourcing. Recomende um desenho e distinga auditoria de event sourcing.",
+      "expected_output": "Uma solução proporcional, começando por requisitos concretos de auditoria e reversão; distingue um histórico de auditoria de um log de eventos usado como fonte de verdade e explica quando CQRS ou event sourcing acrescentariam valor e custo.",
+      "files": [],
+      "expectations": [
+        "Não assume que auditoria exige event sourcing.",
+        "Não assume que CQRS implica event sourcing ou microserviços.",
+        "Define como identidade, instante, alteração, retenção, integridade e reversão serão tratados.",
+        "Reconhece custos de evolução de esquemas, replay, efeitos laterais e operação se event sourcing for escolhido.",
+        "Indica que requisitos ou evidências justificariam rever a opção simples."
+      ]
+    }
+  ]
+}

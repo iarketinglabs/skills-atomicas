@@ -1,0 +1,66 @@
+/* ── Particle Field — CSS obrigatório ──────────────────────────────────────────
+   Adicione este bloco ao globals.css (ou equivalente) do projeto de destino.
+   Ordem de camadas esperada (de trás para frente):
+     fundo do body (sempre opaco)
+     → partículas (position: fixed, z-index: 0)
+     → conteúdo real (position: relative, z-index: 2)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Wrapper da página — necessário para o isolamento de camadas */
+.page-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Stage das partículas: fixa na viewport, nunca intercepta cliques */
+.particle-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  backdrop-filter: blur(1px) saturate(1.12);
+  -webkit-backdrop-filter: blur(1px) saturate(1.12);
+}
+
+.particle-stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Overlay de grain + vinheta sutil nos cantos */
+.particle-vintage-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, rgba(27, 27, 27, 0) 60%, rgba(27, 27, 27, 0.16) 100%),
+    repeating-radial-gradient(circle at 30% 20%, rgba(27, 27, 27, 0.035) 0 1px, transparent 1px 3px);
+}
+
+/* O conteúdo fica sobre as partículas; cada card define seu próprio fundo */
+.page-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── prefers-reduced-motion ────────────────────────────────────────────────────
+Amostras internas de projeto foram anonimizadas nesta versão pública.
+   pessoa de referência omitida, site institucional domínio público da Atomica): o guard de reduced-motion
+   esconde o palco inteiro por CSS — não existe um breakpoint de largura
+   separado removendo só o backdrop-filter em mobile (uma versão anterior
+   deste arquivo tinha essa regra em @media (max-width: 768px), mas nenhum
+Amostras internas de projeto foram anonimizadas nesta versão pública.
+   com o código real). O componente TSX já faz o early-return equivalente em
+   JS, então os dois guards juntos garantem zero custo de CPU sob motion
+   reduzido, sem depender de largura de tela. */
+@media (prefers-reduced-motion: reduce) {
+  .particle-stage {
+    display: none;
+  }
+}

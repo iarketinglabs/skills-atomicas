@@ -1,0 +1,89 @@
+{
+  "skill_name": "sistemas-agenticos-integracoes",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Dois sistemas precisam sincronizar alterações de estado; a equipa de suporte precisa vê-las em até uma hora. Propõe uma integração simples e indica o que falta saber.",
+      "expected_output": "Uma proposta condicional que compara uma opção periódica com uma orientada a eventos apenas se a necessidade exigir, definindo propriedade, contrato, frescura, falhas e reconciliação sem impor stack.",
+      "files": [],
+      "expectations": [
+        "Não presume que uma janela de uma hora exija streaming.",
+        "Identifica autoridade dos dados, volume/pico e capacidades relevantes como questões ou premissas.",
+        "Define critérios observáveis para atraso, duplicados, erro e recuperação.",
+        "Indica trade-offs e condição que poderia alterar a escolha."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Um cliente HTTP faz timeout ao criar uma transferência. Não sei se o fornecedor a processou. Posso repetir a chamada automaticamente até receber 200?",
+      "expected_output": "Uma orientação para não repetir cegamente um efeito financeiro incerto; consultar estado/conciliação, verificar suporte e semântica da chave idempotente do fornecedor, limitar retries e registar o resultado.",
+      "files": [],
+      "expectations": [
+        "Reconhece que timeout não prova que o efeito falhou.",
+        "Não recomenda retries ilimitados nem repetir uma ação não idempotente sem proteção.",
+        "Pede verificação da documentação oficial atual do fornecedor e dos limites da idempotência.",
+        "Descreve observabilidade e procedimento de recuperação."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Um fornecedor envia webhooks de atualização, mas às vezes repete eventos e fica indisponível durante alguns minutos. Desenha os controlos do receptor.",
+      "expected_output": "Um desenho com validação da assinatura conforme o contrato do fornecedor, deduplicação, resposta HTTP adequada, processamento durável, retry/replay controlado, limites e reconciliação.",
+      "files": [],
+      "expectations": [
+        "Não confia em campos do payload antes de validar a origem e não trata IP allowlist como controlo suficiente.",
+        "Contempla repetição e indisponibilidade do consumidor sem duplicar o efeito de negócio.",
+        "Inclui proteção contra replay conforme o mecanismo documentado pelo fornecedor.",
+        "Define alertas, DLQ ou equivalente operável e caminho de reconciliação."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Queremos expor uma ferramenta a um agente para consultar e atualizar faturas. A equipa propõe dar ao agente uma credencial de administrador e confiar no schema da ferramenta. Revê a proposta.",
+      "expected_output": "Uma revisão com escopos mínimos, separação leitura/escrita, autorização no serviço de destino, validação, aprovação para efeitos relevantes, limites e auditoria; protocolos são avaliados por capacidades reais.",
+      "files": [],
+      "expectations": [
+        "Rejeita credencial de administrador e confiar apenas no schema ou no modelo para autorização.",
+        "Distingue agente-ferramenta de agente-agente e não impõe protocolo sem requisito.",
+        "Propõe controlar repetição/resultado incerto para atualizações e escalonar ações de impacto.",
+        "Trata descrições de ferramenta e respostas como conteúdo não confiável e limita dados no contexto."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Vamos mudar um campo opcional de texto para enum e acrescentar dois valores. O fornecedor chama a mudança de aditiva e compatível. Posso publicar sem testar consumidores?",
+      "expected_output": "Uma recomendação para verificar consumidores e geração de SDKs, compatibilidade real, comportamento com valores desconhecidos, rollout e depreciação; a palavra aditiva não é prova universal de compatibilidade.",
+      "files": [],
+      "expectations": [
+        "Não assume compatibilidade só por adicionar valores ou campos.",
+        "Considera consumidores com enumeração fechada, validação estrita e SDK tipado.",
+        "Sugere teste de contrato e migração observável antes de retirar comportamento antigo.",
+        "Solicita a especificação e documentação atuais para afirmações dependentes de versão."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Um relatório interno diz que uma versão recente de um protocolo agente-a-agente removeu o estado de sessão e que todos os SDKs já suportam a mudança. Escreve os passos de migração.",
+      "expected_output": "A skill verifica primeiro especificação oficial, changelog e compatibilidade dos SDKs em uso; não assume a alegação do relatório como atual, distingue estado do padrão de suporte do fornecedor e então propõe migração reversível.",
+      "files": [],
+      "expectations": [
+        "Não repete como fato uma versão, adoção ou compatibilidade não verificada.",
+        "Distingue norma/protocolo de implementação concreta e versão do SDK.",
+        "Indica plano de compatibilidade, testes, observação, rollback e condição para pausar.",
+        "Se fontes oficiais não estiverem disponíveis, marca as premissas pendentes em vez de inventar comandos."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Uma sincronização por CDC está a criar divergências depois de reprocessar alterações atrasadas e eventos duplicados. O que devo investigar?",
+      "expected_output": "Uma investigação sobre semântica e identidade dos eventos, tempo de origem versus ingestão, checkpoints, deduplicação, ordenação, retenção/replay, schema e reconciliação independente.",
+      "files": [],
+      "expectations": [
+        "Não trata reprocessamento como prova de idempotência nem assume entrega única.",
+        "Distingue tempo da origem e tempo de ingestão quando relevante.",
+        "Verifica cursor/checkpoint, janela de retenção, eventos tardios, correções e compatibilidade de schema.",
+        "Propõe comparar o estado final com a fonte autoritativa e corrigir sem dupla contagem."
+      ]
+    }
+  ]
+}

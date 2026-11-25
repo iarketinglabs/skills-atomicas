@@ -1,0 +1,89 @@
+{
+  "skill_name": "process-sop-engineering",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crie uma primeira versão de processo e SOP para integrar uma pessoa contratada recentemente. Sabemos apenas que a liderança abre uma solicitação, Operações coleta os dados, TI libera acessos e a liderança confirma que a pessoa pode começar. Ainda não há prazos, política de dados ou responsável formal definidos. Separe o que é conhecido do que precisa de confirmação e entregue algo que possamos revisar.",
+      "expected_output": "A reviewable discovery summary and draft process/SOP that preserves the supplied facts, marks missing policy/owners/timing as TBD, assigns role-based handoffs, includes preconditions, steps, completion checks, exceptions, governance fields, and does not invent a deadline or access policy.",
+      "files": [],
+      "expectations": [
+        "Separates supplied facts from assumptions, proposals, and unresolved decisions.",
+        "Shows the request trigger, role-based handoffs, and a completion condition.",
+        "Includes missing-data or access failure handling and an escalation owner placeholder.",
+        "Does not invent deadlines, privacy policy, or approval authority."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Precisamos mapear o atendimento de reclamações complexas. Cada caso pode seguir caminhos diferentes conforme documentos, histórico e avaliação do especialista. O time quer desenhar um BPMN detalhado para todos os casos. Recomende uma abordagem e entregue uma estrutura inicial do fluxo, deixando claro o que precisa ser descoberto.",
+      "expected_output": "A method recommendation that recognizes the case-based variability, uses a case/playbook approach for variable work, reserves BPMN for a stable repeatable subflow if useful, and provides a discovery structure without fabricating decision rules.",
+      "files": [],
+      "expectations": [
+        "Identifies case variability as a reason not to force every case through one deterministic sequence.",
+        "Offers a case-oriented model or playbook and explains when a stable subflow could use BPMN.",
+        "Lists evidence and decision rules that must be discovered from the process owner or cases.",
+        "Does not invent complaint categories, legal deadlines, or resolution policies."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Escreva um procedimento para um agente que analisa pedidos de reembolso e pode chamar uma ferramenta de pagamento. Queremos automatizar os casos simples e enviar os outros para uma pessoa. O limite financeiro, as permissões da ferramenta, a política de elegibilidade e a regra de reembolso duplicado ainda não foram aprovados.",
+      "expected_output": "An agent-ready procedure with the financial threshold and policy rules left as TBD, no unapproved refund execution, explicit allowed/prohibited actions, human approval gates, source and input validation, duplicate protection, stop/escalation, logging, recovery, evaluation, and release checks.",
+      "files": [],
+      "expectations": [
+        "Does not invent a financial threshold, eligibility rule, permission, or duplicate-refund rule.",
+        "Blocks consequential payment action until policy, permission, and required approval are confirmed.",
+        "Defines exception escalation, safe stop, outcome confirmation, and recovery or compensation ownership.",
+        "Includes minimum necessary audit records and target-runtime release tests."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Revise este trecho de orientação: 'Toda atividade que leva mais de cinco minutos precisa de SOP. O SOP deve ter no máximo 10 etapas e todo procedimento precisa começar com uma visita presencial ao local de trabalho.' Transforme em orientação útil sem perpetuar regras não comprovadas.",
+      "expected_output": "A concise rewrite that labels the numeric/time/site-visit rules as unsupported universal heuristics, replaces them with context-dependent selection and evidence gathering, and offers a practical decision basis without claiming a universal threshold.",
+      "files": [],
+      "expectations": [
+        "Explicitly rejects the five-minute and ten-step limits as universal requirements without an authoritative source.",
+        "Does not mandate an in-person site visit for every procedure.",
+        "Replaces unsupported thresholds with relevant local factors such as risk, variation, handoffs, recurrence, and user need.",
+        "Distinguishes a recommendation from an approved organizational rule."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Revise um processo de fecho financeiro. O procedimento determina que todos registem despesas num sistema central, mas numa amostra de 6 fechos recentes, a equipa usou cópias locais porque o sistema ficou indisponível no pico de trabalho. Pediram para oficializar as folhas locais. Analise a situação e proponha próximos passos sem assumir que a amostra representa todos os casos.",
+      "expected_output": "An evidence-bounded analysis that distinguishes the written procedure from work as performed, investigates the outage and workload conditions without blaming users, does not silently approve local copies or sensitive-data handling, and proposes owner-led review of a safe fallback and appropriate control.",
+      "files": [],
+      "expectations": [
+        "Labels the six cases as a bounded sample and does not generalize its frequency to all close cycles.",
+        "Compares the written route with work as performed and investigates system availability and operating constraints without individual blame.",
+        "Does not silently authorize local copies or invent a data-retention or privacy policy.",
+        "Identifies an owner to approve a safe fallback and proposes a way to verify the control and revised procedure."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Um agente recomenda aprovar ou rejeitar pedidos de elegibilidade. Há uma fila de 200 decisões por dia e a pessoa supervisora só carrega em 'aprovar'. A liderança diz que a taxa de overrides próxima de zero prova que o agente é perfeito. Avalie o controlo HITL e proponha uma avaliação segura antes de ampliar o volume.",
+      "expected_output": "An assessment that rejects a near-zero override rate as proof of quality, checks reviewer context, time, competence, authority, and workload, routes consequential or uncertain cases by risk, and proposes controlled tests that do not inject errors into a live queue.",
+      "files": [],
+      "expectations": [
+        "States that a low override rate alone does not prove accuracy or effective supervision.",
+        "Requires meaningful reviewer context, time/capacity, competence, and authority to reject, correct, or stop.",
+        "Considers queue volume and routes uncertainty or consequential decisions according to approved policy rather than model confidence alone.",
+        "Proposes evaluation in a simulation or controlled test environment before raising live volume."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Uma equipa submete frequentemente registos incompletos. O SOP existente é extenso e os erros acontecem quando faltam campos obrigatórios. Propõe uma melhoria que combine controlo preventivo, instrução operativa e apoio de checklist, sem impor um número universal de itens ou páginas. Inclui como validar a mudança.",
+      "expected_output": "A proportionate design that considers preventing submission with missing required data, explains when a warning is insufficient, keeps the complete SOP distinct from a short task checklist, defines stop/recovery behavior, and includes a representative usability test with success criteria.",
+      "files": [],
+      "expectations": [
+        "Prioritizes an approved preventive validation where feasible instead of relying only on user memory or a warning.",
+        "Keeps the detailed procedure and a focused point-of-work checklist distinct, with no fixed checklist or page-count rule.",
+        "Defines what happens when the preventive control fails or the user cannot complete a required field.",
+        "Specifies representative test scenarios and observable success criteria before piloting the change."
+      ]
+    }
+  ]
+}

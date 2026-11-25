@@ -1,0 +1,21 @@
+-- Crie a tabela para o projeto do cliente e aplique esta migração em ambiente
+-- controlado. Substitua {{SUPABASE_TABLE}} antes de executar.
+-- O navegador não recebe permissões diretas para ler ou gravar nesta tabela.
+
+create table if not exists public."{{SUPABASE_TABLE}}" (
+  id uuid primary key default gen_random_uuid(),
+  form_slug text not null,
+  respondent_name text,
+  respondent_role text,
+  answers jsonb not null,
+  submitted_at timestamptz not null default now()
+);
+
+alter table public."{{SUPABASE_TABLE}}" enable row level security;
+
+revoke all on table public."{{SUPABASE_TABLE}}" from anon, authenticated;
+grant select, insert on table public."{{SUPABASE_TABLE}}" to service_role;
+
+-- Não crie policies para anon ou authenticated. A função server-side usa
+-- credenciais mantidas em segredo e valida os dados antes de inserir.
+-- Configure retenção e eliminação segundo a finalidade e a política do cliente.

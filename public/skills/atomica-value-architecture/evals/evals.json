@@ -1,0 +1,23 @@
+{
+  "skill_name": "atomica-value-architecture",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crie uma proposta de valor B2B da Atomica para uma startup Seed-Série B com meta trimestral de pipeline e time de marketing pequeno.",
+      "expected_output": "A response that selects the startup ICP, uses SQLs or qualified meetings as the primary metric, frames Atomica as a Marketing Transformation Partner with AI, includes a 7-second anchor, and maps proof to efficiency, quality, and speed.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Transforme a oferta B2B de quick win da Atomica em uma sequência de landing page para PME digitalizada.",
+      "expected_output": "A landing-page sequence that routes to execution/quick wins, uses qualified leads and time savings as core proof, avoids generic AI-tool positioning, and includes a 14-30 day proof or POC mechanism.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Adapte a mensagem B2C da Atomica para vender a mentoria de IA para profissionais de marketing no Brasil.",
+      "expected_output": "A PT-BR-oriented B2C message for the mentorship, using the 4-week practical capability anchor, operational marketer JTBD, proof across efficiency/quality/speed, and guardrails against prompt-pack or magic-formula positioning.",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "skill_name": "sistemas-agenticos-resiliencia",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Defina uma política para repetir com segurança uma chamada remota que cria um recurso.",
+      "expected_output": "Distingue timeout, retry e idempotência; define limite e reconciliação.",
+      "files": [],
+      "expectations": ["Não recomenda retry ilimitado.", "Exige identificador de intenção ou mecanismo equivalente."]
+    },
+    {
+      "id": 2,
+      "prompt": "Como projetar uma fila que pode entregar mensagens duplicadas e falhar ao publicar um evento?",
+      "expected_output": "Propõe consumidor idempotente e avalia transactional outbox e DLQ.",
+      "files": [],
+      "expectations": ["Não promete exactly-once sem mecanismo.", "Define recuperação observável para falhas."]
+    },
+    {
+      "id": 3,
+      "prompt": "Escolha o provedor de tracing para meu agente.",
+      "expected_output": "Delimita que seleção de fornecedor é escopo de observabilidade e oferece critérios de confiabilidade relevantes.",
+      "files": [],
+      "expectations": ["Não prescreve um fornecedor.", "Direciona para sistemas-agenticos-observabilidade."]
+    },
+    {
+      "id": 4,
+      "prompt": "Um agente continua tentando uma ação sem sucesso. Defina como interromper e escalar.",
+      "expected_output": "Define orçamentos de loop, falhas não transitórias e escalonamento humano.",
+      "files": [],
+      "expectations": ["Impõe condição de parada.", "Não repete efeito externo sem idempotência."]
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+/* Substitua os tokens abaixo pela identidade visual aprovada para o projeto
+   e confirme contraste, foco e legibilidade em diferentes larguras de ecrã. */
+:root {
+  --cor-fundo: #f7efd9;
+  --cor-texto: #1b1b1b;
+  --cor-texto-suave: #3d3d3d;
+  --cor-destaque: #63bec2;
+  --cor-destaque-escuro: #137a80;
+  --cor-alerta: #b8302f;
+  --radius: 12px;
+  --header-h: 96px; /* fallback inicial — sincronizado de verdade via JS (syncHeaderHeight) */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: "{{FONTE_CORPO}}", sans-serif;
+  line-height: 1.5;
+}
+
+.container {
+  width: min(100% - 32px, 900px);
+  margin-inline: auto;
+}
+
+.section {
+  padding: 40px 0;
+}
+
+.eyebrow {
+  color: var(--cor-destaque-escuro);
+  font-family: "{{FONTE_UI}}", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
+/* ── Header: sticky (não fixed), para não abrir gap com a nav de steps ──
+   A altura real é sincronizada via JS (syncHeaderHeight em form.js), não
+   fixada só por CSS — texto responsivo muda de altura entre breakpoints. */
+.site-header-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--cor-fundo);
+  border-bottom: 2px solid var(--cor-texto);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.progress-bar {
+  height: 8px;
+  border: 2px solid var(--cor-texto);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--cor-destaque);
+  transition: width 0.3s ease;
+}
+
+/* ── Nav de steps: badges preto (completo) / vermelho (visitado e
+   incompleto) / neutro (não visitado ainda) ── */
+.block-nav {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.04);
+  border-bottom: 2px solid var(--cor-texto);
+}
+
+.block-nav button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--cor-texto);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  cursor: pointer;
+}
+
+.block-nav button.filled {
+  background: var(--cor-texto);
+  color: var(--cor-fundo);
+}
+
+.block-nav button.attention {
+  background: var(--cor-alerta);
+  color: var(--cor-fundo);
+}
+
+.block-nav button.current {
+  background: var(--cor-destaque);
+  color: var(--cor-texto);
+}
+
+/* ── Steps ── */
+.step-panel[hidden] {
+  display: none;
+}
+
+/* ── Cards ── */
+.card, .card-accent {
+  border: 2px solid var(--cor-texto);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.block-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid var(--cor-texto);
+  background: var(--cor-destaque);
+  margin-right: 8px;
+}
+
+.block-title {
+  display: flex;
+  align-items: center;
+  margin: 0 0 6px;
+}
+
+.block-note {
+  font-size: 0.82rem;
+  color: var(--cor-texto-suave);
+  font-style: italic;
+}
+
+/* ── Campos: label de campo (UI) vs. texto da pergunta (conteúdo) são
+   classes SEPARADAS de propósito — nunca deixe .question-label herdar o
+   estilo de .field label por acidente (ver references/wizard-architecture.md). */
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field label {
+  font-family: "{{FONTE_UI}}", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.86rem;
+}
+
+.question-label,
+.field label.question-label {
+  font-family: "{{FONTE_CORPO}}", sans-serif;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: normal;
+  font-size: 18px;
+}
+
+.field-hint {
+  font-size: 0.78rem;
+  color: var(--cor-texto-suave);
+  font-weight: 400;
+  text-transform: none;
+}
+
+.field-control {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  background: #fff;
+  padding: 12px 14px;
+  color: var(--cor-texto);
+}
+
+.field-control[aria-invalid="true"] {
+  background: #ffe5e8;
+  border-color: var(--cor-alerta);
+}
+
+.error-text {
+  color: var(--cor-alerta);
+  font-weight: 700;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+.radio-group.invalid {
+  border: 2px solid var(--cor-alerta);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.conditional-field[hidden] {
+  display: none;
+}
+
+/* ── Tabelas ── */
+.table-scroll {
+  overflow-x: auto;
+  margin-bottom: 16px;
+  border: 2px solid var(--cor-texto);
+  border-radius: 8px;
+}
+
+table.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 480px;
+}
+
+table.data-table th, table.data-table td {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 8px;
+}
+
+table.data-table input[aria-invalid="true"],
+table.data-table select[aria-invalid="true"],
+table.data-table textarea[aria-invalid="true"] {
+  background: #ffe5e8;
+  border-color: var(--cor-alerta);
+}
+
+/* ── Botões e barra de submit ── */
+.button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--cor-texto);
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  background: var(--cor-destaque);
+  color: var(--cor-texto);
+  cursor: pointer;
+}
+
+.button.outline {
+  background: transparent;
+}
+
+.submit-bar {
+  position: sticky;
+  bottom: 0;
+  background: var(--cor-fundo);
+  border-top: 2px solid var(--cor-texto);
+  padding: 16px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.step-sync-status[data-state="error"] {
+  color: var(--cor-alerta);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}

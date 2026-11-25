@@ -1,0 +1,3 @@
+interface:
+  display_name: "Precificacao Servicos Produtos IA"
+  short_description: "Preço de serviços B2B e produtos B2C2B ancorado em valor, com módulo de benchmarks de IA"

@@ -1,0 +1,115 @@
+{
+  "skill_name": "sistemas-agenticos-harness",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Decida quais etapas de um agente devem ser scripts determinísticos e quais podem depender do modelo.",
+      "expected_output": "Distingue interpretação e decisão semântica de validação exata, autorização, invariantes e execução de efeitos.",
+      "files": [],
+      "expectations": [
+        "Separa proposta do modelo e autoridade de execução.",
+        "Não delega validação exata ou autorização apenas ao modelo.",
+        "Apresenta o desenho como dependente de requisitos, sem regra universal."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Defina o SLO deste agente e diga como medi-lo.",
+      "expected_output": "Explica que um SLO precisa de requisitos e contexto operacional; encaminha desenho detalhado para as referências especializadas disponíveis.",
+      "files": [],
+      "expectations": [
+        "Não inventa um SLO universal.",
+        "Indica sistemas-agenticos-resiliencia para SLO e fiabilidade, se disponível.",
+        "Indica sistemas-agenticos-observabilidade para telemetria, se disponível."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Escolha entre workflow, loop aberto e grafo de estados para um fluxo que pode exigir aprovação humana.",
+      "expected_output": "Compara previsibilidade, decisões semânticas, estados explícitos, pausa, retomada e recuperação; escolhe a forma mínima compatível.",
+      "files": [],
+      "expectations": [
+        "Não prescreve grafo universalmente.",
+        "Explicita condição de sucesso, parada e limites do loop.",
+        "Encaminha efeitos remotos, retries e idempotência para resiliência."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Um framework guarda checkpoints e histórico da conversa. Isso prova que o workflow é durável e que um pagamento não será repetido?",
+      "expected_output": "Distingue histórico, memória, estado, checkpoint e execução durável; requer validar o contrato de retomada e proteger o efeito externo contra duplicação.",
+      "files": [],
+      "expectations": [
+        "Não equipara checkpoint a durabilidade completa.",
+        "Não afirma execução exatamente uma vez apenas pelo grafo ou checkpoint.",
+        "Menciona idempotência, deduplicação ou conciliação no destino."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Distingua Pydantic Validation, Pydantic AI, Pydantic AI Harness, Pydantic Graph, Durable Execution, Evals e Logfire. Um schema tipado garante que a saída seja verdadeira e autorizada?",
+      "expected_output": "Distingue o framework de agente da biblioteca de capacidades, grafo, execução durável, avaliação, validação e observabilidade; explica os limites de tipos e schemas.",
+      "files": [],
+      "expectations": [
+        "Distingue biblioteca de validação, framework de agente, harness de capacidades, grafo, execução durável, evals e observabilidade.",
+        "Não trata tipo ou schema como garantia de verdade semântica ou autorização.",
+        "Recomenda confirmar capacidade e versão atuais."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Explique a diferença entre LangChain agents, LangGraph, Deep Agents e LangSmith e indique qual escolher.",
+      "expected_output": "Identifica camadas e papéis diferentes, e pede requisitos antes de recomendar uma opção.",
+      "files": [],
+      "expectations": [
+        "Distingue loop/middleware, runtime de grafo, harness de nível mais alto e serviço de tracing/evals.",
+        "Não presume que usar um componente exige usar os restantes.",
+        "Não declara um vencedor sem workload, critérios e versão."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Hermes Agent pode substituir o plano de controlo da aplicação, identidade e autorização de negócio?",
+      "expected_output": "Descreve Hermes como runtime integrado a avaliar e mapeia separadamente as responsabilidades de aplicação e runtime.",
+      "files": [],
+      "expectations": [
+        "Não confunde sessão ou memória do agente com fonte canónica de estado de negócio.",
+        "Não presume que uma ferramenta disponível está autorizada para qualquer utilizador ou recurso.",
+        "Recomenda verificar release ou commit e capacidades implementadas."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Quantas conexões MCP são seguras? Uma fonte reporta um aumento grande de tokens e queda de sucesso ao comparar servidores MCP com chamadas locais; posso usar isso como regra?",
+      "expected_output": "Rejeita uma contagem universal e trata percentagens como resultados dependentes do setup, com recomendação de medir a carga real.",
+      "files": [],
+      "expectations": [
+        "Não estabelece limite fixo de servidores ou conexões MCP.",
+        "Não repete percentagens sem fonte, baseline e condições.",
+        "Considera custo de schemas/contexto, seleção de ferramentas, segurança e avaliação."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Depois de um timeout numa ferramenta remota, posso repetir automaticamente a chamada?",
+      "expected_output": "Explica que timeout pode deixar o efeito incerto e que a repetição depende do contrato do destino e da política de idempotência/conciliação.",
+      "files": [],
+      "expectations": [
+        "Não assume que timeout significa ausência de efeito.",
+        "Recomenda chave idempotente, consulta de estado ou conciliação quando aplicável.",
+        "Distingue limite do loop da política completa de resiliência."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Qual é o melhor framework para construir um agente de pesquisa com ferramentas?",
+      "expected_output": "Solicita ou explicita requisitos decisivos e oferece critérios de comparação sem recomendar um vencedor por padrão.",
+      "files": [],
+      "expectations": [
+        "Compara capacidades necessárias, limites, operação, versionamento e custo no workload relevante.",
+        "Não presume fornecedor, produto ou domínio de negócio.",
+        "Regista como verificar documentação e versão atuais."
+      ]
+    }
+  ]
+}

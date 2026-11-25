@@ -1,0 +1,590 @@
+(function () {
+  "use strict";
+
+  // ── Ajuste estes 3 valores para o cliente/formulário real ──────
+  var FORM_SLUG = "{{FORM_SLUG}}";
+  var DRAFT_KEY = "{{FORM_SLUG}}-draft";
+  var LAST_STEP = 9; // ajuste para o número do último data-step do HTML
+
+  // Tempo estimado (segundos) por pergunta — usado para ponderar a barra de
+  // progresso. Chave = segundo segmento do data-path (ex.: "A1_exemplo_numerico"
+  // de data-path="A.A1_exemplo_numerico"). Preencha uma entrada por pergunta
+  // do spec fechado no Passo 1.
+  var QUESTION_TIME_ESTIMATES = {
+    A1_exemplo_numerico: 15,
+    A2_exemplo_condicional: 30,
+    A3_exemplo_tabela: 60
+  };
+
+  var form = document.getElementById("diagnostico-form");
+  var submitErrorEl = document.getElementById("submit-error");
+  var syncStatusEl = document.getElementById("sync-status");
+  var backBtn = document.getElementById("btn-back");
+  var nextBtn = document.getElementById("btn-next");
+  var progressFillEl = document.getElementById("progress-fill");
+  var progressBarEl = document.getElementById("progress-bar");
+  var saveTimer = null;
+
+  var currentStep = 0;
+  var questionGroups = {};
+  var visitedSteps = {};
+
+  // ── Helpers de caminho aninhado ──────────────────────────────
+  function setPath(obj, path, value) {
+    var parts = path.split(".");
+    var cur = obj;
+    for (var i = 0; i < parts.length - 1; i++) {
+      if (typeof cur[parts[i]] !== "object" || cur[parts[i]] === null) {
+        cur[parts[i]] = {};
+      }
+      cur = cur[parts[i]];
+    }
+    cur[parts[parts.length - 1]] = value;
+  }
+
+  function getPath(obj, path) {
+    var parts = path.split(".");
+    var cur = obj;
+    for (var i = 0; i < parts.length; i++) {
+      if (cur === undefined || cur === null) return undefined;
+      cur = cur[parts[i]];
+    }
+    return cur;
+  }
+
+  // ── Renderização de linhas fixas/dinâmicas ───────────────────
+  function addRow(tbody, templateId, fixedName) {
+    var tpl = document.getElementById(templateId);
+    var clone = tpl.content.cloneNode(true);
+    if (fixedName) {
+      var nameCell = clone.querySelector('[data-field="nome"]');
+      if (nameCell) {
+        nameCell.dataset.fixed = fixedName;
+        nameCell.textContent = fixedName;
+      }
+      if (fixedName.indexOf("(opcional)") !== -1) {
+        clone.querySelector("tr[data-row]").dataset.optionalRow = "true";
+      }
+    }
+    tbody.appendChild(clone);
+  }
+
+  function wireAddRowButtons() {
+    document.querySelectorAll("[data-add-row]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var tbody = document.getElementById(btn.dataset.addRow);
+        addRow(tbody, btn.dataset.template, null);
+        var rows = tbody.querySelectorAll("tr[data-row]");
+        rows[rows.length - 1].dataset.optionalRow = "true";
+      });
+    });
+  }
+
+  // ── Revelação condicional ─────────────────────────────────────
+  function wireConditionalGroups() {
+    document.querySelectorAll("[data-conditional-group]").forEach(function (group) {
+      group.addEventListener("change", function () {
+        var checked = group.querySelector("input:checked");
+        if (!checked) return;
+        var target = document.getElementById(checked.dataset.reveals);
+        if (!target) return;
+        target.hidden = checked.value !== "Sim";
+        var textarea = target.querySelector(".field-control");
+        if (textarea && target.hidden) {
+          textarea.removeAttribute("aria-invalid");
+        }
+      });
+    });
+  }
+
+  // ── Seletor de respondente ────────────────────────────────────
+  function wireRespondentSelect() {
+    var select = document.getElementById("respondente-select");
+    var outroFields = document.getElementById("respondente-outro-fields");
+    select.addEventListener("change", function () {
+      outroFields.hidden = select.value !== "outro";
+    });
+  }
+
+  // ── Serialização ───────────────────────────────────────────────
+  function rowToObject(row) {
+    var obj = {};
+    row.querySelectorAll("[data-field]").forEach(function (el) {
+      var field = el.dataset.field;
+      var value;
+      if (el.tagName === "TD") {
+        value = el.dataset.fixed || el.textContent.trim();
+      } else if (el.type === "checkbox") {
+        value = el.checked;
+      } else {
+        value = el.value;
+      }
+      setPath(obj, field, value);
+    });
+    return obj;
+  }
+
+  function hydrateRow(row, data) {
+    if (!data) return;
+    row.querySelectorAll("[data-field]").forEach(function (el) {
+      if (el.tagName === "TD") return;
+      var value = getPath(data, el.dataset.field);
+      if (value === undefined) return;
+      if (el.type === "checkbox") {
+        el.checked = !!value;
+      } else {
+        el.value = value;
+      }
+    });
+  }
+
+  function serialize() {
+    var state = {};
+
+    form.querySelectorAll("[data-path]").forEach(function (el) {
+      if (el.closest("[data-array-path]")) return;
+      var path = el.dataset.path;
+      if (el.type === "radio") {
+        if (!el.checked) return;
+        setPath(state, path, el.value);
+      } else if (el.dataset.type === "checkbox") {
+        setPath(state, path, el.checked);
+      } else {
+        setPath(state, path, el.value);
+      }
+    });
+
+    document.querySelectorAll("[data-array-path]").forEach(function (table) {
+      var arrPath = table.dataset.arrayPath;
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tbody tr[data-row]"));
+      var arr = rows.map(rowToObject);
+      setPath(state, arrPath, arr);
+    });
+
+    return state;
+  }
+
+  function hydrate(state) {
+    if (!state) return;
+
+    form.querySelectorAll("[data-path]").forEach(function (el) {
+      if (el.closest("[data-array-path]")) return;
+      var path = el.dataset.path;
+      var value = getPath(state, path);
+      if (value === undefined) return;
+      if (el.type === "radio") {
+        el.checked = el.value === value;
+      } else if (el.dataset.type === "checkbox") {
+        el.checked = !!value;
+      } else {
+        el.value = value;
+      }
+    });
+
+    var select = document.getElementById("respondente-select");
+    document.getElementById("respondente-outro-fields").hidden = select.value !== "outro";
+
+    document.querySelectorAll("[data-conditional-group]").forEach(function (group) {
+      var checked = group.querySelector("input:checked");
+      if (!checked) return;
+      var target = document.getElementById(checked.dataset.reveals);
+      if (target) target.hidden = checked.value !== "Sim";
+    });
+
+    document.querySelectorAll("[data-array-path]").forEach(function (table) {
+      var arrPath = table.dataset.arrayPath;
+      var arr = getPath(state, arrPath);
+      if (!Array.isArray(arr)) return;
+      var tbody = table.querySelector("tbody");
+      var rows = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-row]"));
+      var addTemplate = table.dataset.template;
+      while (rows.length < arr.length && addTemplate) {
+        addRow(tbody, addTemplate, null);
+        rows = Array.prototype.slice.call(tbody.querySelectorAll("tr[data-row]"));
+      }
+      rows.forEach(function (row, i) {
+        if (arr[i]) hydrateRow(row, arr[i]);
+      });
+    });
+  }
+
+  // ── Grupos de pergunta (para progresso ponderado e completude) ──
+  function buildQuestionGroups() {
+    questionGroups = {};
+    form.querySelectorAll("[data-path]").forEach(function (el) {
+      if (el.closest("[data-array-path]")) return;
+      var parts = el.dataset.path.split(".");
+      if (parts[0] === "respondente" || parts[0] === "fechamento") return;
+      var groupId = parts[1];
+      if (!groupId) return;
+      if (!questionGroups[groupId]) questionGroups[groupId] = { type: "fields", els: [] };
+      questionGroups[groupId].els.push(el);
+    });
+    document.querySelectorAll("[data-array-path]").forEach(function (table) {
+      var parts = table.dataset.arrayPath.split(".");
+      var groupId = parts[1];
+      if (groupId) questionGroups[groupId] = { type: "table", table: table };
+    });
+  }
+
+  function isGroupAnswered(groupId) {
+    var g = questionGroups[groupId];
+    if (!g) return false;
+    if (g.type === "table") {
+      var rows = g.table.querySelectorAll("tbody tr[data-row]");
+      return Array.prototype.some.call(rows, function (row) {
+        return Array.prototype.some.call(row.querySelectorAll("input, select, textarea"), function (el) {
+          if (el.type === "checkbox") return el.checked;
+          return el.value && el.value.trim() !== "";
+        });
+      });
+    }
+    return g.els.some(function (el) {
+      if (el.type === "radio") return el.checked;
+      if (el.dataset.type === "checkbox") return el.checked;
+      return el.value && el.value.trim() !== "";
+    });
+  }
+
+  // ── Completude estrita (campos adicionais/opcionais não contam) ──
+  function isElementFilled(el) {
+    if (el.type === "radio" || el.type === "checkbox") return el.checked;
+    return !!(el.value && el.value.trim() !== "");
+  }
+
+  function isElementRequired(el) {
+    if (el.closest(".estimate-flag")) return false;
+    var conditionalAncestor = el.closest(".conditional-field");
+    if (conditionalAncestor && conditionalAncestor.hidden) return false;
+    return true;
+  }
+
+  function isGroupComplete(groupId) {
+    var g = questionGroups[groupId];
+    if (!g) return false;
+    if (g.type === "table") {
+      var rows = Array.prototype.slice.call(g.table.querySelectorAll("tbody tr[data-row]"))
+        .filter(function (row) { return row.dataset.optionalRow !== "true"; });
+      return rows.every(function (row) {
+        var fields = Array.prototype.slice.call(row.querySelectorAll("[data-field]"))
+          .filter(function (el) { return el.tagName !== "TD"; });
+        return fields.every(isElementFilled);
+      });
+    }
+    var radioGroups = {};
+    var complete = true;
+    g.els.forEach(function (el) {
+      if (!isElementRequired(el)) return;
+      if (el.type === "radio") {
+        radioGroups[el.name] = radioGroups[el.name] || false;
+        if (el.checked) radioGroups[el.name] = true;
+        return;
+      }
+      if (!isElementFilled(el)) complete = false;
+    });
+    Object.keys(radioGroups).forEach(function (name) {
+      if (!radioGroups[name]) complete = false;
+    });
+    return complete;
+  }
+
+  function markGroupErrors(groupId) {
+    var g = questionGroups[groupId];
+    if (!g) return false;
+    var hadError = false;
+    if (g.type === "table") {
+      var rows = Array.prototype.slice.call(g.table.querySelectorAll("tbody tr[data-row]"))
+        .filter(function (row) { return row.dataset.optionalRow !== "true"; });
+      rows.forEach(function (row) {
+        row.querySelectorAll("[data-field]").forEach(function (el) {
+          if (el.tagName === "TD") return;
+          if (!isElementFilled(el)) {
+            el.setAttribute("aria-invalid", "true");
+            hadError = true;
+          }
+        });
+      });
+      return hadError;
+    }
+    var radioGroups = {};
+    g.els.forEach(function (el) {
+      if (!isElementRequired(el)) return;
+      if (el.type === "radio") {
+        radioGroups[el.name] = radioGroups[el.name] || { checked: false, els: [] };
+        radioGroups[el.name].els.push(el);
+        if (el.checked) radioGroups[el.name].checked = true;
+        return;
+      }
+      if (!isElementFilled(el)) {
+        el.setAttribute("aria-invalid", "true");
+        hadError = true;
+      }
+    });
+    Object.keys(radioGroups).forEach(function (name) {
+      if (!radioGroups[name].checked) {
+        hadError = true;
+        var container = radioGroups[name].els[0].closest(".radio-group");
+        if (container) container.classList.add("invalid");
+      }
+    });
+    return hadError;
+  }
+
+  function blockGroupIds(letter) {
+    return Object.keys(questionGroups).filter(function (id) { return id.charAt(0) === letter; });
+  }
+
+  function isBlockComplete(letter) {
+    var groupIds = blockGroupIds(letter);
+    return groupIds.length > 0 && groupIds.every(isGroupComplete);
+  }
+
+  function updateProgressBar() {
+    var total = 0, done = 0;
+    Object.keys(QUESTION_TIME_ESTIMATES).forEach(function (id) {
+      var weight = QUESTION_TIME_ESTIMATES[id];
+      total += weight;
+      if (isGroupAnswered(id)) done += weight;
+    });
+    var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    if (progressFillEl) progressFillEl.style.width = pct + "%";
+    if (progressBarEl) progressBarEl.setAttribute("aria-valuenow", String(pct));
+  }
+
+  // ── Navegação por steps ───────────────────────────────────────
+  function getStepPanels() {
+    return Array.prototype.slice.call(document.querySelectorAll(".step-panel"));
+  }
+
+  function updateStepNav() {
+    document.querySelectorAll(".block-nav button").forEach(function (btn) {
+      var s = parseInt(btn.dataset.step, 10);
+      btn.classList.toggle("current", s === currentStep);
+      if (btn.dataset.block) {
+        var complete = isBlockComplete(btn.dataset.block);
+        btn.classList.toggle("filled", complete);
+        btn.classList.toggle("attention", !!visitedSteps[s] && !complete);
+      }
+    });
+  }
+
+  function updateStepButtons() {
+    backBtn.hidden = currentStep === 0;
+    nextBtn.textContent = currentStep === LAST_STEP ? "Enviar respostas" : "Avançar →";
+  }
+
+  function showStep(n, direction) {
+    visitedSteps[n] = true;
+    getStepPanels().forEach(function (panel) {
+      var s = parseInt(panel.dataset.step, 10);
+      panel.hidden = s !== n;
+    });
+    currentStep = n;
+    updateStepNav();
+    updateStepButtons();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    var panel = document.querySelector('.step-panel[data-step="' + n + '"]');
+    var firstField = panel ? panel.querySelector("input, select, textarea") : null;
+    if (firstField) firstField.focus({ preventScroll: true });
+  }
+
+  function navigateTo(n) {
+    showStep(n, n > currentStep ? "forward" : "back");
+  }
+
+  // ── Validação ─────────────────────────────────────────────────
+  function clearErrors() {
+    form.querySelectorAll('[aria-invalid="true"]').forEach(function (el) {
+      el.removeAttribute("aria-invalid");
+    });
+    form.querySelectorAll(".radio-group.invalid").forEach(function (el) {
+      el.classList.remove("invalid");
+    });
+    submitErrorEl.hidden = true;
+    document.getElementById("respondente-error").hidden = true;
+  }
+
+  function validateStep(n) {
+    clearErrors();
+    var errors = [];
+
+    if (n === 0) {
+      var select = document.getElementById("respondente-select");
+      if (!select.value) {
+        document.getElementById("respondente-error").hidden = false;
+        select.setAttribute("aria-invalid", "true");
+        errors.push("Selecione quem está a responder.");
+      } else if (select.value === "outro") {
+        var nome = document.getElementById("respondente-nome");
+        if (!nome.value.trim()) {
+          nome.setAttribute("aria-invalid", "true");
+          errors.push("Informe o nome de quem está a responder.");
+        }
+      }
+    }
+
+    var panel = document.querySelector('.step-panel[data-step="' + n + '"]');
+    if (panel && panel.dataset.block) {
+      var groupIds = blockGroupIds(panel.dataset.block);
+      var anyGroupError = false;
+      groupIds.forEach(function (groupId) {
+        if (markGroupErrors(groupId)) anyGroupError = true;
+      });
+      if (anyGroupError) {
+        errors.push("Preencha todos os campos obrigatórios deste bloco para continuar.");
+      }
+    }
+
+    return errors;
+  }
+
+  function resolveRespondent() {
+    var select = document.getElementById("respondente-select");
+    if (select.value === "outro") {
+      return {
+        name: document.getElementById("respondente-nome").value.trim(),
+        role: document.getElementById("respondente-cargo").value.trim()
+      };
+    }
+    var parts = select.value.split("|");
+    return { name: parts[0] || "", role: parts[1] || "" };
+  }
+
+  function buildAnswersPayload() {
+    var state = serialize();
+    var respondent = resolveRespondent();
+    var answers = {};
+    // Ajuste a lista de blocos abaixo para as letras usadas no spec real.
+    ["A", "fechamento"].forEach(function (key) {
+      if (state[key] !== undefined) answers[key] = state[key];
+    });
+    return {
+      form_slug: FORM_SLUG,
+      respondent_name: respondent.name,
+      respondent_role: respondent.role,
+      answers: answers
+    };
+  }
+
+  // O rascunho fica apenas nesta sessão do navegador. Não use este armazenamento
+  // para formulários com dados sensíveis; nesse caso, desative o autosave local.
+  function saveDraft() {
+    try {
+      sessionStorage.setItem(DRAFT_KEY, JSON.stringify(serialize()));
+      if (syncStatusEl) syncStatusEl.textContent = "Rascunho guardado neste separador.";
+    } catch (e) {
+      if (syncStatusEl) syncStatusEl.textContent = "Autosave indisponível neste navegador.";
+    }
+  }
+
+  function loadDraft() {
+    try {
+      var raw = sessionStorage.getItem(DRAFT_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function clearLocalState() {
+    try {
+      sessionStorage.removeItem(DRAFT_KEY);
+    } catch (e) {
+      // O envio já foi aceite; o navegador pode não permitir limpar o rascunho.
+    }
+  }
+
+  function scheduleAutosave() {
+    updateProgressBar();
+    updateStepNav();
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveDraft, 600);
+  }
+
+  function doFinalSubmit() {
+    var payload = buildAnswersPayload();
+
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Enviando…";
+    submitErrorEl.hidden = true;
+
+    submitResponse(payload).then(function () {
+      clearLocalState();
+      document.getElementById("main-form").style.display = "none";
+      document.getElementById("block-nav").style.display = "none";
+      document.getElementById("obrigado").hidden = false;
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }).catch(function (err) {
+      submitErrorEl.textContent =
+        "Não foi possível enviar agora. O rascunho continua apenas neste separador; tente novamente em instantes.";
+      submitErrorEl.hidden = false;
+      nextBtn.disabled = false;
+      nextBtn.textContent = "Enviar respostas";
+      console.error("Falha no envio do formulário.");
+    });
+  }
+
+  // ── Navegação: botões e badges ───────────────────────────────
+  function wireStepNavigation() {
+    nextBtn.addEventListener("click", function () {
+      var errors = validateStep(currentStep);
+      if (errors.length > 0) {
+        submitErrorEl.textContent = errors[0];
+        submitErrorEl.hidden = false;
+        var firstInvalid = form.querySelector('[aria-invalid="true"]');
+        if (firstInvalid) firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      submitErrorEl.hidden = true;
+
+      if (currentStep === LAST_STEP) {
+        doFinalSubmit();
+        return;
+      }
+
+      saveDraft();
+      showStep(currentStep + 1, "forward");
+    });
+
+    backBtn.addEventListener("click", function () {
+      if (currentStep === 0) return;
+      showStep(currentStep - 1, "back");
+    });
+
+    document.querySelectorAll(".block-nav button[data-step]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        navigateTo(parseInt(btn.dataset.step, 10));
+      });
+    });
+  }
+
+  // ── Ajuste dinâmico da altura do header (evita gap entre header e nav) ──
+  function syncHeaderHeight() {
+    var header = document.querySelector(".site-header-fixed");
+    if (!header) return;
+    document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+  }
+
+  // ── Init ──────────────────────────────────────────────────────
+  document.addEventListener("DOMContentLoaded", function () {
+    visitedSteps[0] = true;
+    buildQuestionGroups();
+    wireAddRowButtons();
+    wireConditionalGroups();
+    wireRespondentSelect();
+    wireStepNavigation();
+
+    syncHeaderHeight();
+    window.addEventListener("resize", syncHeaderHeight);
+
+    var draft = loadDraft();
+    if (draft) hydrate(draft);
+
+    updateProgressBar();
+    updateStepNav();
+    updateStepButtons();
+
+    form.addEventListener("input", scheduleAutosave);
+    form.addEventListener("change", scheduleAutosave);
+  });
+})();

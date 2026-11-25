@@ -1,0 +1,9 @@
+{
+  "skill_name": "linkedin-content-strategy",
+  "evals": [
+    {"id": 1, "prompt": "Crie uma estratégia de LinkedIn de 90 dias para uma consultora independente de cibersegurança que quer gerar conversas com líderes de TI de empresas médias. Ela pode citar aprendizados de projetos, mas não nomes ou resultados confidenciais.", "expected_output": "Estratégia com premissas explícitas, posicionamento, pilares, calendário sustentável, distribuição, métricas e testes; sem benchmarks ou promessas inventadas.", "files": []},
+    {"id": 2, "prompt": "Transforme esta ideia em post para LinkedIn: 'Nossa equipe reduziu o retrabalho em aprovações ao mapear quem realmente decide cada etapa'. Não temos números fechados nem permissão para citar o cliente.", "expected_output": "Post específico e honesto, sem inventar dados, cliente ou resultados, com CTA coerente e voz profissional natural.", "files": []},
+    {"id": 3, "prompt": "Os carrosséis estão dando mais impressões que os vídeos em duas semanas. Devemos abandonar vídeo?", "expected_output": "Análise que trata a evidência como insuficiente, pede ou declara dados necessários e propõe um experimento controlado em vez de uma regra universal.", "files": []},
+    {"id": 4, "prompt": "Quero que nossos executivos compartilhem exatamente o mesmo post da página da empresa e que toda CTA leve ao nosso formulário. Como estruturo isso?", "expected_output": "Recomendação que preserva autonomia, adaptação e contribuição pessoal no advocacy; mapeia objetivo e próxima ação sem sugerir cópia em massa ou spam.", "files": []}
+  ]
+}

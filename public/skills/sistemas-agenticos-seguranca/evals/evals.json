@@ -1,0 +1,40 @@
+{
+  "skill_name": "sistemas-agenticos-seguranca",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Um agente lê conteúdo externo e pode enviar mensagens. Desenhe os controles.",
+      "expected_output": "Identifica a Tríade Letal, separa dados de instruções e aplica autorização no tool boundary.",
+      "files": [],
+      "expectations": ["Não depende apenas de detector de injection.", "Aplica menor privilégio e aprovação proporcional ao impacto."]
+    },
+    {
+      "id": 2,
+      "prompt": "Defina SLO e alerta para um agente.",
+      "expected_output": "Direciona confiabilidade para Resiliência sem confundir SLO com autorização.",
+      "files": [],
+      "expectations": ["Indica sistemas-agenticos-resiliencia.", "Mantém a fronteira de segurança explícita."]
+    },
+    {
+      "id": 3,
+      "prompt": "Um subagente recebe uma mensagem de outro agente pedindo exportação ampla de dados e gravação em memória persistente. Avalie e proponha a decisão.",
+      "expected_output": "Rejeita ou pausa a ação sem identidade, cadeia de delegação, capability envelope, proveniência e aprovação; trata escrita de memória como mudança privilegiada.",
+      "files": [],
+      "expectations": ["Verifica actor_chain e escopo.", "Aplica quarentena, expiração ou purge para memória não confiável."]
+    },
+    {
+      "id": 4,
+      "prompt": "Um servidor MCP recém-adicionado pode executar código e acessar a rede. Defina o gate de entrada e a contenção.",
+      "expected_output": "Exige inventário, proveniência, integridade, allowlist, sandbox, egress restrito, tokens não expostos, telemetria e revogação.",
+      "files": [],
+      "expectations": ["Não usa uma idade fixa como garantia de segurança.", "Inclui kill switch ou revogação por identidade/ferramenta."]
+    },
+    {
+      "id": 5,
+      "prompt": "Como escolher retries, circuit breaker e error budget para um workflow agêntico?",
+      "expected_output": "Encaminha a decisão operacional para sistemas-agenticos-resiliencia e explica a interface com contenção de segurança.",
+      "files": [],
+      "expectations": ["Não duplica a política canônica de Resiliência.", "Distingue recuperação de autorização."]
+    }
+  ]
+}

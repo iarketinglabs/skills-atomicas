@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Troque o <title> e o texto de .brand-project pelo nome do projeto/cliente ao instanciar. -->
+<title>Atomica — Caderno de Testes</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-word">atomica</span>
+    <span class="brand-sep">/</span>
+    <!-- TODO: trocar por "Caderno de Testes — Nome do Projeto" -->
+    <span class="brand-project">Caderno de Testes</span>
+  </div>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Buscar por ID ou título…" autocomplete="off" />
+    <select id="area-filter">
+      <option value="">Todas as áreas</option>
+    </select>
+    <select id="execution-filter">
+      <option value="">Toda execução</option>
+      <option value="manual">Manual</option>
+      <option value="automatizado">Automatizado</option>
+      <option value="revisao_codigo">Revisão de código</option>
+      <option value="outro">Outro</option>
+    </select>
+    <button id="reset-btn" class="btn btn-ghost" title="Descarta as movimentações manuais e volta ao status documentado no caderno">Resetar</button>
+    <button id="export-btn" class="btn btn-ghost" title="Baixa um JSON com o estado atual do quadro">Exportar</button>
+  </div>
+</header>
+
+<main id="board" class="board" aria-label="Quadro kanban de testes"></main>
+
+<div id="overlay" class="overlay" hidden></div>
+<aside id="panel" class="panel" hidden aria-hidden="true">
+  <button id="panel-close" class="panel-close" aria-label="Fechar painel">×</button>
+  <div id="panel-content" class="panel-content"></div>
+</aside>
+
+<template id="card-template">
+  <article class="card" draggable="true" tabindex="0">
+    <div class="card-top">
+      <span class="card-id"></span>
+      <span class="card-priority" title=""></span>
+    </div>
+    <h3 class="card-title"></h3>
+    <div class="card-tags">
+      <span class="tag tag-area"></span>
+      <span class="tag tag-nivel"></span>
+    </div>
+  </article>
+</template>
+
+<script src="app.js"></script>
+</body>
+</html>

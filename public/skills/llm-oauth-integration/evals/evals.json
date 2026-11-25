@@ -1,0 +1,23 @@
+{
+  "skill_name": "llm-oauth-integration",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Preciso vincular OpenAI Codex e Anthropic Claude Code via OAuth num app Next.js com tela de configurações de LLM. Por onde começo e como organizo a arquitetura?",
+      "expected_output": "Descreve arquitetura com ConnectionStore, OAuthRoutes, CredentialResolver e ProviderClientAdapter; recomenda provedor separado para Codex vs OpenAI API key; lista os 7 passos de implementação; menciona fluxos device-code (Codex) e PKCE+colar código (Claude Code); aponta armazenamento cifrado server-only.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "OAuth Codex conecta na UI mas ao salvar dá erro: Could not find the 'credential_type' column in the schema cache. O que faço?",
+      "expected_output": "Identifica migration não aplicada ou schema cache desatualizado no PostgREST/Supabase; instrui aplicar migration no ambiente remoto correto; sugere NOTIFY pgrst reload schema; menciona verificar projeto/instância de banco errada.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Devo colocar OpenAI API key e OAuth Codex no mesmo card de provedor na tela de configurações?",
+      "expected_output": "Recomenda provedores separados porque endpoints e tokens são distintos (api.openai.com vs chatgpt.com/backend-api/codex); explica trade-offs (pró: clareza e adapters independentes; contra: mais um card na UI); não sugere misturar credential_type no mesmo provider sem separação lógica.",
+      "files": []
+    }
+  ]
+}

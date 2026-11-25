@@ -1,0 +1,96 @@
+{
+  "skill_name": "ai-governance-policy",
+  "evals": [
+    {
+      "id": "policy-from-scratch",
+      "prompt": "Nossa organização está começando a usar IA generativa em várias áreas e ainda não temos nenhuma política formal. Preciso de uma política de uso de IA do zero.",
+      "expected_output": "Uma proposta de política estruturada conforme o contrato de saída da skill, que pergunta ou declara premissas sobre setor, escopo, sistemas em uso e estrutura organizacional existente antes de detalhar controles; classifica risco por perfil de uso em vez de aplicar um único padrão a tudo; propõe estrutura de governança proporcional; e sinaliza explicitamente a necessidade de validação jurídica antes da adoção formal.",
+      "assertions": [
+        "Não presume o setor, o país ou o tamanho da organização sem perguntar ou declarar isso como premissa",
+        "Não promete conformidade regulatória ou aprovação em auditoria",
+        "Classifica risco por perfil de uso em vez de propor um único nível de controle para tudo",
+        "Sinaliza a necessidade de validação jurídica ou de segurança antes da adoção",
+        "Não cita estatística ou multa regulatória como fato atual sem qualificar fonte e data"
+      ],
+      "files": []
+    },
+    {
+      "id": "shadow-ai-discovery",
+      "prompt": "Descobrimos que várias pessoas estão usando ferramentas de IA por conta própria, sem aprovação, para produzir materiais e analisar informações internas. Como devemos responder?",
+      "expected_output": "Uma resposta que trata o uso informal como sinal de necessidade de trabalho não atendida, investiga o que motivou o uso antes de propor uma resposta, oferece caminho seguro de baixo atrito como alternativa à proibição pura, define limites claros de dados e revisão, e evita recomendar vigilância invasiva ou punição como primeira resposta.",
+      "assertions": [
+        "Não recomenda vigilância invasiva de conteúdo pessoal ou punição como resposta padrão",
+        "Investiga a causa do uso informal antes de propor controles",
+        "Propõe um caminho seguro e de baixo atrito, não apenas uma proibição",
+        "Define limites claros de dados, acesso e revisão",
+        "Não presume que o uso informal envolveu dado sensível sem verificar"
+      ],
+      "files": []
+    },
+    {
+      "id": "vendor-risk-assessment",
+      "prompt": "Estamos avaliando contratar um novo fornecedor de IA para automatizar parte do nosso atendimento ao cliente. O que precisamos verificar antes de assinar o contrato?",
+      "expected_output": "Uma pauta de due diligence cobrindo documentação do sistema, limitações conhecidas, subprocessadores quando aplicável, cláusulas contratuais como pauta de revisão jurídica, e classificação do risco do caso de uso, sem apresentar cláusulas prontas nem garantia de conformidade.",
+      "assertions": [
+        "Propõe pauta de due diligence, não apenas uma lista genérica de perguntas",
+        "Recomenda cláusulas de indenização e garantia de licenciamento como pauta de revisão jurídica, não como cláusula pronta",
+        "Reconhece que atendimento ao cliente pode envolver dados pessoais e sinaliza avaliação de privacidade",
+        "Não promete que a due diligence proposta garante conformidade ou elimina risco contratual",
+        "Não presume o setor ou o volume de dados do fornecedor sem informação"
+      ],
+      "files": []
+    },
+    {
+      "id": "high-impact-oversight-design",
+      "prompt": "Queremos usar um agente de IA para aprovar ou recusar automaticamente reembolsos de clientes até um determinado valor, sem revisão humana caso a caso. É seguro fazer isso?",
+      "expected_output": "Uma avaliação que classifica o caso como impacto potencialmente alto, calibra supervisão humana proporcional, recomenda trilha de auditoria e explicação dos fatores da decisão, e sinaliza a necessidade de validação jurídica sobre decisão automatizada que afeta consumidores.",
+      "assertions": [
+        "Não trata o caso como seguro sem qualquer supervisão apenas porque o valor por transação é pequeno",
+        "Recomenda um nível de supervisão humana proporcional, não ausência total de supervisão",
+        "Recomenda trilha de auditoria e capacidade de explicar a decisão",
+        "Sinaliza necessidade de validação jurídica sobre decisão automatizada",
+        "Não promete que o desenho proposto elimina risco de reclamação ou disputa"
+      ],
+      "files": []
+    },
+    {
+      "id": "prompt-injection-postmortem",
+      "prompt": "Um agente de IA conectado à nossa caixa de e-mail executou uma ação indevida depois de processar uma mensagem manipulada. Já contivemos o problema. Preciso de um checklist de pós-incidente.",
+      "expected_output": "Um checklist cobrindo revogação de credenciais e tokens, preservação de telemetria, comunicação a jurídico e segurança quando houver exposição de dados, atualização da classificação de risco e dos controles, e integração do aprendizado ao plano de resposta existente, sem declarar o incidente resolvido somente pela contenção técnica.",
+      "assertions": [
+        "Inclui preservação de telemetria e evidência para investigação da causa raiz",
+        "Recomenda revisão e atualização dos controles do sistema afetado, não apenas a contenção imediata",
+        "Sinaliza comunicação a jurídico ou segurança quando há indício de exposição de dados",
+        "Não trata o incidente como encerrado apenas porque a contenção técnica já ocorreu",
+        "Não presume que a causa foi manipulação de entrada sem que isso tenha sido informado ou investigado"
+      ],
+      "files": []
+    },
+    {
+      "id": "agent-release-gate",
+      "prompt": "Vamos liberar um agente que lê documentos enviados por terceiros e cria solicitações de reembolso no nosso sistema interno. Quais condições precisam estar atendidas antes de colocá-lo em produção?",
+      "expected_output": "Um gate de liberação proporcional que define finalidade e limites, avalia entradas não confiáveis e ações financeiras, exige testes e red teaming relevantes, restringe permissões e volume, define supervisão humana, critérios de aprovação, monitoramento e condição de pausa, sem afirmar que os testes tornam a operação livre de risco.",
+      "assertions": [
+        "Define limites explícitos de autonomia, permissões ou capacidade de ação do agente",
+        "Inclui avaliação de entradas não confiáveis e risco de manipulação de instrução",
+        "Exige evidências de testes ou red teaming proporcionais antes da liberação",
+        "Define responsável pela aprovação, monitoramento e condição de pausa",
+        "Não apresenta uma avaliação aprovada como garantia de segurança"
+      ],
+      "files": []
+    },
+    {
+      "id": "material-change-exception",
+      "prompt": "O fornecedor quer trocar o modelo do nosso assistente e ampliar o acesso dele a uma base de conhecimento com dados internos. A equipe pede uma exceção temporária para ativar a mudança imediatamente. Como decidir?",
+      "expected_output": "Uma decisão estruturada que trata a alteração como potencialmente material, identifica os elementos a reavaliar, exige evidências e aprovação proporcionais, registra uma exceção somente se houver justificativa, controles compensatórios, dono do risco, prazo e revisão, e prevê reversão ou suspensão.",
+      "assertions": [
+        "Não presume que troca de modelo e ampliação de acesso são mudanças inofensivas",
+        "Recomenda reavaliação de risco antes da nova liberação",
+        "Define requisitos de uma exceção temporária, incluindo prazo e dono que aceita o risco",
+        "Inclui controles compensatórios, monitoramento e possibilidade de reversão ou suspensão",
+        "Não transforma a exceção em aprovação permanente por padrão"
+      ],
+      "files": []
+    }
+  ]
+}

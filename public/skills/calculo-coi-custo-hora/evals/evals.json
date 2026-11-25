@@ -1,0 +1,65 @@
+{
+  "skill_name": "calculo-coi-custo-hora",
+  "evals": [
+    {
+      "id": "custo-hora-analista-pleno-brasil",
+      "prompt": "Quanto custa 1 hora de trabalho de um analista de marketing pleno no Brasil? Não tenho o salário exato dela.",
+      "expected_output": "A skill pede remuneração, regime, custos patronais e horas produtivas, ou pergunta se o utilizador aceita pesquisa de dado público atual e comparável. Não inventa salário, encargos nem custo-hora; se não encontrar fonte apropriada, declara N/D.",
+      "assertions": [
+        "Pede os dados necessários ou pergunta se pode pesquisar uma fonte pública atual",
+        "Não inventa remuneração, encargos patronais ou horas anuais",
+        "Marca N/D se não houver evidência atual e comparável",
+        "Não apresenta uma estimativa como custo real da pessoa"
+      ],
+      "files": []
+    },
+    {
+      "id": "coi-relatorio-manual-coordenador",
+      "prompt": "Cenário sintético de avaliação, sem relação com a Atomica ou clientes: um coordenador tem custo anual total informado pelo empregador de R$ 200.000 e 2.000 horas produtivas anuais. Gasta 3 horas por semana a montar um relatório manual. Qual é o custo de oportunidade anual?",
+      "expected_output": "A skill calcula o custo-hora a partir dos dados fornecidos (R$ 200.000 ÷ 2.000 horas = R$ 100/h) e aplica COI_anual = CustoHora × Tempo × Frequência (R$ 100 × 3h × 52 semanas = R$ 15.600/ano), mostrando cada etapa e identificando o cenário como sintético.",
+      "assertions": [
+        "Usa o custo patronal e as horas anuais fornecidos, sem aplicar multiplicadores externos",
+        "Mostra a conversão intermediária salário → custo patronal anual → custo-hora antes do COI",
+        "Aplica a fórmula COI_anual = CustoHora × Tempo_por_execução × Frequência_anual",
+        "Apresenta o resultado como custo de oportunidade anual, não como economia de caixa automática"
+      ],
+      "files": []
+    },
+    {
+      "id": "roi-automacao-com-custo-informado",
+      "prompt": "Cenário sintético de avaliação: usando custo-hora de R$ 100/h, a tarefa manual consome 3 horas por semana. Automatizar custa R$ 3.000/ano, ainda exige 30 minutos por semana de revisão humana e não foi informado um custo inicial de implantação. Vale a pena? Calcule o ROI anual e diga se já é possível calcular o payback.",
+      "expected_output": "A skill calcula o COI manual (R$ 100 × 3h × 52 = R$ 15.600/ano), o custo de revisão residual (R$ 100 × 0,5h × 52 = R$ 2.600/ano), o benefício bruto (R$ 13.000/ano), o benefício líquido após manutenção (R$ 10.000/ano) e o ROI anual sobre R$ 3.000 (≈333%). Explica que payback depende do investimento inicial e do benefício mensal validado, que não foram informados. Distingue ganho de capacidade/oportunidade de economia de caixa comprovada e identifica o cenário como sintético.",
+      "assertions": [
+        "Calcula o custo de revisão humana residual e o subtrai do COI antes de calcular o benefício",
+        "Aplica a fórmula de ROI = BenefícioLíquido / CustoAutomação e não inventa payback sem investimento inicial",
+        "Distingue explicitamente economia de caixa vs. capacidade liberada vs. custo de oportunidade no resultado",
+        "Não apresenta o ROI como economia de caixa garantida sem essa distinção"
+      ],
+      "files": []
+    },
+    {
+      "id": "borda-nivel-sem-dado-nd",
+      "prompt": "Quanto custa a hora de um estagiário de marketing em Portugal?",
+      "expected_output": "A skill solicita remuneração, custos patronais e horas produtivas anuais ou pergunta se o utilizador aceita uma estimativa pública. Se fizer pesquisa, identifica uma fonte atual e comparável com URL, período, geografia e limitações; sem evidência adequada, declara N/D em vez de inventar um valor ou usar outra função como substituto.",
+      "assertions": [
+        "Não presume que existe uma tabela salarial de referência",
+        "Não inventa um valor numérico para preencher a lacuna",
+        "Pede os dados necessários ou solicita autorização para pesquisar uma fonte pública atual e comparável",
+        "Não transfere um dado de outra função nem aplica um fator de ajuste implícito"
+      ],
+      "files": []
+    },
+    {
+      "id": "fora-de-escopo-business-case-completo",
+      "prompt": "Preciso montar o business case completo para o board sobre nossa iniciativa de IA em marketing, incluindo NPV, Balanced Scorecard e estágio de maturidade.",
+      "expected_output": "A skill reconhece que o pedido é um business case completo de IA (TCO, NPV/IRR, Balanced Scorecard, maturidade), fora do escopo desta skill, e direciona explicitamente para a skill `ai-roi-measurement`, oferecendo-se para calcular o custo-hora/COI como um dos insumos desse business case, se for útil.",
+      "assertions": [
+        "Reconhece que o pedido excede o escopo de custo-hora/COI",
+        "Direciona explicitamente para a skill ai-roi-measurement pelo nome",
+        "Não tenta produzir NPV, IRR ou Balanced Scorecard dentro desta skill",
+        "Oferece a conexão entre as duas skills (custo-hora/COI como insumo do business case maior) em vez de simplesmente recusar"
+      ],
+      "files": []
+    }
+  ]
+}

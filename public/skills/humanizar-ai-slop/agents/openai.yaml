@@ -1,0 +1,4 @@
+interface:
+  display_name: "/humanizar-ai-slop"
+  short_description: "Humaniza textos em pt-BR e pt-PT sem apagar a voz do autor."
+  default_prompt: "Use $humanizar-ai-slop para humanizar este texto, preservando fatos, voz e variante do português."

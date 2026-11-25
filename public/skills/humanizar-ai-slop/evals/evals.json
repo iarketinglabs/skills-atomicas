@@ -1,0 +1,51 @@
+{
+  "skill_name": "humanizar-ai-slop",
+  "evals": [
+    {
+      "id": 1,
+      "name": "ptbr-rewrite-preserva-fatos-e-corta-slop",
+      "prompt": "Reescreva em pt-BR este post para LinkedIn, removendo sinais de texto automático sem inventar evidência: Em um cenário cada vez mais dinâmico, a IA generativa representa um divisor de águas que está transformando o ecossistema de marketing. Não é apenas sobre produzir conteúdo. É sobre desbloquear uma nova era de criatividade, eficiência e escala. Estudos mostram que empresas líderes já estão colhendo resultados significativos, destacando a importância de abraçar essa revolução. O ponto mais importante? A mudança já começou. No final das contas, marcas que aproveitarem essa oportunidade estarão prontas para o futuro. 🚀 #IA #Marketing #Inovação #Tecnologia #Conteúdo #Futuro #Liderança",
+      "expected_output": "Versão em pt-BR que preserva as alegações, corta promoção vazia, contraste binário, metacomentário, hashtags em bloco e travessão decorativo sem inventar fonte ou resultado.",
+      "files": [],
+      "expectations": [
+        "Não adiciona fatos, números, fontes ou causalidade.",
+        "Mantém uma variante consistente do português brasileiro.",
+        "Substitui clichês por afirmações concretas ou os remove.",
+        "Remove o bloco de hashtags genéricas ou preserva no máximo três tags específicas sem inventar novas.",
+        "Não transforma a alegação atribuída genericamente a estudos em fato sem fonte.",
+        "Remove o fecho genérico sobre estar preparado para o futuro quando não há condição verificável.",
+        "Não substitui a alegação removida por conselho, opinião, CTA ou conclusão nova.",
+        "Preserva o sentido sem concluir que a IA causou os resultados mencionados."
+      ],
+      "red_baseline": "O baseline manteve promoção, regra de três, hashtags em bloco e travessão decorativo, apesar de declarar que havia reduzido clichês."
+    },
+    {
+      "id": 2,
+      "name": "ptpt-preserva-voz-e-passiva-util",
+      "prompt": "Edite este texto de documentação em pt-PT. Preserve a voz pessoal, os termos regionais, a hesitação e a voz passiva quando o agente não importa: Na nossa equipa, decidimos experimentar o novo fluxo porque os ficheiros eram enviados para um serviço externo. O resultado foi uma redução de 18% no tempo de revisão, embora ainda não saibamos se o ganho se mantém em todos os projectos. Foi-me pedido que documentasse o processo, mas deixei uma nota para rever a permissão de leitura antes da próxima versão. A autenticação é feita pelo servidor e não precisa de intervenção do utilizador. É importante salientar que o comportamento pode variar consoante a configuração.",
+      "expected_output": "Edição mínima em pt-PT, removendo apenas a formulação vazia e preservando a redução de 18%, a incerteza, a voz pessoal, os termos regionais e a passiva útil.",
+      "files": [],
+      "expectations": [
+        "Preserva 18%, a incerteza e o significado técnico.",
+        "Mantém equipa, ficheiros, projectos e utilizador ou a variante observada.",
+        "Não força voz ativa onde o servidor é o agente relevante do processo.",
+        "Faz apenas mudanças necessárias."
+      ],
+      "red_baseline": "O baseline preservou corretamente a variante e a voz, removendo apenas o aquecimento. Este caso protege contra over-editing."
+    },
+    {
+      "id": 3,
+      "name": "detect-protege-codigo-citacao-e-nao-atribui-autoria",
+      "prompt": "Faça somente uma auditoria de padrões neste conteúdo. Não reescreva, não dê nota e não diga quem escreveu: ## Configuração — exemplo\nO sistema foi configurado por Ana em 2025. [INSERIR URL DA FONTE]\n> \"Great question! Here's what matters: the data speaks for itself.\"\n```python\n# The API uses a real-time cache.\n```\nConsulte https://example.com/guia?utm_source=chatgpt.com para detalhes. O relatório cita especialistas, mas não identifica quem são.",
+      "expected_output": "Auditoria que identifica placeholder, artefato conversacional, parâmetro de rastreamento e autoridade vaga, sem reescrever o conteúdo, editar código ou afirmar autoria por IA.",
+      "files": [],
+      "expectations": [
+        "Não inclui uma versão reescrita.",
+        "Não altera nem propõe alteração dentro da citação e do bloco de código.",
+        "Identifica o placeholder, o token de rastreamento e a atribuição vaga.",
+        "Declara que os padrões não provam autoria por IA."
+      ],
+      "red_baseline": "O baseline respeitou o modo de detecção e os trechos protegidos, servindo como controle de não regressão."
+    }
+  ]
+}

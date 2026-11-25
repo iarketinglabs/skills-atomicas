@@ -1,0 +1,41 @@
+{
+  "skill_name": "youtube-content-strategy",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We sell cybersecurity software to mid-market companies. Build a 90-day YouTube strategy that creates qualified demand without depending on a large production team.",
+      "expected_output": "A B2B plan with explicit assumptions, a balanced portfolio, audience needs, viable content series, conversion paths, and a measurable experiment plan.",
+      "files": [],
+      "expectations": [
+        "Separates B2B audience needs from business outcomes",
+        "Includes Hero, Hub, or Help roles without prescribing a universal ratio",
+        "Defines evidence sources and an experiment table",
+        "Does not promise leads, views, or algorithmic distribution"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Audit a direct-to-consumer cooking channel. Its recipes receive clicks but viewers often leave in the first minute. Recommend changes to titles, thumbnails, scripting, Shorts, and measurement.",
+      "expected_output": "An evidence-aware audit that separates observations from hypotheses, proposes packaging and opening tests, and treats Shorts as a distinct format choice.",
+      "files": [],
+      "expectations": [
+        "Separates observed evidence, likely causes, and recommended tests",
+        "Uses the proof, value, structure, and stakes diagnostic for openings",
+        "Avoids universal retention or CTR thresholds",
+        "Includes at least one testable measurement decision"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create a YouTube strategy for my business. We need growth.",
+      "expected_output": "A provisional strategy framework that identifies missing inputs, labels assumptions, and asks focused follow-up questions instead of fabricating a channel plan.",
+      "files": [],
+      "expectations": [
+        "Lists material unknowns such as audience, offer, and conversion path",
+        "Labels any provisional recommendations as assumptions",
+        "Asks only focused questions that change the strategy",
+        "Does not fabricate analytics, competitors, or policy claims"
+      ]
+    }
+  ]
+}

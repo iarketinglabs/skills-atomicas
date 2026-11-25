@@ -1,0 +1,30 @@
+// Este cliente envia respostas finais a um endpoint de servidor.
+// Nunca coloque a service_role key, senha ou segredo neste ficheiro.
+// Configure um endpoint HTTPS de Edge Function depois de implementar e validar
+// os controles descritos em references/submission-endpoint-contract.md.
+const FORM_SUBMISSION_ENDPOINT = "{{FORM_SUBMISSION_ENDPOINT}}";
+
+async function submitResponse(payload) {
+  if (!FORM_SUBMISSION_ENDPOINT.startsWith("https://")) {
+    throw new Error("Configure o endpoint HTTPS de envio antes de publicar.");
+  }
+
+  const response = await fetch(FORM_SUBMISSION_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+    credentials: "omit",
+    cache: "no-store",
+    redirect: "error",
+    referrerPolicy: "no-referrer"
+  });
+
+  if (!response.ok) {
+    throw new Error("O endpoint não aceitou a resposta.");
+  }
+
+  const result = await response.json().catch(function () { return null; });
+  if (!result || result.ok !== true) {
+    throw new Error("O endpoint devolveu uma confirmação inválida.");
+  }
+}

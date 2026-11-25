@@ -1,0 +1,17 @@
+{
+  "id": "case-id",
+  "task": "Intenção ou tarefa representativa",
+  "input": "Entrada minimizada, anonimizada ou referência segura à entrada",
+  "expected_behavior": "Comportamento observável esperado, incluindo limites e fallback",
+  "rubric": [
+    {
+      "criterion": "Critério observável",
+      "pass_condition": "Condição concreta para passar",
+      "severity_if_failed": "low | medium | high | critical"
+    }
+  ],
+  "slices": ["intenção", "idioma", "risco", "fonte ou contexto"],
+  "risk_level": "low | medium | high",
+  "source_or_owner": "Origem da expectativa ou responsável pela validação",
+  "notes": "Limitações, desacordo entre revisores ou dados necessários"
+}

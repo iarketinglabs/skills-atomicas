@@ -1,0 +1,65 @@
+{
+  "skill_name": "sistemas-agenticos-dados",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Preciso de um pipeline para eventos de compra de duas fontes. O dashboard deve actualizar em menos de uma hora e manter dois anos de histórico. Propõe uma arquitectura simples.",
+      "expected_output": "Uma proposta orientada pelos requisitos, com batch/CDC/streaming comparados pela latência necessária, separação operacional/analítica quando justificada, modelo e qualidade definidos, e trade-offs sem impor uma stack.",
+      "files": [],
+      "expectations": [
+        "Confirma ou explicita premissas sobre volume, semântica de eventos, frescura e consumidores antes de recomendar infraestrutura.",
+        "Não assume que streaming é necessário para uma janela de menos de uma hora.",
+        "Define grão/chaves, deduplicação, eventos atrasados e uma estratégia de backfill/reconciliação.",
+        "Inclui verificações observáveis de qualidade, ownership e custo/recuperação."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Os testes de snapshot do meu modelo incremental passam, mas eventos duplicados e atrasados mudam os resultados quando reprocesso o mês anterior. Como corrigir o desenho?",
+      "expected_output": "Diagnóstico temporal que trata idempotência, chave de deduplicação, event time versus ingest time, watermark/janela de atraso, correções, replay e reconciliação como invariantes verificáveis.",
+      "files": [],
+      "expectations": [
+        "Não considera o teste de snapshot prova suficiente de correcção temporal.",
+        "Distingue tempo do evento de tempo de ingestão e define a semântica de eventos fora de ordem.",
+        "Propõe deduplicação e replay/backfill reprodutíveis sem dupla contagem.",
+        "Define verificação independente de saída após reprocessamento."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Quero guardar 100 milhões de embeddings no PostgreSQL com pgvector e usar isso para todos os clientes. Posso assumir que RLS resolve o isolamento e que o índice vectorial mantém o recall?",
+      "expected_output": "Resposta condicional que pede workload, filtros e requisitos de recall/latência, separa autorização de desempenho, propõe benchmark representativo e considera armazenamento especializado se necessário.",
+      "files": [],
+      "expectations": [
+        "Não afirma que PostgreSQL/pgvector é universalmente adequado ou inadequado com base apenas na contagem de vectores.",
+        "Identifica selectividade dos filtros, concorrência, actualização, recall e latência como variáveis de decisão.",
+        "Exige testes de acesso entre tenants e não trata RLS como garantia de recall ou desempenho.",
+        "Recomenda verificar documentação/versionamento e medir alternativas com o mesmo conjunto de consultas."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Numa tabela Supabase exposta pela API, um colega quer desligar RLS para corrigir erros e colocar a service-role key no frontend. Dá-me os passos seguros para diagnosticar.",
+      "expected_output": "Diagnóstico mantém RLS e credenciais privilegiadas como fronteiras, separa grants/exposição de políticas e sugere testar identidades e a documentação actual antes de alterar o sistema.",
+      "files": [],
+      "expectations": [
+        "Rejeita expor service-role/secret key no frontend e não recomenda desligar RLS como correcção padrão.",
+        "Distingue exposição/grants à Data API de autorização RLS por linha.",
+        "Pede revisão da identidade, políticas por operação, tenant, views/funções e ambiente de teste.",
+        "Aponta para documentação oficial e changelog actual sem fixar comandos ou limites desactualizáveis."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Uma análise observacional mostra que a nova experiência aumentou a conversão em 12%. Escreve a conclusão como efeito causal para a direcção.",
+      "expected_output": "A skill recusa a inferência causal não sustentada, verifica desenho, população, métricas, janela, selecção e incerteza, e oferece linguagem descritiva ou pergunta pela randomização/identificação.",
+      "files": [],
+      "expectations": [
+        "Não apresenta associação observacional como efeito causal confirmado.",
+        "Solicita ou explicita desenho, unidade, comparador, janela, população e incerteza relevantes.",
+        "Distingue relevância prática de significância estatística.",
+        "Oferece uma formulação proporcional à evidência disponível."
+      ]
+    }
+  ]
+}
