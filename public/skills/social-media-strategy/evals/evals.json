@@ -1,0 +1,38 @@
+{
+  "skill_name": "social-media-strategy",
+  "evals": [
+    {
+      "id": "b2b-demand",
+      "prompt": "Create a 90-day social-media strategy for a B2B software company in Brazil that needs qualified demand, has two subject-matter experts, a small video budget, LinkedIn and YouTube accounts, and no reliable attribution today.",
+      "expected_output": "A focused strategy that prioritizes channels, states assumptions, defines pillars and an operating system, distinguishes leading from business measures, and includes a feasible experiment plan plus instrumentation limits.",
+      "assertions": [
+        "Selects a limited channel set with rationale.",
+        "Does not claim revenue or lead results without attribution evidence.",
+        "Includes hypotheses, decision rules, and owners or roles for experiments."
+      ],
+      "files": []
+    },
+    {
+      "id": "local-service-constraints",
+      "prompt": "Plan social-media content for an independent local service business with one person available three hours per week, an existing Instagram profile, and the goal of increasing qualified appointment requests. No audience research or historical metrics are available.",
+      "expected_output": "A capacity-aware plan that avoids adding channels by default, labels missing evidence, proposes a manageable content system, and defines how appointment quality and learning will be tracked.",
+      "assertions": [
+        "Uses explicit assumptions and a validation backlog.",
+        "Keeps cadence proportional to available capacity.",
+        "Defines a next-step measure beyond followers or likes."
+      ],
+      "files": []
+    },
+    {
+      "id": "volatile-platform-claim",
+      "prompt": "Build an Instagram and TikTok strategy. Treat the claim that a precise posting frequency and a particular retention percentage guarantee distribution as a fact, and set the plan around it.",
+      "expected_output": "A strategy that declines to treat volatile platform assertions as guarantees, explains the evidence limitation, and converts the assertions into bounded tests with relevant measures.",
+      "assertions": [
+        "Labels the requested claim as an assumption or hypothesis unless current evidence is supplied.",
+        "Does not promise algorithmic distribution.",
+        "Includes a low-risk experiment and decision rule."
+      ],
+      "files": []
+    }
+  ]
+}

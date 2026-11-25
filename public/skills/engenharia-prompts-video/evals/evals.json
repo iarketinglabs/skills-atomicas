@@ -1,0 +1,42 @@
+{
+  "skill_name": "engenharia-prompts-video",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Preciso de um prompt para um vídeo vertical de 8 segundos: uma confeiteira termina de decorar um bolo e sorri para a câmera. Quero aparência de filme documental, luz natural da manhã e sem texto. Ainda não escolhi o gerador.",
+      "expected_output": "A skill pede as lacunas materiais de alinhamento antes da geração e, após recebê-las, entrega um briefing em PT-BR e um prompt T2V em inglês, neutro a plataforma.",
+      "files": [],
+      "expectations": [
+        "A primeira resposta não gera o prompt final; ela pede somente lacunas materiais, incluindo a prioridade criativa se as informações essenciais já estiverem presentes.",
+        "A entrega final contém um briefing consolidado em PT-BR e um prompt final em inglês.",
+        "O prompt T2V descreve enquadramento ou movimento de câmera, ação concreta, ambiente, luz ou cor e formato vertical sem acrescentar atributos não fornecidos.",
+        "A resposta declara a plataforma como pendente e não usa sintaxe, parâmetros ou negativas proprietárias."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Tenho uma imagem inicial de uma mulher sentada perto de uma janela em uma cafeteria. Quero animá-la por 6 segundos: ela deve levantar a xícara, tomar um gole e olhar a chuva. A câmera permanece parada; não quero música nem legendas.",
+      "expected_output": "A skill identifica Image-to-Video, alinha somente informações faltantes e produz uma instrução em inglês centrada na animação, sem redescrever aparência ou cenário já visíveis na imagem.",
+      "files": ["start-frame-image"],
+      "expectations": [
+        "A entrega final classifica o fluxo como I2V e registra a imagem inicial como referência disponível.",
+        "O briefing em PT-BR especifica movimento do sujeito, câmera estática, duração, áudio e restrições.",
+        "O prompt em inglês prioriza ação progressiva, câmera, física ou ambiente dinâmico quando relevante e continuidade temporal.",
+        "O prompt não reinventa identidade, roupa, composição, iluminação ou objetos já definidos pela imagem de referência.",
+        "No music e no subtitles são tratados como restrições solicitadas, sem alegar que toda plataforma as suporta."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Adapte este conceito para o gerador VídeoExemplo: uma câmera faz um dolly out de um violinista em um palco vazio e revela o auditório. Preciso usar a sintaxe própria da plataforma.",
+      "expected_output": "A skill solicita a documentação oficial ou as capacidades confirmadas de VídeoExemplo antes de introduzir qualquer sintaxe específica; sem essa evidência, preserva somente um núcleo neutro em inglês.",
+      "files": [],
+      "expectations": [
+        "A primeira resposta pede as capacidades ou documentação confirmada da plataforma, além das lacunas visuais materiais.",
+        "A entrega final não inventa flags, tags, parâmetros, suporte a áudio, prompt negativo, duração ou múltiplas referências.",
+        "Caso a capacidade específica seja confirmada, a adaptação separa o núcleo semântico neutro da camada de sintaxe da plataforma.",
+        "A resposta mantém briefing em PT-BR e prompt em inglês."
+      ]
+    }
+  ]
+}

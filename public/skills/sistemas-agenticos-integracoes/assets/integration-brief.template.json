@@ -1,0 +1,58 @@
+{
+  "title": "",
+  "objective": "",
+  "scope": {
+    "in_scope": [],
+    "out_of_scope": []
+  },
+  "owner": "",
+  "participants": [
+    {
+      "name": "",
+      "role": "",
+      "responsibility": ""
+    }
+  ],
+  "flows": [
+    {
+      "name": "",
+      "source": "",
+      "destination": "",
+      "direction": "",
+      "trigger": "",
+      "pattern": "undecided",
+      "data_and_semantics": "",
+      "freshness": "",
+      "expected_volume": "",
+      "ordering": "",
+      "deduplication": "",
+      "idempotency": "",
+      "failure_handling": "",
+      "reconciliation": ""
+    }
+  ],
+  "contracts": {
+    "format_and_version": "",
+    "compatibility_policy": "",
+    "contract_owner": ""
+  },
+  "security": {
+    "data_classification": "",
+    "identity_and_authentication": "",
+    "authorization": "",
+    "secret_handling": "",
+    "retention_and_deletion": ""
+  },
+  "operations": {
+    "support_owner": "",
+    "signals_and_alerts": "",
+    "correlation": "",
+    "recovery_and_replay": ""
+  },
+  "rollout": {
+    "acceptance_criteria": [],
+    "migration": "",
+    "rollback_or_recovery": ""
+  },
+  "open_questions": []
+}

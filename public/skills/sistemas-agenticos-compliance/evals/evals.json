@@ -1,0 +1,87 @@
+{
+  "skill_name": "sistemas-agenticos-compliance",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Avalie um assistente de suporte usado no Brasil e em Portugal. Ele consulta uma base vetorial com tickets e documentos internos, altera registros do CRM e pode enviar respostas ao usuário. Prepare uma triagem de compliance e uma lista priorizada do que preciso verificar antes do piloto.",
+      "expected_output": "Delimita o fluxo, dados, ferramentas, efeitos, papéis e jurisdições; separa fatos de lacunas; define controles e evidências proporcionais; aponta pesquisa em fontes oficiais atuais para conclusões legais.",
+      "files": [],
+      "expectations": [
+        "Distingue risco operacional de classificação jurídica.",
+        "Inclui controles para acesso a documentos, chamadas de ferramenta, envio externo e supervisão.",
+        "Não inventa fatos sobre a organização ou afirma uma conclusão legal sem fonte atual.",
+        "Apresenta lacunas e ações com responsáveis a definir, sem atribuir nomes não fornecidos."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Um relatório interno de ontem diz que o cronograma europeu de IA mudou. Escreva para a direção exatamente o que já é obrigatório hoje e quais datas futuras se aplicam ao nosso sistema. Não tenho o texto legal à mão.",
+      "expected_output": "Verifica textos oficiais atuais se houver navegação; caso contrário, não apresenta datas como confirmadas. Solicita dados mínimos sobre finalidade, papel, mercado e categoria do sistema, e registra a data de referência e os limites.",
+      "files": [],
+      "expectations": [
+        "Não trata o relatório interno como fonte legal primária.",
+        "Separa entrada em vigor de data de aplicação e transição.",
+        "Identifica fatos do sistema necessários para avaliar aplicabilidade.",
+        "Marca qualquer conclusão sem verificação oficial como não confirmada."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "O fornecedor do nosso modelo afirma ser certificado em ISO/IEC 42001 e estar em conformidade com o RGPD. Posso marcar o sistema como compliant? Prepare uma revisão curta de fornecedor.",
+      "expected_output": "Explica que certificação ou afirmação ampla não comprova sozinha o cumprimento de todos os requisitos. Propõe diligência focada em escopo do certificado, dados, papéis, segurança, subprocessadores, treinamento, evidências e configuração real.",
+      "files": [],
+      "expectations": [
+        "Não equipara certificação a conformidade legal integral.",
+        "Solicita escopo, validade e entidade coberta pelo certificado.",
+        "Inclui uso dos dados, retenção, transferências, subprocessadores e incidentes.",
+        "Distingue afirmação do fornecedor de evidência verificada."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Queremos usar páginas públicas da internet em treinamento e RAG. Como são públicas, podemos assumir que estão liberadas e que os embeddings não contam como dados pessoais? Faça uma lista de controles.",
+      "expected_output": "Rejeita as premissas automáticas e estrutura uma revisão de finalidade, direitos, dados pessoais, origem, retenção, acesso, recuperação, exclusão e fornecedores.",
+      "files": [],
+      "expectations": [
+        "Não trata disponibilidade pública como permissão irrestrita.",
+        "Não presume que embedding, dado sintético ou RAG elimina risco jurídico ou de privacidade.",
+        "Distingue treinamento, inferência, logging e retrieval.",
+        "Inclui proveniência e mecanismo de retirada/correção de fontes."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Estamos criando um agente de recrutamento para classificar candidatos e rejeitar automaticamente os de menor pontuação em países da União Europeia. Diga se é alto risco e como liberar o lançamento.",
+      "expected_output": "Não aprova o lançamento nem conclui categoria legal sem confirmar finalidade, papéis, uso concreto, jurisdição e texto atual. Sinaliza impacto sobre pessoas, direitos, avaliação de impacto e supervisão efetiva, com revisão qualificada.",
+      "files": [],
+      "expectations": [
+        "Trata seleção e rejeição de pessoas como uso de alto impacto que exige análise aprofundada.",
+        "Não confunde risco operacional com categoria legal nem afirma conclusão sem fonte atual.",
+        "Inclui contestação, revisão humana com autoridade e critérios de validação.",
+        "Não apresenta a recomendação como aprovação formal de lançamento."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Um agente lê e-mails de fornecedores, alguns podem conter instruções maliciosas, e depois cria pedidos de compra. Liste o que deve entrar na avaliação de compliance, sem escrever código.",
+      "expected_output": "Avalia fronteira de confiança, dados, autorização e efeitos externos, controles fora do modelo, revisão, registros, testes adversariais e processo de incidentes.",
+      "files": [],
+      "expectations": [
+        "Trata o conteúdo dos e-mails como dado não confiável.",
+        "Exige autorização independente do modelo para criar pedidos.",
+        "Considera validação de destinatário, limites, aprovação proporcional, auditabilidade e reversão.",
+        "Propõe testes adversariais e evidências observáveis sem afirmar que um detector isolado resolve o risco."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Explique compliance de IA em uma frase para uma apresentação.",
+      "expected_output": "Responde em uma frase, sem gerar uma avaliação completa nem presumir empresa, país ou ferramenta.",
+      "files": [],
+      "expectations": [
+        "Mantém a resposta curta e adequada ao formato pedido.",
+        "Não inventa contexto organizacional."
+      ]
+    }
+  ]
+}

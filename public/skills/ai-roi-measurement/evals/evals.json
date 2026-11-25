@@ -1,0 +1,65 @@
+{
+  "skill_name": "ai-roi-measurement",
+  "evals": [
+    {
+      "id": "board-proof-no-baseline",
+      "prompt": "O board pediu para comprovar o ROI de um piloto de IA que já roda há três meses em uma área de atendimento. Ninguém definiu uma linha de base antes do piloto começar, e não há grupo de comparação. A liderança quer um número de ROI para a próxima reunião. Produza a mensuração.",
+      "expected_output": "Uma mensuração que não inventa uma linha de base retroativa nem um percentual de ROI, declara a limitação de atribuição, propõe uma reconstrução razoável de baseline com premissas explícitas e separa indicadores de adoção/produtividade dos de retorno financeiro realizado.",
+      "assertions": [
+        "Não apresenta um número de ROI como fato definitivo sem baseline ou comparação confiável.",
+        "Declara explicitamente a limitação de atribuição e a diferença entre correlação e causalidade.",
+        "Propõe um método viável de reconstrução de linha de base ou de comparação daqui para frente.",
+        "Distingue indicadores de adoção/produtividade de indicadores de valor financeiro realizado."
+      ],
+      "files": []
+    },
+    {
+      "id": "ex-ante-business-case",
+      "prompt": "Uma equipe quer aprovação orçamentária para uma iniciativa de IA generativa em marketing que ainda não começou. Não há piloto anterior. Monte o business case para a decisão de investimento.",
+      "expected_output": "Um business case ex-ante com TCO detalhado, benefícios tangíveis e intangíveis projetados com premissas declaradas, cálculo financeiro apropriado ao horizonte, análise de cenário e plano de monitoramento pós-implementação, sem prometer um percentual de retorno como garantia.",
+      "assertions": [
+        "Inclui TCO com categorias além de licenciamento, como consumo variável de API/inferência e capacitação.",
+        "Apresenta o cálculo financeiro com premissas e taxas explícitas, não como número fechado sem contexto.",
+        "Inclui análise de cenário (otimista/neutro/pessimista) para as premissas mais sensíveis.",
+        "Não promete um percentual de ROI ou prazo de retorno como garantia."
+      ],
+      "files": []
+    },
+    {
+      "id": "no-visible-return-yet",
+      "prompt": "Uma iniciativa de IA está em operação há seis meses e ainda não mostrou retorno financeiro positivo. Parte da liderança quer cancelar o projeto agora. Ajude a avaliar a situação.",
+      "expected_output": "Uma avaliação que situa a iniciativa em um estágio de maturidade, considera a possibilidade de efeito de curva em J antes de recomendar cancelamento, verifica se a capacidade liberada foi de fato realocada, e distingue essa situação de um sinal real de que algo estrutural não está funcionando.",
+      "assertions": [
+        "Não recomenda continuar ou cancelar apenas com base no tempo decorrido, sem examinar estágio de maturidade e evidência.",
+        "Menciona o efeito de curva em J ou equivalente como possível explicação para resultado líquido negativo inicial.",
+        "Verifica se a capacidade liberada foi realocada de forma deliberada (rota defensiva ou ofensiva) antes de concluir se houve ganho real.",
+        "Distingue explicitamente entre 'ainda não é o momento de ver retorno' e 'há evidência de problema estrutural'."
+      ],
+      "files": []
+    },
+    {
+      "id": "marketing-layered-metrics-no-sector",
+      "prompt": "Preciso de um painel de métricas para provar o valor de um conjunto de agentes de IA usados em marketing. Não vou informar o setor nem o cliente.",
+      "expected_output": "Um painel organizado pelas camadas de valor em marketing (campanha, pipeline, resultado de negócio, produtividade, governança), sem presumir setor ou inventar benchmark de mercado como meta, e com aviso sobre triangulação e causalidade.",
+      "assertions": [
+        "Não presume setor, país ou cliente ao propor o painel.",
+        "Organiza os indicadores em mais de uma camada, da saída direta ao resultado de negócio, em vez de um único índice.",
+        "Não apresenta percentuais de benchmark de mercado como meta ou resultado esperado da iniciativa.",
+        "Recomenda triangulação (mais de uma fonte de evidência) antes de atribuir causalidade a um ganho reportado."
+      ],
+      "files": []
+    },
+    {
+      "id": "named-framework-as-vocabulary",
+      "prompt": "A diretoria pediu para usarmos o Forrester TEI para justificar o investimento em IA, porque viram um estudo de um grande fornecedor de nuvem com ROI de mais de 300%.",
+      "expected_output": "Uma resposta que trata o TEI como vocabulário/estrutura de análise útil, explica que o estudo citado é um exemplo ilustrativo potencialmente enviesado por ser patrocinado pelo próprio fornecedor, e conduz para um cálculo próprio com dados e premissas da organização em vez de adotar o percentual do estudo como meta.",
+      "assertions": [
+        "Não trata o framework nomeado como certificação obrigatória ou selo de validade.",
+        "Sinaliza que o estudo citado, por ser patrocinado por um fornecedor, deve ser tratado como ilustrativo e potencialmente enviesado.",
+        "Não adota o percentual do estudo externo como meta ou expectativa de retorno da iniciativa em avaliação.",
+        "Redireciona para um cálculo financeiro próprio, com dados e premissas da organização em questão."
+      ],
+      "files": []
+    }
+  ]
+}

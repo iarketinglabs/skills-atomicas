@@ -1,0 +1,41 @@
+{
+  "skill_name": "precificacao-servicos-produtos-ia",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Uma empresa de consultoria de processos (sem componente de IA) cobra hoje por hora e quer parar de fazer isso. O trabalho tem escopo bem definido para o primeiro projeto de um cliente novo: mapear e redesenhar três processos operacionais em oito semanas. Recomende um modelo de cobrança e uma estrutura de proposta.",
+      "expected_output": "Uma recomendação que estima o valor econômico para o cliente (EVC) a partir da melhor alternativa disponível, recomenda projeto fechado como primeiro passo (com outcome-based como evolução futura condicionada a linha de base de métricas), apresenta três opções de proposta com âncora alta, e não menciona IA, agentes ou qualquer benchmark do módulo de IA em nenhum momento.",
+      "files": [],
+      "expectations": [
+        "Recomenda projeto fechado (fixed fee) como modelo de entrada, não outcome-based imediato.",
+        "Explica por que billable hour penaliza a eficiência do fornecedor e limita a receita.",
+        "Apresenta três opções de proposta com âncora alta.",
+        "Não cita nenhum número ou referência do módulo de benchmarks de IA."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Um produto B2C2B (SaaS de gestão de projetos, sem IA) cobra hoje 100% per-seat e está avaliando migrar para usage-based. Avalie o trade-off e recomende um caminho.",
+      "expected_output": "Uma avaliação que não recomenda a migração cegamente: expõe o trade-off entre previsibilidade orçamentária do comprador corporativo (a favor de per-seat/híbrido) e captura de expansão de uso (a favor de usage-based), recomenda um modelo híbrido como caminho mais defensável na ausência de dados que justifiquem a migração total, e exige infraestrutura de observabilidade/faturamento antes de avançar.",
+      "files": [],
+      "expectations": [
+        "Não recomenda usage-based puro sem qualificar o trade-off de previsibilidade orçamentária do comprador.",
+        "Menciona modelo híbrido como alternativa a considerar.",
+        "Aponta a necessidade de infraestrutura de faturamento/observabilidade antes de migrar.",
+        "Não cita benchmarks do módulo de IA, já que o produto não tem componente de IA."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Uma consultoria de IA fictícia precisa estimar o preço para desenvolver um sistema de três agentes integrados para um cliente enterprise que exige auditoria contínua de inputs e outputs. Qual método deve usar para chegar a uma proposta defensável?",
+      "expected_output": "Uma resposta que primeiro delimita escopo, esforço, integrações, riscos, custos operacionais, unidade de cobrança e geografia. Se usar referências externas, exige fontes atuais e comparáveis com URL, data, escopo e limitações; sem dados adequados, declara N/D e calcula cenários com custos e valor do cliente, sem inventar nem repetir uma faixa de mercado fixa.",
+      "files": [],
+      "expectations": [
+        "Delimita escopo, esforço, custos e unidade de cobrança antes de estimar preço.",
+        "Exige fonte, data, geografia, escopo e limitações para toda referência externa.",
+        "Declara N/D quando não há comparáveis verificáveis, em vez de inventar uma faixa.",
+        "Usa custos próprios e EVC para montar cenários condicionais."
+      ]
+    }
+  ]
+}

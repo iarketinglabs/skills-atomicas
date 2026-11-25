@@ -1,0 +1,77 @@
+{
+  "name": "eventos-de-pedidos",
+  "version": "1.0.0",
+  "purpose": "Exemplo sintético para análise de volume e acompanhamento de processamento de pedidos.",
+  "owner": "equipa-de-dados",
+  "consumers": ["painel-operacional", "relatorio-mensal"],
+  "sources": [
+    {
+      "name": "servico-de-pedidos",
+      "authority": "fonte de autoridade para o estado do pedido",
+      "extraction_method": "captura de alterações",
+      "source_version": "v1"
+    }
+  ],
+  "grain": "one record per order-state change",
+  "keys": ["id_evento"],
+  "event_time_field": "ocorrido_em",
+  "ingestion_time_field": "recebido_em",
+  "update_model": "append_only",
+  "schema": [
+    {
+      "name": "id_evento",
+      "type": "string",
+      "nullable": false,
+      "description": "Identificador estável deste evento de mudança de estado.",
+      "classification": "interno",
+      "constraints": ["único"]
+    },
+    {
+      "name": "id_pedido",
+      "type": "string",
+      "nullable": false,
+      "description": "Identificador estável do pedido.",
+      "classification": "interno",
+      "constraints": ["não vazio"]
+    },
+    {
+      "name": "ocorrido_em",
+      "type": "timestamp com fuso horário",
+      "nullable": false,
+      "description": "Instante em que a fonte registou a mudança de estado.",
+      "classification": "interno",
+      "constraints": ["normalizar o fuso horário segundo o contrato"]
+    },
+    {
+      "name": "recebido_em",
+      "type": "timestamp com fuso horário",
+      "nullable": false,
+      "description": "Instante em que o pipeline recebeu o evento.",
+      "classification": "interno",
+      "constraints": ["normalizar o fuso horário segundo o contrato"]
+    }
+  ],
+  "freshness": {
+    "target": "Definir com os consumidores; este exemplo não estabelece um valor por defeito.",
+    "measurement": "Diferença entre instante de recepção e instante de ocorrência, conforme o contrato.",
+    "on_breach": "Alertar o proprietário do produto e preservar a partição afectada para diagnóstico."
+  },
+  "quality_checks": [
+    {
+      "name": "unicidade de id_evento",
+      "severity": "critical",
+      "threshold": "Definir após baseline e avaliação de risco; não copiar como valor por defeito.",
+      "failure_action": "Quarentenar o lote afectado e alertar o proprietário.",
+      "owner": "equipa-de-dados"
+    }
+  ],
+  "privacy": {
+    "classification": "interno (exemplo)",
+    "retention": "Reter segundo a política aprovada para o produto.",
+    "access_policy": "Conceder acesso apenas aos consumidores aprovados.",
+    "deletion_behavior": "Propagar correcções da fonte e pedidos de eliminação aprovados.",
+    "jurisdiction": "Confirmar para o ambiente de implantação."
+  },
+  "lineage": ["servico-de-pedidos", "eventos-de-pedidos-v1", "painel-operacional"],
+  "compatibility_policy": "Campos opcionais aditivos podem ser compatíveis; mudanças de chave, grão ou significado exigem versão e migração de consumidores."
+}

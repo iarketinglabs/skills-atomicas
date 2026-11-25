@@ -1,0 +1,44 @@
+{
+  "skill_name": "atomica-key-visuals",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crie um key visual para um post do LinkedIn sobre 'As 5 Tendências de IA para 2026'. Quero no estilo Átomica, com headline impactante. O post é para líderes de tecnologia.",
+      "expected_output": "Pacote completo de key visual no estilo Átomica: conceito artístico Atompunk/retro-futurismo anos 50, headline de pulp magazine com palavra-chave destacada, paleta usando apenas cores da marca Átomica (Cyan #63bec2, Yellow #f7c528, Red #b8302f, Cream #f7efd9, Gunmetal #1b1b1b), tipografia hierárquica com fonte pesada para título e limpa para corpo, prompt de geração estruturado em Style Block + Content Block.",
+      "files": [],
+      "expectations": [
+        "O output inclui Conceito Artístico no estilo Atompunk/Sci-Fi Retro-futurismo",
+        "O output inclui Headline Estruturado com palavra-chave destacada e efeito tipográfico definido",
+        "A paleta de cores usa apenas cores da marca Átomica (Cyan, Yellow, Red, Cream, Gunmetal)",
+        "O prompt de geração inclui STYLE BLOCK e CONTENT BLOCK separados",
+        "O prompt menciona elementos do universo Átomica (foguetes, átomos, antenas, TVs de tubo, etc.)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Preciso de um banner para o site da minha empresa no estilo retro-futurista anos 50. O tema é 'Inovação sem Limites'. Use a estética da Átomica com fundo Amarelo Solar e texto em Gunmetal.",
+      "expected_output": "Key visual completo com fundo Amarelo-500 (#f7c528), headline 'INOVAÇÃO SEM LIMITES' com efeito tipográfico especial (offset shadow, outline ou 3D), composição no estilo Googie com curvas longas e elementos visuais do universo Átomica, paleta limitada às cores da marca, prompt pronto para geração.",
+      "files": [],
+      "expectations": [
+        "O headline 'Inovação sem Limites' ou variação está presente e estruturado",
+        "A cor de fundo do headline ou do key visual é Amarelo-500 (#f7c528)",
+        "O efeito tipográfico do headline está especificado (offset shadow, outline, perspectiva 3D ou vintage distress)",
+        "A tipografia segue a hierarquia Átomica com fonte pesada para headline e limpa para corpo",
+        "O prompt de geração inclui 'thin lines, soft brush painting' e 'pulp magazine texture'"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Gere um prompt de imagem para um post sobre 'A Revolução dos Robôs Industriais' no estilo pulp magazine dos anos 50, com referências a Norman Rockwell e tecnologia soviética analógica.",
+      "expected_output": "Prompt de geração de imagem detalhado no estilo Átomica, com ilustração hand made, thin lines e soft brush painting, elementos de analog soviet technology, mid-century modern design e Googie elements, headline no estilo sci-fi poster dos anos 50, paleta Átomica, textura de pulp magazine.",
+      "files": [],
+      "expectations": [
+        "O prompt inclui referências a Norman Rockwell advertising poster e vintage pulp magazine cover",
+        "O prompt menciona 'analog soviet technology' e 'mid-century modern design'",
+        "O prompt menciona 'Googie elements' e 'tailfin car shapes'",
+        "O prompt inclui a paleta de cores específica da Átomica com hex codes",
+        "O prompt descreve a técnica artística como 'thin lines, soft brush painting'"
+      ]
+    }
+  ]
+}

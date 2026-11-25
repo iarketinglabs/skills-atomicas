@@ -1,0 +1,79 @@
+{
+  "skill_name": "sistemas-agenticos-git",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Quero publicar apenas docs/auth-flow.md na branch feat/auth-doc do remote origin. Analisa o estado sintético em evals/files/dirty-worktree.md e dá os próximos passos seguros. Não afirmes que executaste comandos.",
+      "expected_output": "Plano que preserva as alterações alheias, prepara somente o ficheiro pedido, inspeciona o diff staged e verifica os segredos/checks. Identifica que a branch já tem um commit local adiantado e não recomenda push até confirmar o seu conteúdo e escopo, pois o push também o publicaria.",
+      "files": [
+        "evals/files/dirty-worktree.md"
+      ],
+      "expectations": [
+        "Reconhece que há ficheiros staged, unstaged e não rastreados fora do pedido.",
+        "Recomenda staging explícito apenas de docs/auth-flow.md.",
+        "Inspeciona o commit local adiantado antes de qualquer push.",
+        "Não sugere git add . ou git add -A.",
+        "Não afirma que publicou ou verificou o repositório."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "A CI não consegue testar PRs de forks porque precisa de um secret privado. Revê evals/files/fork-workflow.md e propõe uma correção segura, indicando o que não deve ser executado com privilégios.",
+      "expected_output": "Identifica que checkout e execução do código de um fork num workflow pull_request_target privilegiado expõe secrets e token de escrita; recomenda validação sem segredos e privilégio mínimo, separando-a de ações confiáveis de publicação/metadados.",
+      "files": [
+        "evals/files/fork-workflow.md"
+      ],
+      "expectations": [
+        "Identifica pull_request_target como contexto privilegiado.",
+        "Diz para não fazer checkout e executar o head do fork nesse job.",
+        "Propõe uma alternativa com validação do código sem secrets nem permissões de escrita.",
+        "Não promete que o mascaramento de logs protege credenciais.",
+        "Recomenda confirmar permissões e comportamento na documentação/configuração atual."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Um agente terminou o PR em evals/files/agent-pr.md. A descrição diz que todos os testes passaram. Devo aprová-lo e fazer merge agora? Faça uma revisão inicial baseada apenas na evidência anexada.",
+      "expected_output": "Não aprova com base no resumo: identifica que os checks verdes correspondem a um SHA antigo, que o diff inclui workflow e dependência, e que faltam critérios de aceitação e revisão de owner. Pede verificação do SHA atual, revisão de risco e checks exigidos antes de aprovar; trata o tamanho do diff como sinal de revisão, não como limite automático.",
+      "files": [
+        "evals/files/agent-pr.md"
+      ],
+      "expectations": [
+        "Distingue o SHA do PR atual do SHA dos checks reportados.",
+        "Aponta alterações de workflow/dependência como superfície de risco.",
+        "Não toma a afirmação do agente como prova de que os testes passaram.",
+        "Não recomenda merge antes dos checks e revisões requeridos.",
+        "Não usa um limite universal de linhas para rejeitar o PR."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Quero remover a worktree antiga ../release-fix para libertar espaço. Usa evals/files/worktree-state.md para dizer se é seguro removê-la e qual seria o próximo passo.",
+      "expected_output": "Interrompe a remoção forçada porque a worktree tem alterações locais e ficheiros não rastreados. Recomenda inspecionar e preservar o conteúdo, confirmar com o utilizador o destino desse trabalho e só então remover uma worktree limpa; não usa --force nem prune como atalho.",
+      "files": [
+        "evals/files/worktree-state.md"
+      ],
+      "expectations": [
+        "Identifica modificações e ficheiros não rastreados na worktree alvo.",
+        "Não recomenda git worktree remove --force nem git worktree prune.",
+        "Propõe preservar ou classificar o trabalho antes da remoção.",
+        "Distingue a worktree alvo das outras listadas.",
+        "Não afirma que os dados estão recuperáveis sem cópia."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "O último commit tem a mensagem feat!: simplify internal token parsing. Com base em evals/files/release-policy.md, devo lançar a versão 2.0.0? Explica a decisão sem inferir além da evidência.",
+      "expected_output": "Nota que a mensagem é um sinal de intenção e não prova incompatibilidade; a política do projeto requer uma API pública, que o material não confirma. Recomenda verificar contrato, consumidores e convenção de release antes de atribuir SemVer ou publicar.",
+      "files": [
+        "evals/files/release-policy.md"
+      ],
+      "expectations": [
+        "Não deduz major automaticamente apenas do texto feat!.",
+        "Verifica se existe uma API pública e política SemVer.",
+        "Distingue metadata do commit do efeito real da mudança.",
+        "Não recomenda publicar sem confirmação da versão, checks e autorização."
+      ]
+    }
+  ]
+}

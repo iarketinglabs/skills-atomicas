@@ -1,0 +1,29 @@
+{
+  "skill_name": "copywriting-b2b-ptbr",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crie uma headline + subheadline + CTA principal para uma landing page de consultoria B2B que ajuda empresas de logística (200-500 funcionários) a automatizar processos manuais. O diferencial é implementação em 30 dias com garantia de resultado. Locale: PT-BR. Tom: profissional confiante, mas acessível. Restrição: headline ≤ 80 caracteres.",
+      "expected_output": "Headline específica para diretor de operações de logística, com benefício mensurável e diferencial de implementação; subheadline que especifica mecanismo/escopo; CTA descritivo com verbo + consequência; naturalidade em PT-BR sem 'tom de IA'",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Revisa este email de outbound e melhore-o seguindo princípios de copywriting B2B em PT-BR: 'Prezado Senhor, Somos uma empresa líder em soluções de IA generativa para o seu negócio. Nosso produto é revolucionário e já ajudou diversas empresas a transformarem suas operações. Gostaríamos de agendar uma reunião para apresentar nossa solução. Atenciosamente, Equipe de Vendas'",
+      "expected_output": "Copy transformada de foco na empresa para foco no cliente; tratamento consistente (você, não 'Prezado Senhor'); promessa específica e mensurável em vez de 'revolucionário'; prova concreta em vez de 'diversas empresas'; CTA de baixa fricção proporcional ao estágio; naturalidade em PT-BR",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Um cliente pede para adaptar do inglês para PT-BR esta headline e CTA de um SaaS de automação: EN Headline: 'Unlock Growth. Scale Smarter.' EN CTA: 'Book a Call'. Faça a transcriação cultural completa, explicando as escolhas.",
+      "expected_output": "Headline e CTA reescritos do zero, não traduzidos literalmente; headline com especificidade e consequência visível em vez de neblina corporativa ('Unlock Growth' → resultado concreto); CTA natural em PT-BR ('Book a Call' → convite contextual); explicação das escolhas culturais e retóricas",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Crie uma matriz de objeções e respostas de copy para um serviço de desenvolvimento de sistemas agênticos B2B. Os stakeholders principais são: diretor de operações (usuário), CFO (finanças) e diretor de TI (segurança). Inclua pelo menos 4 objeções com prova específica para cada.",
+      "expected_output": "Matriz com objeções realistas por stakeholder; medo real por trás de cada objeção; prova específica e verificável (não genérica); resposta de copy que antecipa e neutraliza com empatia; linguagem nativa em PT-BR; abordagem de segurança, ROI, implementação e dependência",
+      "files": []
+    }
+  ]
+}

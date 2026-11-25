@@ -1,0 +1,41 @@
+{
+  "skill_name": "engenharia-prompts-imagem",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Preciso de um prompt para gerar uma foto editorial fotorrealista de uma chef de cozinha de 42 anos em uma cozinha profissional, para capa 4:5 de uma campanha. Quero luz de janela, espaço negativo à direita para copy, sem texto, marcas ou watermark.",
+      "expected_output": "Uma entrega em PT-BR que consolida o briefing e produz um prompt em inglês para geração fotorrealista, sem assumir nacionalidade, roupa ou outros atributos não informados.",
+      "files": [],
+      "expectations": [
+        "A resposta classifica o pedido como geração e identifica a plataforma-alvo como pendente se ela não tiver sido fornecida.",
+        "O prompt final está em inglês e preserva 4:5, luz de janela, espaço negativo à direita e as restrições de texto, marcas e watermark.",
+        "O prompt não adiciona nacionalidade, vestuário, pose ou objetos que não foram solicitados.",
+        "A resposta expõe somente suposições necessárias e faz perguntas apenas se uma lacuna bloquear o prompt."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Tenho uma imagem de referência de uma sala de estar. Escreva um prompt para mudar somente a poltrona para azul-petróleo, mantendo composição, iluminação, perspectiva, pessoas e todos os demais objetos idênticos; não inclua elementos novos.",
+      "expected_output": "Um prompt de edição em inglês que separa a modificação única, as invariantes e as proibições, sem prometer preservação perfeita nem incluir alterações adicionais.",
+      "files": [],
+      "expectations": [
+        "A resposta classifica o pedido como edição e identifica a imagem como referência ou alvo de edição conforme o contexto disponível.",
+        "O prompt contém blocos claros de Change, Keep e Forbid, ou equivalentes inequívocos.",
+        "A única alteração solicitada é a cor da poltrona para azul-petróleo.",
+        "Composição, iluminação, perspectiva, pessoas e demais objetos constam como invariantes."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Adapte o mesmo conceito de um retrato documental de uma ciclista urbana sob chuva leve, luz noturna e reflexos no asfalto para Midjourney, Stable Diffusion e Flux. Quero formato vertical 9:16 e sem texto.",
+      "expected_output": "Três prompts em inglês que preservam o conceito e 9:16, distinguindo texto compartilhado de sintaxe específica de cada plataforma, sem atribuir controles não confirmados a Flux.",
+      "files": [],
+      "expectations": [
+        "A resposta apresenta uma versão rotulada para Midjourney, Stable Diffusion e Flux.",
+        "Todas as versões preservam ciclista urbana, chuva leve, luz noturna, reflexos no asfalto, vertical 9:16 e ausência de texto.",
+        "Parâmetros e prompts negativos aparecem somente quando compatíveis ou explicitamente marcados como dependentes da interface/modelo.",
+        "A resposta não trata sintaxes de uma plataforma como universais."
+      ]
+    }
+  ]
+}

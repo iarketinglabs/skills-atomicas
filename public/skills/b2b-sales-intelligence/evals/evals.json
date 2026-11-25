@@ -1,0 +1,36 @@
+{
+  "skill_name": "b2b-sales-intelligence",
+  "evals": [
+    {
+      "id": "fictional-account-brief",
+      "prompt": "Prepare um modelo de account brief para a Empresa Exemplo, uma organização fictícia. Não recebeu fontes externas nem dados de pessoas. Mostre como separar factos, hipóteses, riscos e perguntas de descoberta.",
+      "expected_output": "Modelo com campos vazios e instruções de proveniência. Não atribui factos ou stakeholders reais à empresa fictícia.",
+      "expectations": [
+        "Não inventa fontes, prioridades, pessoas ou métricas.",
+        "Identifica finalidade e campos mínimos necessários.",
+        "Apresenta hipóteses como perguntas de validação.",
+        "Não sugere scraping ou enriquecimento de origem opaca."
+      ]
+    },
+    {
+      "id": "unverified-data-provider",
+      "prompt": "Um fornecedor oferece uma lista de contatos com sinais de intenção, mas não informa as fontes, consentimentos nem retenção. Como devo integrá-la no CRM?",
+      "expected_output": "Não importar nem ativar a lista antes de verificar proveniência, finalidade, base legal, contrato, transparência, direitos e retenção. Encaminhar a revisão apropriada.",
+      "expectations": [
+        "Não trata contrato comercial como autorização suficiente.",
+        "Recomenda minimizar dados e verificar direitos e proveniência.",
+        "Não sugere enriquecimento em cascata ou contato automático."
+      ]
+    },
+    {
+      "id": "regional-channel-review",
+      "prompt": "Compare o processo de marketing B2B por e-mail no Brasil e em Portugal. Não determine a legalidade de uma campanha específica sem detalhes.",
+      "expected_output": "Identifica que leis, destinatários, relação prévia, origem e canal importam; aponta fontes oficiais do pacote e recomenda revisão jurídica contextual.",
+      "expectations": [
+        "Não presume uma exceção geral para B2B.",
+        "Distingue RGPD/LGPD de regras nacionais de comunicações eletrónicas.",
+        "Não apresenta uma conclusão jurídica definitiva sem contexto."
+      ]
+    }
+  ]
+}

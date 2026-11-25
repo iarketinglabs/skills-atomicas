@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/schemas/data-contract.schema.json",
+  "title": "Contrato de Produto de Dados",
+  "description": "Esquema inicial independente de fornecedor; adapte-o à semântica, às regras de acesso e à governança do produto de dados.",
+  "type": "object",
+  "required": ["name", "version", "purpose", "owner", "schema", "update_model", "quality_checks", "privacy"],
+  "properties": {
+    "name": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "owner": { "type": "string", "minLength": 1 },
+    "consumers": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "authority"],
+        "properties": {
+          "name": { "type": "string" },
+          "authority": { "type": "string" },
+          "extraction_method": { "type": "string" },
+          "source_version": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "grain": { "type": "string" },
+    "keys": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "event_time_field": { "type": "string" },
+    "ingestion_time_field": { "type": "string" },
+    "update_model": { "enum": ["append_only", "upsert", "snapshot", "cdc", "other"] },
+    "schema": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "nullable", "description"],
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "nullable": { "type": "boolean" },
+          "description": { "type": "string" },
+          "unit": { "type": "string" },
+          "classification": { "type": "string" },
+          "constraints": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "freshness": {
+      "type": "object",
+      "properties": {
+        "target": { "type": "string" },
+        "measurement": { "type": "string" },
+        "on_breach": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "quality_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "severity", "failure_action"],
+        "properties": {
+          "name": { "type": "string" },
+          "severity": { "enum": ["info", "warning", "critical"] },
+          "threshold": { "type": "string" },
+          "failure_action": { "type": "string" },
+          "owner": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "required": ["classification", "retention", "access_policy"],
+      "properties": {
+        "classification": { "type": "string" },
+        "retention": { "type": "string" },
+        "access_policy": { "type": "string" },
+        "deletion_behavior": { "type": "string" },
+        "jurisdiction": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "lineage": { "type": "array", "items": { "type": "string" } },
+    "compatibility_policy": { "type": "string" },
+    "last_verified": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}

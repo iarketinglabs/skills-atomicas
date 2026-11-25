@@ -1,0 +1,41 @@
+{
+  "skill_name": "arquitetura-de-frameworks",
+  "evals": [
+    {
+      "id": "evidencias-para-estrutura",
+      "prompt": "Uma equipe reuniu relatos de atrasos, retrabalho, decisões sem critério, exceções recorrentes e dependência de uma única pessoa. Quer transformar esse material em um framework para decidir onde intervir. Construa a primeira versão.",
+      "expected_output": "Um framework que separa evidências, hipóteses e lacunas; atomiza os relatos; encontra padrões antes de fixar categorias; explicita a relação dominante, fronteiras e uma forma de validar aplicação em casos novos.",
+      "assertions": [
+        "Distingue fatos fornecidos, hipóteses de interpretação e informações que ainda precisam ser obtidas.",
+        "Não escolhe pilares, acrônimo ou diagrama antes de atomizar e agrupar os insumos.",
+        "Examina sobreposição, lacunas, diferenças de nível e exceções relevantes antes de comprimir a estrutura.",
+        "Inclui teste de compreensão, reconstrução, transferência ou ação para validar o framework."
+      ],
+      "files": []
+    },
+    {
+      "id": "naming-sem-deformacao",
+      "prompt": "Um método já possui quatro componentes com funções distintas e relação de dependência. A pessoa responsável quer chamá-lo de 'PONTE' e alterar os componentes até as iniciais coincidirem. Avalie a proposta e apresente alternativas de naming.",
+      "expected_output": "Uma avaliação que preserva a arquitetura existente, explica quando um acrônimo é adequado e propõe alternativas comparáveis com critérios de clareza, pronúncia, significado, recuperação e adequação ao idioma de uso.",
+      "assertions": [
+        "Rejeita alterar componentes apenas para forçar um acrônimo ou uma palavra atraente.",
+        "Mantém o nome como consequência da arquitetura, não como fonte de categorias.",
+        "Define critérios de teste adaptáveis ao idioma e ao uso oral e escrito pretendidos.",
+        "Não afirma que nomes descritivos, evocativos ou pronunciáveis vencem universalmente."
+      ],
+      "files": []
+    },
+    {
+      "id": "topologia-verdadeira",
+      "prompt": "Um conjunto de cinco etapas ocorre em ordem, mas a última não retroalimenta a primeira. A apresentação pede um flywheel porque o formato parece mais moderno. Escolha a representação e descreva como validar o visual.",
+      "expected_output": "Uma recomendação visual fiel à sequência, que rejeita o ciclo artificial, torna direção e relações explícitas e propõe verificações de compreensão, relação e aplicação.",
+      "assertions": [
+        "Escolhe a representação a partir da relação lógica, não de uma preferência estética ou tendência.",
+        "Não chama uma sequência linear de ciclo ou flywheel sem evidência de retroalimentação.",
+        "Explicita como posição, direção, rótulos e outros sinais visuais comunicam a relação.",
+        "Inclui ao menos um teste de compreensão da relação e um teste de caso-limite ou ação."
+      ],
+      "files": []
+    }
+  ]
+}

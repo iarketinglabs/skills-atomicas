@@ -1,0 +1,11 @@
+flowchart LR
+  actor["Ator externo\n<utilizador, equipa ou sistema>"]
+  system["Sistema em análise\n<responsabilidade principal>"]
+  dependency["Dependência externa\n<responsabilidade e proprietário>"]
+  source["Fonte de entrada não confiável\n<se aplicável>"]
+
+  actor -->|"pedido autorizado"| system
+  system -->|"contrato e dados mínimos"| dependency
+  dependency -->|"resposta ou falha"| system
+  source -.->|"conteúdo a validar"| system
+

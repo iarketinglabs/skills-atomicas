@@ -1,25 +1,26 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
-const textFile = /(?:\.(?:md|markdown|mdx|txt|toml|html?|css|scss|svg|json|jsonc|xml|tsx?|jsx?|[cm]?js|py|ps1|ya?ml|csv|tsv|sql|sh|bat|cmd|env|ini|cfg|conf|gitignore|gitattributes|editorconfig|example|sample|template)|\/?Dockerfile|\/?Makefile)$/i;
-const secretTokens = /(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{45,}|(?:AKIA|ASIA)[A-Z0-9]{16}|xox[baprs]-[A-Za-z0-9-]{15,}|sk-(?:(?:proj|live|test|ant-api[0-9])-)?[A-Za-z0-9_-]{20,}|AIza[A-Za-z0-9_-]{32,}|hf_[A-Za-z0-9]{30,}|-----BEGIN (?:[A-Z]+ )*PRIVATE KEY-----|eyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{8,})/;
+const textFile = /(?:\.(?:md|markdown|mdx|mmd|txt|toml|html?|css|scss|svg|json|jsonc|xml|tsx?|jsx?|[cm]?js|py|ps1|ya?ml|csv|tsv|sql|sh|bat|cmd|env|ini|cfg|conf|gitignore|gitattributes|editorconfig|example|sample|template)|\/?Dockerfile|\/?Makefile)$/i;
+const secretTokens = /(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{45,}|(?:AKIA|ASIA)[A-Z0-9]{16}|xox[baprs]-[A-Za-z0-9-]{15,}|(?<![A-Za-z0-9_-])sk-(?:(?:proj|live|test|ant-api[0-9])-)?[A-Za-z0-9_-]{20,}|AIza[A-Za-z0-9_-]{32,}|hf_[A-Za-z0-9]{30,}|-----BEGIN (?:[A-Z]+ )*PRIVATE KEY-----|eyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{8,})/;
 const secretAssignment = /(?:^|[^\w-])["']?(?:api[_-]?key|(?:[a-z0-9]+_)*(?:secret|access_token|client_secret|service_role_key|token|password|passwd|database_url))["']?\s*[:=]\s*["']?([^\s"',}\]#]+)/gim;
-const privateHost = /(?:https?|wss?|ssh|postgres(?:ql)?|mysql):\/\/(?:[^/\s]+@|(?:localhost|(?:[a-z0-9-]+\.)+(?:internal|local|lan|home\.arpa)|127(?:\.\d{1,3}){3}|10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2[0-9]|3[01])(?:\.\d{1,3}){2}|169\.254(?:\.\d{1,3}){2}|\[::1\])(?=[:/#?\s)'" ]|$))/i;
+const privateHost = /(?:https?|wss?|ssh|postgres(?:ql)?|mysql):\/\/(?:[^/\s]+@|(?:(?:[a-z0-9-]+\.)+(?:internal|local|lan|home\.arpa)|127(?:\.\d{1,3}){3}|10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2[0-9]|3[01])(?:\.\d{1,3}){2}|169\.254(?:\.\d{1,3}){2}|\[::1\])(?=[:/#?\s)'" ]|$))/i;
 const privateGithubLinks = /https:\/\/(?:www\.)?github\.com\/iarketinglabs\/(?!skills-atomicas(?:[\/#?\s)]|$))/i;
-const localPath = /(?:\b[A-Za-z]:[\\/]+(?:Users|Documents and Settings|Projetos-Atomica)(?:[\\/]|$)|\\\\(?:[^\\/\s]{2,})\\[^\\/\r\n]+|\/(?:home|Users|mnt\/[^/]+\/Users)\/[^/\s<>\])]+|file:\/\/)/i;
+const localPath = /(?:\b[A-Za-z]:[\\/]+(?:Users|Documents and Settings|Projetos-Atomica)(?:[\\/]|$)|\\\\(?:[^\\/\s]{2,})\\[^\\/\r\n]+|\/(?:home|Users|mnt\/[^/]+\/Users)\/[^/\s<>\])]+)/i;
 const email = /(?:mailto:)?\b[A-Z0-9.!#$%&'*+/=?^_{|}~-]+@([A-Z0-9.-]+\.[A-Z]{2,63})\b/gi;
 const phone = /(?:\b(?:tel(?:efone)?|telem[oó]vel|whatsapp|phone|mobile)\b\s*[:=]\s*|\btel:|\bwa\.me\/|\+)(\+?\d[\d. ()-]{6,}\d)/gi;
 const identity = /\b(?:cpf|cnpj|nif|tax[_ -]?id|passport|passaporte)\s*[:=]\s*["']?\d[\d.-]{7,}\d/iu;
 const protectedFile = /(?:^|\/)(?:(?:\.env(?!\.(?:example|sample|template)(?:\/|$)))(?:[./]|$)|(?:id_(?:rsa|ed25519)|credentials?(?:\.(?:json|ya?ml|txt))|secrets?\.(?:json|ya?ml|txt))(?:\/|$))|(?:\.pem|\.pfx|\.p12|\.key|\.kdbx)$/i;
 
-function scanText(text) {
+export function scanText(text) {
   const findings = new Set();
   if (secretTokens.test(text) || Array.from(text.matchAll(secretAssignment)).some((match) => {
     const value = match[1];
     return value.length >= 12 && /\d/.test(value) && /[a-z]/i.test(value) && !/^(?:example|placeholder|dummy|fake|test|sample|your[_-])|(?:example|placeholder)|^\$|^<|^\*+$/i.test(value);
   })) findings.add('credential');
   if (localPath.test(text)) findings.add('local-path');
-  if (privateHost.test(text)) findings.add('internal-url');
+  const privateUrlText = text.replace(/((?:https?|wss?|ssh|postgres(?:ql)?|mysql):\/\/)(?:127(?:\.\d{1,3}){3}|\[::1\])(?=[:/#?\s)'" ]|$)/gi, '$1loopback');
+  if (privateHost.test(privateUrlText)) findings.add('internal-url');
   if (privateGithubLinks.test(text)) findings.add('private-repository');
   if (Array.from(text.matchAll(email)).some((match) => !/(?:^|\.)(?:example\.(?:com|org|net)|example|localhost|users\.noreply\.github\.com)$/i.test(match[1]))) findings.add('personal-email');
   if (Array.from(text.matchAll(phone)).some((match) => {
@@ -28,6 +29,10 @@ function scanText(text) {
   })) findings.add('personal-phone');
   if (identity.test(text)) findings.add('personal-id');
   return [...findings].sort();
+}
+
+export function isTextFile(path) {
+  return textFile.test(path) || /^(?:LICENSE|NOTICE)$/i.test(path.split(/[\\/]/).at(-1));
 }
 
 function walk(base, current = base) {
@@ -50,7 +55,7 @@ export function scanPackages(catalog, root = process.cwd()) {
       const codes = new Set(scanText(file.path));
       if (protectedFile.test(file.path)) codes.add('sensitive-file-type');
       const content = file.bytes.toString('utf8');
-      const isText = textFile.test(file.path) || /^(?:LICENSE|NOTICE)$/i.test(file.path.split('/').at(-1));
+      const isText = isTextFile(file.path);
       if (isText && (content.includes('\0') || content.includes('\uFFFD'))) codes.add('invalid-text-encoding');
       for (const code of scanText(content)) codes.add(code);
       if (!isText) binaryFiles++;

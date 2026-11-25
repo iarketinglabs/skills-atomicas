@@ -1,0 +1,5 @@
+﻿interface:
+  display_name: "Testes & QA"
+  short_description: "Estratégia de testes orientada a risco para software e agentes"
+  default_prompt: "Use $sistemas-agenticos-testes-qa para planejar ou revisar uma estratégia de Testes e QA baseada em risco, evidência, estado final e trajetória."
+

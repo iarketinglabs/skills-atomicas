@@ -1,0 +1,40 @@
+{
+  "skill_name": "marketing-na-vibe-pauta",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Monte uma pauta para o Convidado Exemplo. A pessoa forneceu e autorizou este contexto: Tema central: Como equipas de marketing podem adotar IA com critério. Subtópicos: primeiros casos de uso, adoção, governança e medição. Prepare uma conversa de cerca de uma hora.",
+      "expected_output": "Pauta com introdução, tema, 4 a 6 perguntas principais, follow-ups, CTA, fechamento e ritmo. A bio não contém factos que não foram fornecidos.",
+      "files": [],
+      "expectations": [
+        "A pauta contém entre 4 e 6 perguntas principais.",
+        "Cada pergunta tem pelo menos um follow-up coerente.",
+        "Factos fornecidos e sugestões editoriais ficam claramente distintos.",
+        "A pauta não inventa cargo, empresa, histórico ou métricas."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "O host não recebeu tema nem biografia do Convidado Exemplo. Sugira opções editoriais, mas ainda não feche a apresentação nem atribua experiência à pessoa.",
+      "expected_output": "A skill pede contexto autorizado ou apresenta sugestões claramente identificadas como hipóteses do host; não pesquisa nem recolhe automaticamente perfis.",
+      "files": [],
+      "expectations": [
+        "Não apresenta hipótese como facto sobre a pessoa.",
+        "Pede materiais fornecidos ou autorização para uso editorial.",
+        "Não solicita scraping, download, extensão ou API não autorizada."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Crie uma pauta para o Convidado Exemplo sobre IA aplicada à pesquisa de mercado. O convidado forneceu quatro subtópicos, mas nenhum dado biográfico.",
+      "expected_output": "A skill usa os subtópicos recebidos e deixa os campos biográficos pendentes ou pede autorização/contexto adicional.",
+      "files": [],
+      "expectations": [
+        "Usa os subtópicos fornecidos como base editorial.",
+        "Não inventa cargo, empresa, histórico ou métricas.",
+        "Não consulta perfis nem terceiros automaticamente.",
+        "Não inclui contactos ou identificadores pessoais desnecessários."
+      ]
+    }
+  ]
+}

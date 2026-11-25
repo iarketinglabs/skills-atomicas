@@ -1,0 +1,41 @@
+{
+  "skill_name": "definicao-metas-comerciais",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Cenário sintético de avaliação, sem relação com a Atomica ou clientes: defina a meta trimestral de uma empresa fictícia de serviços B2B que precisa atingir R$ 120 mil de lucro operacional. Custos fixos são R$ 180 mil e a margem de contribuição esperada é 40%. Há R$ 300 mil de receita já contratada. A taxa de ganho de oportunidades qualificadas é 25% e o ticket médio é R$ 60 mil.",
+      "expected_output": "Um plano que calcula a receita líquida necessária, separa a receita já contratada da receita nova, deriva pipeline e oportunidades necessárias, identifica as lacunas de capacidade e não trata bookings, receita e caixa como sinónimos.",
+      "files": [],
+      "expectations": [
+        "Calcula receita necessária de R$ 750 mil usando a mesma base de margem.",
+        "Identifica R$ 450 mil como receita nova necessária, condicionada à compatibilidade temporal da receita contratada.",
+        "Deriva R$ 1,8 milhão de pipeline qualificado e cerca de 30 oportunidades, expondo as fórmulas.",
+        "Inclui premissas, riscos e uma verificação de capacidade de entrega."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Cenário hipotético de avaliação: a direção quer copiar para uma consultoria B2B uma meta SaaS de Rule of 40 e NRR acima de 110%. Audite a proposta e recomende a correção mínima.",
+      "expected_output": "Uma auditoria que pede definição de receita, coorte e margem, explica a limitação de transferir métricas SaaS para consultoria e classifica os números como não verificados ou hipóteses até que haja comparabilidade e fontes adequadas.",
+      "files": [],
+      "expectations": [
+        "Não aceita os benchmarks como metas automáticas.",
+        "Distingue retenção de receita, contratos por projeto e receita recorrente.",
+        "Pede fonte, data, escopo e definição das métricas.",
+        "Propõe métricas operacionais alternativas coerentes com serviços B2B."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Cenário sintético de avaliação, sem relação com a Atomica ou clientes: uma consultoria B2B fictícia de implementação de agentes de IA quer fixar meta de margem bruta de 85% citando benchmarks de SaaS tradicional, e migrar 100% da receita para outcome-based pricing já no próximo trimestre. Avalie a viabilidade e proponha como definir uma meta e um modelo de precificação com dados próprios.",
+      "expected_output": "Uma análise que não transfere automaticamente a meta de SaaS para serviços de IA, calcula a margem com custos próprios verificáveis (incluindo inferência quando aplicável), alerta para riscos de caixa e reconhecimento contábil a validar com a função financeira e recomenda testar um modelo híbrido se isso se adequar à oferta. Não apresenta uma faixa de margem de IA sem fonte atual, comparável e identificada.",
+      "files": [],
+      "expectations": [
+        "Não aceita 85% de margem bruta como meta sem qualificar a diferença entre SaaS puro e serviços de IA.",
+        "Não inventa nem cita uma faixa de margem de IA sem evidência atual e comparável.",
+        "Alerta para o risco de fluxo de caixa e reconhecimento de receita ao migrar 100% para outcome-based pricing.",
+        "Propõe pricing híbrido (piso fixo + variável) como alternativa mais defensável."
+      ]
+    }
+  ]
+}

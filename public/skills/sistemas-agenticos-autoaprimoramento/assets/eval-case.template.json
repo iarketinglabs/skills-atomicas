@@ -1,0 +1,14 @@
+{
+  "case_id": "TODO-stable-case-id",
+  "task_family": "TODO-task-family",
+  "input": "TODO-synthetic-or-authorized-input",
+  "expected_behavior": [
+    "TODO-observable-success-condition"
+  ],
+  "critical_failures": [
+    "TODO-failure-that-blocks-promotion"
+  ],
+  "scoring_method": "TODO-deterministic-check-or-rubric-reference",
+  "data_classification": "TODO-classification",
+  "provenance": "TODO-source-and-permission"
+}

@@ -1,0 +1,53 @@
+{
+  "skill_name": "posicionamento-e-proposta-de-valor",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Nossa liderança decidiu criar uma categoria de mercado inteiramente nova para o nosso produto, porque 'nenhum nome existente faz justiça ao que construímos' e queremos ser os donos dessa categoria. Ajude a redigir o positioning statement em torno dessa nova categoria.",
+      "expected_output": "Uma resposta que não aceita a criação de categoria nova como ponto de partida sem questionar: aplica a matriz de decisão de categoria comparando explicitamente categoria existente, categoria adjacente modificada e categoria nova (entendimento imediato, custo educacional, credibilidade, risco), alerta que criar categoria é uma aposta cara que exige escala e paciência para educar o mercado, e só então oferece ajudar a redigir o positioning statement, pedindo primeiro as alternativas competitivas reais do cliente.",
+      "files": [],
+      "expectations": [
+        "Não aceita a criação de nova categoria como default sem comparar com categoria existente e adjacente modificada.",
+        "Menciona explicitamente o custo educacional/risco de criar uma categoria nova.",
+        "Pede as alternativas competitivas reais do cliente antes de escrever o positioning statement.",
+        "Não escreve um positioning statement final sem antes obter essas informações."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Vendemos uma solução B2B complexa e queremos uma proposta de valor única, a mesma frase, para ser usada com todo mundo que participa da compra — usuário, TI, financeiro, jurídico — para simplificar a comunicação da equipe de vendas.",
+      "expected_output": "Uma resposta que rejeita tanto uma mensagem genérica única para todos quanto uma mensagem totalmente fragmentada, recomendando uma arquitetura de tese central de valor com tradução por stakeholder (tabela usuário/champion/comprador econômico/TI/segurança-jurídico/procurement com job, dor, outcome, mensagem, prova e objeção), e explica que cada tradução deve remontar à mesma tese central.",
+      "files": [],
+      "expectations": [
+        "Rejeita explicitamente usar a mesma frase única para todos os stakeholders.",
+        "Recomenda uma tese central de valor com traduções específicas por papel/stakeholder.",
+        "Apresenta ou referencia a tabela multi-stakeholder (job, dor, outcome, mensagem, prova, objeção).",
+        "Explica o teste de que todas as traduções devem remontar à mesma tese central."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Estamos lançando um agente de IA e queremos posicioná-lo como 'um funcionário digital autônomo que substitui integralmente a função de analista júnior', para maximizar o impacto da mensagem de vendas.",
+      "expected_output": "Uma resposta que sinaliza o risco de personificação excessiva ('funcionário digital') e de prometer autonomia total, pede a declaração explícita do envelope de autonomia (o que percebe, decide, executa, sob quais permissões, quando aciona humano, o que é registrado, como falhas são contidas), e recomenda reancorar o positioning em outcome de workflow com autonomia governada em vez de substituição integral de função.",
+      "files": [],
+      "expectations": [
+        "Sinaliza explicitamente o risco da personificação excessiva ('funcionário digital'/substituição integral de função).",
+        "Pede ou apresenta o envelope de autonomia (percepção, decisão, execução, permissões, intervenção humana, auditoria).",
+        "Recomenda reancorar a mensagem em outcome de workflow governado, não em autonomia irrestrita.",
+        "Não aceita a proposta de mensagem original sem qualificação ou alerta."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Precisamos de um positioning statement. Nosso diferencial é que usamos o modelo de IA mais rápido do mercado, com a menor latência entre os concorrentes. Escreva o positioning statement com isso como diferencial principal.",
+      "expected_output": "Uma resposta que não escreve o positioning statement diretamente a partir da feature técnica (latência do modelo), explica que uma capability isolada não é diferenciação até ser comparada a uma alternativa real e a um outcome relevante para o cliente, pergunta pelas alternativas competitivas reais do cliente e pelo job/outcome que a menor latência de fato resolve, e só then oferece preencher o template completo de positioning statement.",
+      "files": [],
+      "expectations": [
+        "Não aceita a feature técnica isolada (latência do modelo) como diferenciador suficiente sem mais contexto.",
+        "Explica a distinção entre capability e diferenciação/outcome.",
+        "Pergunta pelas alternativas competitivas reais e pelo job/outcome do cliente antes de escrever o statement.",
+        "Referencia ou oferece o template completo do positioning statement em vez de uma frase solta."
+      ]
+    }
+  ]
+}
