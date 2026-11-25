@@ -1,6 +1,6 @@
 # Padrões de Layout — Átomica
 
-Container, sections, textura e arquitetura de camadas confirmados contra o `globals.css` real de LP Consultoria B2B, LP Portefólio pessoa de referência omitida e da site institucional.
+Tokens e padrões para páginas web Atomica. Adapte o componente à rota e ao conteúdo confirmados.
 
 ---
 
@@ -40,33 +40,31 @@ Diferente de versões anteriores, `.section` **não** define `background-color` 
   background:
     linear-gradient(rgba(99, 190, 194, 0.5), rgba(99, 190, 194, 0.5)),
     var(--texture-pulp);
-  background-size: auto, 760px auto;
+  background-size: auto, 8px 8px;
 }
 
 .section-yellow {
   background:
     linear-gradient(rgba(247, 197, 40, 0.5), rgba(247, 197, 40, 0.5)),
     var(--texture-pulp);
-  background-size: auto, 760px auto;
+  background-size: auto, 8px 8px;
 }
 ```
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ## 3. Textura Pulp — técnica real de camada dupla
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ```css
 :root {
-  --texture-pulp: url("/assets/textures/pulp.papper-background.png");
+  --texture-pulp: radial-gradient(rgba(27, 27, 27, .09) .7px, transparent 1px);
 }
 
 body {
   background:
     linear-gradient(rgba(247, 239, 217, 0.70), rgba(247, 239, 217, 0.70)),
     var(--texture-pulp);
-  background-size: auto, 760px auto;
+  background-size: auto, 8px 8px;
 }
 ```
 
@@ -82,7 +80,6 @@ O `background-size` da camada de textura **varia por tipo de superfície**, não
 
 A opacidade do tint (o valor alfa do `rgba()` na camada de gradiente) também varia por contexto — vai de `0.5` (seções coloridas) a `0.8` (cards) a `0.9` (header, mais opaco para garantir contraste do texto). Não fixe um único valor de opacidade para todas as superfícies.
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ## 4. Arquitetura de Camadas — Fundo de Partículas (confirmado, já estava correto)
 
@@ -97,11 +94,9 @@ Ver `atomica-particle-field` para o componente completo. O ponto que já estava 
 
 ## 5. Cabeçalho de Seção (confirmado — ver `component-specs.md` §3 para o CSS completo)
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ## 6. Responsividade
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ### Regras mobile-first confirmadas
 
@@ -123,5 +118,3 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 | Banner de cookies / modal (se implementado) | `50` (extrapolação — sem exemplo shippado) |
 
 ## 8. Animações e Transições confirmadas
-
-Amostras internas de projeto foram anonimizadas nesta versão pública.

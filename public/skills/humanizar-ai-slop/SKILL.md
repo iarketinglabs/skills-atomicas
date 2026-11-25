@@ -78,3 +78,7 @@ Não force todas as regras. Um texto limpo pode continuar formal, técnico, seco
 Em reescrita, use os rótulos `Problemas encontrados`, `Versão revisada` e `O que mudou` somente quando o usuário pediu auditoria ou explicação. Em edição direta, relate apenas alterações efetivamente feitas e a verificação final. Em detecção, não inclua uma versão reescrita.
 
 Antes de responder, verifique: nenhuma afirmação nova; nenhum trecho protegido alterado; variante consistente; voz reconhecível; padrões tratados por contexto; ritmo não mecânico; e modo respeitado.
+
+## Ferramentas
+
+Funciona em texto, sem detector de autoria. Peça o trecho quando o documento estiver inacessível. Sinalize referências, números e citações que não conseguiu verificar e preserve-os como fornecidos, salvo ajuste autorizado.

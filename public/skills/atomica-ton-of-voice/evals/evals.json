@@ -1,0 +1,23 @@
+{
+  "skill_name": "atomica-ton-of-voice",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Adapte este rascunho fictício de newsletter Atomica para PT-PT: «Ensine o time a rever a automação com IA e baixe o checklist». A equipa quer um tom prático e o ficheiro está confirmado.",
+      "expected_output": "Escolhe modo e vocabulário PT-PT, preserva o objeto e a ação, devolve texto direto sem inventar um benefício.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Faça um post para uma empresa fictícia com guia de voz próprio. O texto não menciona a Atomica.",
+      "expected_output": "Mantém a voz e instruções da marca solicitada. Não aplica slogans, glossário ou posicionamento Atomica.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Redija uma proposta em PT-BR prometendo que uma automação fictícia duplica as vendas em 30 dias. Não temos dados, só uma hipótese sobre a tarefa repetitiva.",
+      "expected_output": "Converte a promessa em hipótese explícita e descreve tarefa, condição e medida verificável. Preserva o nível de confiança informado e não inventa percentual, caso ou testemunho.",
+      "files": []
+    }
+  ]
+}

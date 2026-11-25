@@ -58,3 +58,6 @@ Use tables only where they make decisions easier to compare. Tie every recommend
 - Do not assume a particular company, industry, market, tool, provider, budget, team, or platform mix.
 - Adapt language, examples, regulation checks, and measurement to the request's market and audience.
 
+## Tools and access
+
+Produce the plan from supplied context. Account data requires an authorized export or connector. Verify time-sensitive platform facts from official documentation when browsing is available, and identify any claim that remains provisional.

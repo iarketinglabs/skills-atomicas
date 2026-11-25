@@ -1,0 +1,23 @@
+{
+  "skill_name": "atomica-design-system",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Reveja um formulário fictício de demonstração Atomica. No desktop o grupo de interesses funciona. Em mobile o texto das opções fica colado à borda e há CTA também fora do menu. Entregue a mudança e como verificar.",
+      "expected_output": "Usa tokens e um campo agrupado com labels associados. Trata o conflito de padding pela cascata, mantém CTA acessível no menu aberto e descreve verificação mobile por estilo computado e estado de navegação.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Preciso só de um roteiro falado para uma apresentação genérica. O design foi aprovado e o pedido não trata de interface.",
+      "expected_output": "Segue o escopo de roteiro e preserva a identidade existente. Não aplica tokens web nem propõe redesenho.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "O projeto fictício não recebeu fonte proprietária nem textura de marca, e o ambiente não executa navegador. Preciso adaptar um formulário e reportar a revisão.",
+      "expected_output": "Usa fallback e textura CSS disponíveis, identifica o recurso necessário para fidelidade exata, preserva o contrato e distingue inspeção estática de teste visual pendente.",
+      "files": []
+    }
+  ]
+}

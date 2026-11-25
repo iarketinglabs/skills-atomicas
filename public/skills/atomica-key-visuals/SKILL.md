@@ -58,7 +58,6 @@ Este é o DNA do key visual Átomica. Nunca omita esses elementos:
 
 A paleta é vivida, contrastante e limitada. Escolha uma cor principal, uma cor secundária (detalhes e destaques), use Pulp Cream para fundo e Gunmetal para texto e linhas de frameworks visuais.
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ### Neutros — A Base de Tudo
 
@@ -109,7 +108,7 @@ A hierarquia tipográfica é "brutalmente clara". Peso + caixa alta + espaçamen
 - **Headline**: BebasNeue (impacto máximo, poster style)
 - **Sub-título**: Let'sJazz-Unicase (vibe retrô, elegante)
 - **Texto core**: Jost (limpo, legível, moderno com toque geométrico)
-- **Detalhes / acentos**: BrushScript (toque handmade, orgânico)
+- **Detalhes / acentos**: script manuscrita autorizada (toque orgânico)
 
 **Opção B — Google Fonts (se restrito):**
 - **Headline**: Caprasimo OU Fontdiner Swanky (impacto retrô, peso forte)
@@ -291,3 +290,7 @@ Produza sempre nesta ordem:
 - `references/atomica-palette.md` — Tabela completa expandida da paleta Átomica com todos os hex codes e usos táticos
 - `references/typography-guide.md` — Hierarquia tipográfica detalhada, escala, tracking e efeitos especiais para headlines de pulp magazine
 - `references/googie-elements.md` — Catálogo de elementos visuais recorrentes: foguetes, átomos, antenas, TVs de tubo, tailfins, cúpulas geodésicas
+
+## Ferramentas e limitações
+
+Entregue a direção e o prompt em texto. Se houver gerador autorizado e o pedido incluir a imagem, gere-a e verifique o resultado. Sem ferramenta visual, entregue só o material executável em outro ambiente e assinale a validação pendente. Confirme o tamanho final na superfície de publicação escolhida.

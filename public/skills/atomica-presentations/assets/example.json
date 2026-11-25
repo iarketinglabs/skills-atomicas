@@ -1,0 +1,16 @@
+{
+  "title": "Átomica · Biblioteca de apresentações",
+  "lang": "pt",
+  "footer": "Átomica · Demonstração fictícia",
+  "slides": [
+    {"type":"cover","eyebrow":"Apresentações Átomica","title":"Clareza para a próxima decisão","subtitle":"Uma apresentação de demonstração, sem dados reais.","source":"Exemplo fictício","notes":"NOTA_PRIVADA_CAPA_742: abrir a conversa com o objetivo."},
+    {"type":"message","eyebrow":"Mensagem","title":"Uma prioridade compartilhada","source":"Exemplo fictício","notes":"NOTA_PRIVADA_MESSAGE_742: explicar a prioridade.","items":[{"title":"Escolher o foco","text":"Defina uma decisão que todos consigam explicar."},{"title":"Mostrar a base","text":"Separe evidência, hipótese e próximo passo."}]},
+    {"type":"comparison","eyebrow":"Escolhas","title":"Compare opções na mesma base","source":"Exemplo fictício","notes":"NOTA_PRIVADA_COMPARISON_742: comparar alternativas.","items":[{"title":"Opção A","text":"Uma entrega concentrada em uma única etapa."},{"title":"Opção B","text":"Uma sequência de entregas com revisão conjunta."}]},
+    {"type":"indicators","eyebrow":"Indicadores","title":"Medidas com definição explícita","source":"Exemplo fictício","notes":"NOTA_PRIVADA_INDICATORS_742: explicar cada definição.","items":[{"title":"Participação","value":"72%","text":"Pessoas que concluíram a atividade."},{"title":"Tempo","value":"4 dias","text":"Intervalo médio no cenário fictício."},{"title":"Etapas","value":"3","text":"Pontos de revisão do exercício."}]},
+    {"type":"process","eyebrow":"Como fazer","title":"Três passos com responsáveis","source":"Exemplo fictício","notes":"NOTA_PRIVADA_PROCESS_742: explicar os passos.","items":[{"title":"Observar","text":"Reúna informações e identifique lacunas."},{"title":"Decidir","text":"Compare alternativas com critérios comuns."},{"title":"Revisar","text":"Acompanhe o resultado e ajuste o plano."}]},
+    {"type":"chart","eyebrow":"Comparação","title":"Um cenário simples de evolução","source":"Exemplo fictício · horas","notes":"NOTA_PRIVADA_CHART_742: valores ilustrativos.","unit":" h","items":[{"title":"Etapa A","value":12},{"title":"Etapa B","value":18},{"title":"Etapa C","value":24}]},
+    {"type":"architecture","eyebrow":"Organização","title":"Camadas com funções distintas","source":"Exemplo fictício","notes":"NOTA_PRIVADA_ARCHITECTURE_742: explicar as relações.","items":[{"title":"Informação","text":"Entradas e definições documentadas."},{"title":"Análise","text":"Critérios explícitos para comparar alternativas."},{"title":"Decisão","text":"Uma pessoa aprova o próximo passo."}]},
+    {"type":"team","eyebrow":"Equipe ilustrativa","title":"Papéis antes de nomes","source":"Exemplo fictício","notes":"NOTA_PRIVADA_TEAM_742: equipe fictícia.","items":[{"title":"Coordenação","initials":"CO","text":"Organiza prioridades e acompanha o plano."},{"title":"Operação","initials":"OP","text":"Executa e documenta o trabalho."},{"title":"Revisão","initials":"RE","text":"Confere evidências e aprova a entrega."}]},
+    {"type":"closing","eyebrow":"Próximo passo","title":"Saia com uma ação definida","source":"Exemplo fictício","notes":"NOTA_PRIVADA_CLOSING_742: combinar a próxima ação.","items":[{"title":"Escolher","text":"Defina o primeiro problema a resolver."},{"title":"Agendar","text":"Combine a revisão e o responsável."}]}
+  ]
+}

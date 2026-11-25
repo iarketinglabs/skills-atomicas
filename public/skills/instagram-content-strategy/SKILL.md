@@ -84,3 +84,7 @@ Antes de entregar, confirme que:
 - o CTA é proporcional ao estágio de atenção e não é obrigatório quando não agrega;
 - a linguagem, referências e acessibilidade respeitam o contexto local;
 - recomendações datadas foram separadas de princípios duráveis.
+
+## Ferramentas
+
+Entregue planejamento e peças em texto. A leitura de Insights depende de dados fornecidos pelo usuário ou de acesso autorizado. Use documentação oficial da plataforma quando a recomendação depender de um recurso atual. Sem dados, deixe a hipótese, a variável e a condição de teste.

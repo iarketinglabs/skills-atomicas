@@ -2,7 +2,6 @@
 
 A paleta Átomica é vivida, contrastante e limitada. Sempre escolha uma cor principal, uma cor secundária, use Creme para fundo e Gunmetal para texto e linhas estruturais.
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ---
 

@@ -64,3 +64,7 @@ Entregue em Markdown, conciso e auditável, contendo:
 8. riscos, pendências e decisões que exigem mais evidência antes de publicar.
 
 Quando o pedido for uma auditoria de posicionamento existente, mantenha a estrutura vigente e classifique cada componente (categoria, diferenciador, prova, mensagem por stakeholder) como sustentado, frágil, não verificável ou inconsistente, explicando a correção mínima necessária.
+
+## Ferramentas
+
+Redija com evidência fornecida sobre alternativas, decisões de compra e clientes. Sem acesso a entrevistas ou pesquisa, trate a categoria e os benefícios sugeridos como hipóteses a validar.

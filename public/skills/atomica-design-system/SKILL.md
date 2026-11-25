@@ -9,7 +9,6 @@ metadata:
 
 # Átomica Design System
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ## Quando Usar
 
@@ -22,6 +21,8 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ## Como Usar Esta Skill
 
+Identifique formato, seção ou estado a revisar, referência visual autorizada e restrições de conteúdo. Entregue a especificação ou o patch com tokens, estados e critérios de aceite. Sem navegador, registe revisão estática. Confira a listagem de assets antes de carregar fontes ou mídia.
+
 1. **Identifique o escopo**: landing page, componente isolado, apresentação, etc.
 2. **Leia os references necessários**:
    - Para cores, espaçamentos e tokens: `references/design-tokens.md`
@@ -30,11 +31,10 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
    - Para grid e responsividade: `references/layout-patterns.md`
    - Para logos, imagens e fontes: `references/branding-assets-index.md`
 3. **Aplique o checklist de consistência** ao final de cada entrega
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
-## Padrões de Implementação Confirmados na site institucional
+## Padrões de Implementação do site institucional
 
-Os padrões abaixo foram confirmados durante a implementação da site institucional Atomica e devem ser reutilizados quando o requisito for equivalente. Eles complementam os exemplos das LPs irmãs; se houver conflito com uma página publicada, compare o código publicado antes de escolher.
+Os padrões de referência aplicam-se às interfaces web da Atomica. Confirme os estados reais e o contrato do projeto antes de copiar CSS. A apresentação em HTML e PDF tem um perfil próprio.
 
 ### Mobile e shell de navegação
 
@@ -93,13 +93,13 @@ Antes de entregar qualquer interface, verifique:
 - [ ] **Botão primário com texto `var(--gunmetal)`, não branco** — texto branco sobre `var(--ciano)` reprova contraste WCAG AA
 - [ ] **Sombras offset** sem blur: `Xpx Ypx 0px var(--cor)` — cards usam border **3px** (não 2px), `.image-frame` usa **4px**
 - [ ] **Cards** com `border-radius: var(--radius)` (12px) e textura pulp em camada dupla, não fundo sólido
-- [ ] **Textura pulp** (`/assets/textures/pulp.papper-background.png`) em camada dupla `linear-gradient(tint,tint), var(--texture-pulp)` — nunca `background-blend-mode: multiply`
+- [ ] **Textura pulp** em camadas com `linear-gradient(...)` e `var(--texture-pulp)`. Use a retícula CSS quando a textura original não estiver disponível.
 - [ ] **Responsividade**: breakpoint único confirmado em `760px`, não uma escala de 4 níveis
 
 ## Integração com Outras Skills
 
 - **`atomica-key-visuals`**: Use para key visuals, imagens de capa, prompts de geração de imagem
-- **`ckm:design-system`**: Use para arquitetura avançada de tokens e slides estratégicos
+- **`atomica-presentations`**: Use para slides e saída HTML/PDF
 - **`frontend-design`**: Use para implementação frontend de componentes e páginas
 
 ## Referências
@@ -112,3 +112,7 @@ Antes de entregar qualquer interface, verifique:
 | Padrões de Layout | `references/layout-patterns.md` |
 | Índice de Assets | `references/branding-assets-index.md` |
 | `globals.css` de referência (copiável) | `assets/globals-reference.css` |
+
+Use o CSS base com seus fallbacks. Para carregar fontes, adapte as regras de [tipografia](references/typography-guide.md) com arquivos autorizados no projeto. Com o perfil de apresentações, consulte a skill atomica-presentations.
+
+Para orientações de contraste, confira [WCAG 2.2, contraste mínimo](https://www.w3.org/TR/WCAG22/#contrast-minimum).

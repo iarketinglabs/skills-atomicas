@@ -13,7 +13,7 @@ A hierarquia tipográfica é "brutalmente clara". Peso + caixa alta + espaçamen
 | Headline | **BebasNeue** | Impacto máximo, poster style, caixa alta natural |
 | Sub-título | **Let'sJazz-Unicase** | Vibe retrô elegante, unicase (maiúsculas estilizadas) |
 | Texto core | **Jost** | Limpo, legível, moderno com toque geométrico |
-| Detalhes | **BrushScript** | Toque handmade, orgânico, assinaturas e acentos |
+| Detalhes | **Script manuscrita autorizada** | Toque handmade, orgânico, assinaturas e acentos |
 
 ### Opção B — Google Fonts (fallback)
 

@@ -52,3 +52,7 @@ Leia [referências de estratégia](references/strategy.md) para decisões de pos
 ## Entrega esperada
 
 Adapte ao pedido, mas uma entrega estratégica normalmente inclui: objetivo e premissas; posicionamento; pilares com função e exemplos; formatos e cadência; plano de distribuição; métricas e janela de avaliação; e próximos testes. Para posts, entregue o texto final e, quando útil, uma breve nota sobre tese, formato e CTA — não uma explicação longa do próprio texto.
+
+## Ferramentas
+
+O planejamento pode usar apenas o briefing. Analytics e histórico da conta dependem de exportação ou acesso autorizado. Atualizações da plataforma dependem de fonte oficial. Sem esses insumos, assinale as lacunas e proponha um plano testável.

@@ -138,3 +138,7 @@ A rubrica completa está em `references/artefatos.md`.
 - `references/artefatos.md` - checklists por canal, templates de briefing/headline/CTA/proposta de valor, matriz de objeções, rubrica de avaliação 1-5, playbooks de pesquisa e avaliação de IA.
 
 Leia a referência específica antes de produzir copy para o domínio em questão.
+
+## Ferramentas
+
+Redija com os materiais fornecidos. Para comparar versões ou medir desempenho, peça dados autorizados e período comparável. Se faltarem fonte ou confirmação, devolva a copy com a alegação condicionada ou indique a evidência pendente.

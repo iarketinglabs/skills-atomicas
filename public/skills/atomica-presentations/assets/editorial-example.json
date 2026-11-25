@@ -1,0 +1,54 @@
+{
+  "title": "Atomica · Composições editoriais",
+  "lang": "pt-BR",
+  "footer": "Atomica · Exemplo fictício",
+  "slides": [
+    {
+      "type": "cover",
+      "eyebrow": "Exercício editorial",
+      "title": "Clareza para conduzir o trabalho",
+      "subtitle": "Uma composição ilustrada com recursos locais, sem dados de clientes.",
+      "image": {"path": "editorial-illustration.png", "alt": "Motivo atômico ilustrativo"},
+      "image_mode": "bleed-right",
+      "notes": "Esta é uma demonstração de encaixe; a ilustração definitiva deve ser composta para o espaço escolhido."
+    },
+    {
+      "type": "timeline",
+      "eyebrow": "Sequência ilustrativa",
+      "title": "Cada etapa tem uma entrega",
+      "items": [
+        {"label": "Etapa A", "icon": "search", "title": "Observar", "text": "Mapear a situação e escolher uma prioridade."},
+        {"label": "Etapa B", "icon": "settings", "title": "Configurar", "text": "Preparar a rotina, testar e registrar correções."},
+        {"label": "Etapa C", "icon": "learn", "title": "Praticar", "text": "Executar com a equipe e documentar os próximos passos."}
+      ],
+      "notes": "As etapas são ilustrativas e não definem prazo ou escopo comercial."
+    },
+    {
+      "type": "split",
+      "eyebrow": "Uma imagem, três ideias",
+      "title": "Conecte o conceito à prática",
+      "image": {"path": "editorial-illustration.png", "alt": "Diagrama orbital como motivo editorial"},
+      "items": [
+        {"title": "Referência", "text": "Uma fonte comum para orientar o trabalho."},
+        {"title": "Rotina", "text": "Uma sequência que a equipe consegue repetir."},
+        {"title": "Revisão", "text": "Critérios explícitos para aprovar e melhorar."}
+      ],
+      "notes": "A imagem apoia o conceito; os textos mantêm os argumentos principais."
+    },
+    {
+      "type": "message",
+      "eyebrow": "Marca opcional do portfólio",
+      "title": "AndROI com identidade consistente",
+      "items": [
+        {"icon": "check", "title": "Nome preservado", "text": "Atomica sem acento. AndROI mantém a caixa e o destaque tipográfico de ROI."}
+      ],
+      "notes": "Esta tela apenas exercita a tipografia de marca e pode ser omitida em outros projetos."
+    },
+    {
+      "type": "image",
+      "title": "Motivo visual em destaque",
+      "image": {"path": "editorial-illustration.png", "alt": "Motivo atômico inteiro, sem recorte"},
+      "notes": "Uma imagem em destaque oferece uma pausa de ritmo sem repetir o conteúdo em texto."
+    }
+  ]
+}

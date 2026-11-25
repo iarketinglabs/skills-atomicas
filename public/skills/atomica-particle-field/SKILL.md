@@ -9,9 +9,8 @@ Fundo animado com física atômica gravitacional: cianos (núcleons) formam núc
 
 ## Pré-requisitos
 
-- Next.js 13+ (App Router) com TypeScript
-- React 18+
-- Nenhuma biblioteca adicional necessária
+- Next.js com App Router e suporte a Client Components, ou React com TypeScript e CSS global.
+- Sem dependências adicionais além de React e APIs do navegador. Confirme a integração antes de reportar a instalação.
 
 ## Passos de instalação
 
@@ -19,11 +18,7 @@ Fundo animado com física atômica gravitacional: cianos (núcleons) formam núc
 
 Copia `assets/particle-field.tsx` para `src/components/particle-field.tsx` do projeto de destino.
 
-```bash
-cp .agents/skills/atomica-particle-field/assets/particle-field.tsx src/components/particle-field.tsx
-```
-
-Se o projeto de destino não estiver no mesmo repositório, o agente deve criar o ficheiro copiando o conteúdo de `assets/particle-field.tsx` diretamente para o caminho correto.
+Se o ambiente só permitir texto, entregue os arquivos indicados, os pontos de integração e os testes pendentes. Com React fora do Next.js, importe pelo caminho configurado no projeto.
 
 ### 2. Adicionar o CSS
 
@@ -90,7 +85,6 @@ Inicia o servidor de desenvolvimento e confirma que:
 
 ## Personalização das cores
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ```ts
 const COLORS: Record<Particle["hue"], string> = {
@@ -145,3 +139,5 @@ O canvas usa `pointer-events: none` — nunca bloqueia interações do utilizado
 - **Guard duplo de `prefers-reduced-motion`**: o componente TSX faz early-return antes de iniciar a simulação (nenhum ciclo de CPU gasto), e o CSS esconde `.particle-stage` inteiro (`display: none`) — os dois juntos garantem que nada anima nem é renderizado sob motion reduzido
 - DPR limitado a 2× para não sobrecarregar ecrãs HiDPI
 - Rastro de elétron com comprimento físico uniforme: `TRAIL_LENGTH = 550` pontos armazenados, registrados só quando o elétron avança `TRAIL_STEP_PX = 0.8`px — isso evita que elétrons lentos tenham rastro maior que os rápidos
+
+Veja a [diretiva use client do Next.js](https://nextjs.org/docs/app/api-reference/directives/use-client) quando o projeto usar App Router.

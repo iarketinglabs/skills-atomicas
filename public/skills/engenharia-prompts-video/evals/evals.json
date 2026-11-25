@@ -15,11 +15,11 @@
     },
     {
       "id": 2,
-      "prompt": "Tenho uma imagem inicial de uma mulher sentada perto de uma janela em uma cafeteria. Quero animá-la por 6 segundos: ela deve levantar a xícara, tomar um gole e olhar a chuva. A câmera permanece parada; não quero música nem legendas.",
+      "prompt": "Tenho uma imagem inicial de uma mulher sentada perto de uma janela em uma cafeteria. Quero animá-la por 6 segundos: ela deve levantar a xícara, tomar um gole e olhar a chuva. A câmera permanece parada; não quero música nem legendas. Nesta simulação, você tem apenas a descrição da imagem; use-a para o rascunho de movimento e marque a conferência do quadro como pendente.",
       "expected_output": "A skill identifica Image-to-Video, alinha somente informações faltantes e produz uma instrução em inglês centrada na animação, sem redescrever aparência ou cenário já visíveis na imagem.",
-      "files": ["start-frame-image"],
+      "files": [],
       "expectations": [
-        "A entrega final classifica o fluxo como I2V e registra a imagem inicial como referência disponível.",
+        "A entrega final classifica o fluxo como I2V, trata a descrição como contexto fornecido e marca a checagem da imagem como pendente.",
         "O briefing em PT-BR especifica movimento do sujeito, câmera estática, duração, áudio e restrições.",
         "O prompt em inglês prioriza ação progressiva, câmera, física ou ambiente dinâmico quando relevante e continuidade temporal.",
         "O prompt não reinventa identidade, roupa, composição, iluminação ou objetos já definidos pela imagem de referência.",
@@ -37,6 +37,12 @@
         "Caso a capacidade específica seja confirmada, a adaptação separa o núcleo semântico neutro da camada de sintaxe da plataforma.",
         "A resposta mantém briefing em PT-BR e prompt em inglês."
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Quero modificar um vídeo que já existe: anime novamente a fumaça e remova os reflexos em todos os quadros. Preciso de um fluxo Video-to-Video.",
+      "expected_output": "Reconhece que Video-to-Video fica fora do fluxo T2V/I2V. Explica o insumo e o tipo de ferramenta adequado sem presumir acesso ao vídeo ou prometer edição.",
+      "files": []
     }
   ]
 }

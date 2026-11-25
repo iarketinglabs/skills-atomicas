@@ -11,7 +11,7 @@ Médio: persuasivo com sobriedade, sempre com qualificadores.
 **Claim → Condições → Método → Medida → Ressalva**
 
 ### Exemplo correto:
-"Podemos reduzir tempo de produção de conteúdos repetitivos em ~20–40% quando existe briefing padrão e acesso a assets. Fazemos isso com templates, contexto reutilizável e automações. Medimos por horas gastas antes/depois. Resultados variam por maturidade e adesão do time."
+"A hipótese é reduzir o tempo de produção de conteúdos repetitivos quando temos briefing padrão e assets autorizados. Vamos testar com o mesmo tipo de peça e comparar horas de produção e de revisão antes e depois."
 
 ### Exemplo errado:
 "Dobro seu ROI em 30 dias."
@@ -55,7 +55,7 @@ Médio: persuasivo com sobriedade, sempre com qualificadores.
 ## Biblioteca de claims permitidos
 
 Com regras:
-- Redução de tempo (faixas)
+- Redução de tempo (faixas somente com fonte e escopo)
 - Aumento de qualidade percebida (com critério)
 - Velocidade de produção (com condicionantes)
 - Consistência e padronização

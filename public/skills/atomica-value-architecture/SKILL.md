@@ -59,3 +59,7 @@ When reviewing existing messaging, diagnose:
 - Do not turn B2C into done-for-you consulting; keep it focused on guided practice, feedback, community, and capability.
 - Do not force B2B execution when the prospect lacks a champion, access, or basic readiness; route to readiness/transformation.
 - Compare by process, adoption, proof, and operating model, not by attacking competitors.
+
+## Tools and availability
+
+Use the supplied brief and evidence in a text-only session. Ask for decision-critical facts and mark missing proof as a hypothesis or validation task. CRM and analytics claims require access to authorized data or an extract from the user.

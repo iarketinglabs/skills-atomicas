@@ -1,17 +1,7 @@
 /**
- * globals.css de Referência — Átomica Design System
- *
- * Este arquivo SUBSTITUI o antigo `tailwind-config-reference.js`. Nenhum dos
-Amostras internas de projeto foram anonimizadas nesta versão pública.
- * Armbrust, site institucional domínio público da Atomica) usa um arquivo de config do
- * Tailwind com `theme.extend` — todos usam Tailwind v4 CSS-first
- * (`@import "tailwindcss"` no topo de um único `globals.css`), com fontes,
- * cores e componentes declarados como CSS literal, sem prefixo `atomica-*`
- * nas classes.
- *
- * Copie este arquivo como ponto de partida do `globals.css` de um projeto
- * novo. Ajuste os `url()` dos `@font-face` e da textura para o caminho real
- * do seu projeto (convenção: `/assets/fonts/...` e `/assets/textures/...`).
+ * CSS de referência para páginas web Atomica com Tailwind CSS v4.
+ * Copie para a folha global do projeto. Os fallbacks funcionam sem fontes locais.
+ * A textura pulp é uma retícula CSS que pode ser trocada por um asset autorizado.
  */
 
 @import "tailwindcss";
@@ -19,54 +9,6 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 /* ============================================================
    FONTES — self-hosted, nome de família prefixado "Atomica "
    ============================================================ */
-
-@font-face {
-  font-family: "Atomica Jost";
-  src: url("/assets/fonts/Google Fonts/Jost-VariableFont_wght.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Atomica Oswald";
-  src: url("/assets/fonts/Google Fonts/Oswald-VariableFont_wght.ttf") format("truetype");
-  font-weight: 200 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Atomica Caprasimo";
-  src: url("/assets/fonts/Google Fonts/Caprasimo-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Atomica Script";
-  src: url("/assets/fonts/Outras/BrushScriptOpti-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Atomica Bebas";
-  src: url("/assets/fonts/Google Fonts/BebasNeue-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Atomica Swanky";
-  src: url("/assets/fonts/Google Fonts/FontdinerSwanky-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* ============================================================
    TOKENS — paleta e variáveis reais (ver references/design-tokens.md)
@@ -86,7 +28,7 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
   --amarelo-soft: #fef8e4;
   --vermelho: #b8302f;
   --radius: 12px;
-  --texture-pulp: url("/assets/textures/pulp.papper-background.png");
+  --texture-pulp: radial-gradient(rgba(27, 27, 27, .09) .7px, transparent 1px);
 }
 
 * {
@@ -102,7 +44,7 @@ body {
   background:
     linear-gradient(rgba(247, 239, 217, 0.70), rgba(247, 239, 217, 0.70)),
     var(--texture-pulp);
-  background-size: auto, 760px auto;
+  background-size: auto, 8px 8px;
   color: var(--gunmetal);
   font-family: "Atomica Jost", sans-serif;
   letter-spacing: 0;
@@ -162,14 +104,14 @@ a { color: inherit; }
   background:
     linear-gradient(rgba(99, 190, 194, 0.5), rgba(99, 190, 194, 0.5)),
     var(--texture-pulp);
-  background-size: auto, 760px auto;
+  background-size: auto, 8px 8px;
 }
 
 .section-yellow {
   background:
     linear-gradient(rgba(247, 197, 40, 0.5), rgba(247, 197, 40, 0.5)),
     var(--texture-pulp);
-  background-size: auto, 760px auto;
+  background-size: auto, 8px 8px;
 }
 
 /* ============================================================

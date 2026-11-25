@@ -1,0 +1,29 @@
+{
+  "skill_name": "atomica-contract-creator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Redija a SOW de uma formação fictícia para 15 pessoas. Existe um MSA em vigor e a formação usa só dados sintéticos. São dois workshops, com exercícios e um guia. O preço ainda está em negociação.",
+      "expected_output": "Minuta SOW com referência ao MSA, entregáveis e aceite, insumos, cronograma, preço pendente e aviso de revisão jurídica. Não pressupõe DPA para dados sintéticos.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Quero configurar um CRM de teste com funil e alertas. Não quero preparar condições contratuais.",
+      "expected_output": "Reconhece o pedido como implementação de CRM e não gera cláusulas ou presume autorização de acesso.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Minuta rápida para uma empresa fictícia portuguesa tratar candidatos com IA. Um integrador brasileiro pode aceder remotamente, o fornecedor do modelo não informou onde processa, e precisamos decidir quem é titular do código encomendado.",
+      "expected_output": "Regista propósito, papéis e fornecedores pendentes, distingue adequação direta de destinos seguintes, sinaliza análise do AI Act, remete ao art. 3.º n.º 3 do DL 252/94 com ressalvas e inclui revisão jurídica antes do uso. Não declara conformidade nem inventa a localização.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Revise somente a cláusula de PI do contrato fictício de uma automação, com biblioteca reutilizável e código escrito sob encomenda. Ainda não sabemos se se aplica direito brasileiro ou português.",
+      "expected_output": "Entrega observações, sugestão condicionada que separa ativos reutilizáveis e código novo, e decisão jurídica pendente sobre lei aplicável e direitos, sem escrever novo MSA.",
+      "files": []
+    }
+  ]
+}
