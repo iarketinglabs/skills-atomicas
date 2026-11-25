@@ -5,7 +5,20 @@
       "name": "Gestão de Negócio",
       "description": "Estratégia, metas e processos para gerir e desenvolver negócios.",
       "icon": "briefcase",
-      "subcategories": []
+      "subcategories": [
+        {
+          "id": "estrategia-e-crescimento",
+          "name": "Estratégia e crescimento"
+        },
+        {
+          "id": "vendas-e-pricing",
+          "name": "Vendas e pricing"
+        },
+        {
+          "id": "operacoes-e-processos",
+          "name": "Operações e processos"
+        }
+      ]
     },
     {
       "id": "juridico",
@@ -23,6 +36,30 @@
         {
           "id": "conteudo-e-escrita",
           "name": "Conteúdo e escrita"
+        },
+        {
+          "id": "frameworks-e-metodos",
+          "name": "Frameworks e métodos"
+        },
+        {
+          "id": "marca-e-identidade-visual",
+          "name": "Marca e identidade visual"
+        },
+        {
+          "id": "marca-e-posicionamento",
+          "name": "Marca e posicionamento"
+        },
+        {
+          "id": "criacao-com-ia",
+          "name": "Criação com IA"
+        },
+        {
+          "id": "estrategia-redes-sociais",
+          "name": "Estratégia de redes sociais"
+        },
+        {
+          "id": "podcasts-e-video",
+          "name": "Podcasts e vídeo"
         }
       ]
     },
@@ -70,6 +107,18 @@
         {
           "id": "governanca-e-operacoes",
           "name": "Governação e operações"
+        },
+        {
+          "id": "adocao-e-mudanca",
+          "name": "Adoção e mudança"
+        },
+        {
+          "id": "formularios-e-coleta",
+          "name": "Formulários e recolha de dados"
+        },
+        {
+          "id": "diagnostico-e-processos",
+          "name": "Diagnóstico e processos"
         }
       ]
     },
@@ -1600,8 +1649,8 @@
       },
       "releaseProof": {
         "method": "initial-audit",
-        "sourceCommit": "42d698260b5bc7c2fd50d5dad4535145718d9897",
-        "digest": "74b80edb33707aad9d3217e383bc82c12163b8ab25f2ec48b58fde0828e5b025"
+        "sourceCommit": "6591ed2f2c3d64f0cd60d1f47395dd9433d8e9a4",
+        "digest": "14ffaaabc62d9fe54af5b4e7a2eedcaa3ed8fd0537adf81d6a818c29381b096b"
       },
       "files": [
         {
@@ -4091,8 +4140,8 @@
       },
       "releaseProof": {
         "method": "initial-audit",
-        "sourceCommit": "42d698260b5bc7c2fd50d5dad4535145718d9897",
-        "digest": "3683e3339d6718861d5ec472a533f5e733e480d4a8339c15c090329e6560d05e"
+        "sourceCommit": "6591ed2f2c3d64f0cd60d1f47395dd9433d8e9a4",
+        "digest": "512fd05070ffcde45cb380e17e8d2308d33fb46de3f390c36ca864a55e396558"
       },
       "files": [
         {
