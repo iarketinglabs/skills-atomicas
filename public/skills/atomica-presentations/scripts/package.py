@@ -16,9 +16,24 @@ URL_ATTRIBUTES = {
 }
 
 
+CSS_REFERENCES = re.compile(
+    r"""
+       /\* .*? \*/
+     | @import (?:\s|/\* .*? \*/)* (?:"([^"]+)"|'([^']+)')
+     | (?<![\w-]) url\( \s* (?:"([^"]+)"|'([^']+)'|([^()'"\s]+)) \s* \)
+     | "(?:\\.|[^"\\])*"
+     | '(?:\\.|[^'\\])*'
+    """,
+    re.IGNORECASE | re.DOTALL | re.VERBOSE,
+)
+
+
 def css_urls(text):
-    for match in re.finditer(r"""url\(\s*(?:"([^"]+)"|'([^']+)'|([^()\s]+))\s*\)""", text, re.I):
-        yield next(value for value in match.groups() if value)
+    # Match dependencies alongside comments and strings so literal examples are ignored.
+    for match in CSS_REFERENCES.finditer(text):
+        reference = next((value for value in match.groups() if value is not None), None)
+        if reference is not None:
+            yield reference
 
 
 def source_set_urls(value):

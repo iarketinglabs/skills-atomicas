@@ -201,6 +201,37 @@ class DeckTests(unittest.TestCase):
             self.assertIn('page.htm', files)
             self.assertIn('photo.png', files)
 
+    def test_public_package_collects_css_imports_transitively(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / 'deck'
+            (source / 'parts').mkdir(parents=True)
+            (source / 'index.html').write_text('<link rel="stylesheet" href="theme.css">', encoding='utf-8')
+            (source / 'theme.css').write_text(
+                '@import "parts/local.css" layer(theme); /* @import "ignored.css"; */',
+                encoding='utf-8',
+            )
+            (source / 'parts/local.css').write_text(
+                """@IMPORT /* note */ '../transitive.css'; p::before {content: "@import 'ignored.css'";}""",
+                encoding='utf-8',
+            )
+            (source / 'transitive.css').write_text('main {background: url("sample.png");}', encoding='utf-8')
+            (source / 'sample.png').write_bytes(b'synthetic image')
+            files = package(source, root / 'public')
+            self.assertTrue({'theme.css', 'parts/local.css', 'transitive.css', 'sample.png'} <= files.keys())
+
+    def test_public_package_rejects_external_quoted_css_import(self):
+        for target in ('https://example.invalid/theme.css', '//example.invalid/theme.css'):
+            with self.subTest(target=target), tempfile.TemporaryDirectory() as tmp:
+                root = Path(tmp)
+                source = root / 'deck'
+                source.mkdir()
+                (source / 'index.html').write_text('<link rel="stylesheet" href="theme.css">', encoding='utf-8')
+                (source / 'theme.css').write_text(f'@import "{target}";', encoding='utf-8')
+                with self.assertRaisesRegex(ValueError, 'Depend.*externa de CSS'):
+                    package(source, root / 'public')
+                self.assertFalse((root / 'public').exists())
+
     def test_public_package_rejects_notes(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
