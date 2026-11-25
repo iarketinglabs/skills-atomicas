@@ -5,7 +5,7 @@ Use as fontes oficiais a seguir para validar o enquadramento. Registe jurisdiç�
 ## Propriedade de software
 
 - No Brasil, confira as hipóteses e ressalvas do art. 4.º da Lei 9.609/1998. O dispositivo pode atribuir os direitos ao empregador, contratante de serviços ou órgão público nas condições ali descritas, salvo estipulação em contrário. [Planalto, Lei de Software](https://www.planalto.gov.br/ccivil_03/leis/l9609.htm).
-- Em Portugal, para as hipóteses descritas no art. 3.º, n.º 3, do Decreto-Lei 252/94, a regra aponta para o destinatário do programa, salvo estipulação em contrário ou se outra coisa resultar das finalidades do contrato. [Diário da República, Decreto-Lei 252/94](https://guiadoinvestidor.dre.pt/DRE_Investidores/PDF.aspx?DecretoLeiId=24&Idioma=1).
+- Em Portugal, para as hipóteses descritas no art. 3.º, n.º 3, do Decreto-Lei 252/94, a regra aponta para o destinatário do programa, salvo estipulação em contrário ou se outra coisa resultar das finalidades do contrato. [Diário da República, art. 3.º do Decreto-Lei 252/94](https://diariodarepublica.pt/dr/legislacao-consolidada/decreto-lei/1994-34555675-46564175).
 - Determine se o artefato é software, obra de outra natureza, material preexistente ou ativo de terceiro. Valide a cadeia de direitos e o enquadramento de cada ativo com o advogado.
 
 ## Tratamento e transferências de dados

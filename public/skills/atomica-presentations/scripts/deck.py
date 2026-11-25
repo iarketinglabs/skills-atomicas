@@ -188,11 +188,16 @@ def render(data, private=False):
         heading = ('<header class="heading image-heading"></header>' if slide['type'] == 'image' else
                    '<header class="heading"><div class="eyebrow"><i></i>' + text_html(slide.get('eyebrow', '')) + '<img src="assets/section-divider.svg" alt=""></div>'
                    f'<h1>{text_html(slide["title"])}</h1><p class="subtitle">{text_html(slide.get("subtitle", ""))}</p></header>')
+        attribution = text_html(slide.get("source", ""))
+        if slide['type'] == 'image':
+            footer = f'<footer class="media-source"><span>{attribution}</span></footer>' if attribution else ''
+        else:
+            footer = f'<footer><span>{text_html(data.get("footer", ""))}</span><span>{attribution}</span></footer>'
         slides.append(f'<section class="slide {esc(slide["type"])}{image_class}{" active" if n == 1 else ""}" aria-label="{n} / {total}" aria-hidden="{"false" if n == 1 else "true"}">'
                       f'<div class="progress" style="--progress:{n / total * 100}%"></div>'
                       '<div class="brand"><img src="assets/header-mark.svg" alt=""><span>Atomica</span></div>'
                       f'<span class="counter">{n:02d} / {total:02d}</span>'
-                      + heading + content(slide) + ('' if slide['type'] == 'image' else f'<footer><span>{text_html(data.get("footer", ""))}</span><span>{text_html(slide.get("source", ""))}</span></footer>') + '</section>')
+                      + heading + content(slide) + footer + '</section>')
     notes = ''
     if private:
         values = [brand_plain(s.get('notes', '')) for s in data['slides']]

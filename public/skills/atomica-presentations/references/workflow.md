@@ -14,7 +14,7 @@ Vídeos em `cover`, `image` ou `split` usam `video: {"path": "media/animacao.web
 
 O HTML gerado reproduz o vídeo apenas no slide ativo. `prefers-reduced-motion`, falha de reprodução e impressão mostram o poster local. A área do vídeo usa `object-fit: contain` e fundo transparente para preservar a animação inteira e o background do slide. Leia `references/loop-video-assets.md` antes de ajustar a composição ou o CSS do vídeo.
 
-Em capas ilustradas, `image_mode` aceita `inset` ou `bleed-right`. Ícones e etiquetas seguem `references/compositions.md`. [Exemplo editorial](../assets/editorial-example.json) usa ilustração fictícia local. Copie o JSON e a ilustração para o mesmo diretório de trabalho antes de editar.
+Em capas ilustradas, `image_mode` aceita `inset` ou `bleed-right`. Ícones e etiquetas seguem `references/compositions.md`. [Exemplo editorial](../assets/editorial-example.json) e [Exemplo de slide único](../assets/image-only-example.json) usam ilustração fictícia local. Copie o JSON e a ilustração para o mesmo diretório de trabalho antes de editar.
 
 Execute a partir da raiz desta skill, ou use caminhos absolutos dos scripts:
 

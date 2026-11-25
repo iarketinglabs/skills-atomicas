@@ -1,0 +1,16 @@
+{
+  "title": "Mapa de teste",
+  "lang": "pt",
+  "footer": "Exemplo fictício",
+  "slides": [
+    {
+      "type": "image",
+      "title": "Mapa",
+      "source": "Crédito do diagrama / fonte sintética",
+      "image": {
+        "path": "editorial-illustration.png",
+        "alt": "Diagrama conceitual"
+      }
+    }
+  ]
+}

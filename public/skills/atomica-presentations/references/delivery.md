@@ -20,7 +20,7 @@ Somente publique quando solicitado. Prepare primeiro uma entrega revisável:
 python scripts/package.py caminho/deck caminho/pacote-publico
 ```
 
-O script copia `index.html`, referências locais transitivas de HTML/CSS (incluindo `<source src>` dos vídeos e posters referenciados como imagem), licenças das fontes e PDF se presente. Assim, só entram no pacote os vídeos usados nos slides. Exclui notas, fontes de trabalho, capturas, relatórios, versões anteriores e prompts não referenciados. Inclui manifesto SHA-256 e `.nojekyll`; rejeita notas estruturais e dependências externas de renderização. Links de navegação externos são permitidos, sem baixar seu conteúdo.
+O script copia `index.html`, referências locais transitivas de HTML e CSS (incluindo `<source src>` de vídeo, posters e imagens responsivas), licenças das fontes e PDF se presente. Assim, só entram no pacote os vídeos usados nos slides. Exclui notas, fontes de trabalho, capturas, relatórios, versões anteriores e prompts não referenciados. Inclui manifesto SHA-256 e `.nojekyll`; rejeita notas estruturais em qualquer HTML coletado e dependências externas de renderização. Links de navegação externos são permitidos, sem baixar seu conteúdo.
 
 Revise o pacote e faça a publicação pelo mecanismo disponível. Preserve mudanças não relacionadas na pasta de trabalho; use diretório ou checkout isolado para o artefato público. Não altere a visibilidade de um repositório com documentos internos para publicar um deck. Ausência de indexação não é controle de acesso; se proteção foi pedida, preserve-a e valide-a.
 

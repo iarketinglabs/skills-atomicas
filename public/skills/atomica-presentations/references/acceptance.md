@@ -5,7 +5,7 @@
 - Frontmatter válido, nome igual à pasta, descrição abaixo de 1024 caracteres e referências existentes.
 - Entrada validada; tipo desconhecido, campos desconhecidos, dados inválidos e destino existente produzem erro.
 - HTML público sem `notes`, sem painel privado e sem texto das notas. O verificador compara com os valores de notas do arquivo privado.
-- Fontes locais realmente carregadas, todas as imagens completas, zero erros de script e zero recursos externos necessários.
+- Fontes usadas por texto visível carregadas no HTML e incorporadas ao PDF quando usadas na impressão. Verifique imagens, erros de script e dependências externas. A checagem de navegador intercepta tráfego HTTP(S) e WebSocket e desabilita service workers.
 - Todos os slides dentro de 1920×1080, sem texto transbordando sua caixa, sem colisões entre cards ou entre área de título e corpo. Layout a 1920×1080 e 390×844 com escala proporcional; em telefone, é apresentação reduzida, não página de leitura refluída.
 - Caixas de imagem, SVG, vídeo, canvas e figuras dentro do canvas. Sangria pode atravessar a margem segura, nunca a borda externa; `verify.py` deve reportar mídia fora do slide.
 - Teclas de navegação, Home/End, ajuda, notas e reinício do cronômetro funcionando. Fullscreen depende da permissão do navegador e precisa de teste interativo quando não disponível no modo automatizado.
@@ -13,7 +13,7 @@
 - Movimento reduzido sem animação. Impressão com tudo visível; PDF com uma página 16:9 por slide, texto e gráficos completos e sem notas.
 - Símbolo isolado no header, sem duplicação do nome dentro do ícone. Barra com largura correspondente à posição atual, início/fim e retorno verificados.
 - Atomica sem acento; AndROI, quando presente, mantém caixa e ROI serifado, negrito e itálico, com fonte local carregada e incorporada ao PDF.
-- Imagens locais copiadas, sem dependência do diretório original. Confirme título/número do slide pedido, `src` no HTML final, proporção, corte e conteúdo preservado. Uma imagem gerada mas não referenciada no HTML não foi aplicada; inserir uma imagem não remove texto, dados ou framework aprovado.
+- Fontes e créditos informados no slide permanecem no HTML e no PDF. Imagens locais copiadas, sem dependência do diretório original. Confirme título/número do slide pedido, `src` no HTML final, proporção, corte e conteúdo preservado. Uma imagem gerada mas não referenciada no HTML não foi aplicada; inserir uma imagem não remove texto, dados ou framework aprovado.
 - Sangria não cobre texto importante; infográficos ficam inteiros. Quando uma imagem deve sobrepor o rodapé, confira a captura e a página do PDF: z-index sozinho não prova cobertura, especialmente com transparência. Verifique a ordem das camadas e que a imagem continue dentro do canvas.
 
 ## Vídeos em loop

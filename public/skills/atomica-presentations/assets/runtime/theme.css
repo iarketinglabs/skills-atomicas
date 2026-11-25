@@ -45,7 +45,7 @@ h1 .brand-term{font-size:.85em}
 .split-items{display:flex;flex-direction:column;gap:12px;min-height:0}
 .split .card{padding:20px 28px;border-radius:0;border:0;border-bottom:2px solid var(--cream-300);background:none;display:grid;grid-template-columns:280px 1fr;gap:24px;align-items:center}
 .split h3{font-size:46px;margin:0}.split .item-icon{width:40px;height:40px;margin:0}.split .card:has(.item-icon){grid-template-columns:40px 240px 1fr}
-.image-stage{position:absolute;inset:120px 90px 25px;margin:0}.image-stage img{width:100%;height:100%;object-fit:contain}.image-heading{height:0!important}
+.image-stage{position:absolute;inset:120px 90px 25px;margin:0}.image-stage img{width:100%;height:100%;object-fit:contain}.slide.image:has(.media-source) .image-stage{bottom:105px}.media-source{justify-content:flex-end}.image-heading{height:0!important}
 .cover-visual{position:absolute;right:80px;top:250px;width:700px;height:650px;object-fit:contain}
 .image-cover .heading{width:900px}.image-cover .subtitle{max-width:860px}
 .image-cover.bleed-right .cover-visual{right:0;top:0;width:850px;height:1080px;object-fit:cover;clip-path:polygon(0 0,100% 0,100% 100%,16% 100%)}

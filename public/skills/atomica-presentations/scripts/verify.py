@@ -7,33 +7,52 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 
+# Discover families from visible slide text, even when a required file failed to load.
+SLIDE_FONTS = """() => {
+    const families = new Set(['Bebas Neue', 'Oswald', 'Jost', 'Libre Baskerville']);
+    const used = new Set();
+    const walker = document.createTreeWalker(document.getElementById('stage'), NodeFilter.SHOW_TEXT);
+    for (let text = walker.nextNode(); text; text = walker.nextNode()) {
+        if (!text.data.trim()) continue;
+        const element = text.parentElement;
+        if (!element.checkVisibility({visibilityProperty: true, opacityProperty: true})) continue;
+        const family = getComputedStyle(element).fontFamily.split(',')[0].trim().replaceAll('"', '');
+        if (families.has(family)) used.add(family);
+    }
+    return [...used];
+}"""
+
+
 def verify(folder, channel=None, pdf=False):
     folder = Path(folder).resolve()
     qa = folder / 'qa'
     qa.mkdir(exist_ok=True)
     failures, blocked, js_errors = [], [], []
     captures = []
+    used_fonts = set()
     with sync_playwright() as runtime:
         browser = runtime.chromium.launch(channel=channel)
-        context = browser.new_context(viewport={'width': 1920, 'height': 1080}, reduced_motion='reduce')
+        context = browser.new_context(
+            viewport={'width': 1920, 'height': 1080}, reduced_motion='reduce', service_workers='block'
+        )
 
         def block(route):
-            if re.match(r'^(https?|wss?):', route.request.url):
+            if re.match(r'^https?:', route.request.url):
                 blocked.append(route.request.url)
                 route.abort()
             else:
                 route.continue_()
 
+        def block_websocket(route):
+            blocked.append(route.url)
+            # Leaving the route unconnected keeps the WebSocket local to Playwright.
+
         context.route('**/*', block)
+        context.route_web_socket('**/*', block_websocket)
         page = context.new_page()
         page.on('pageerror', lambda error: js_errors.append(str(error)))
         page.on('requestfailed', lambda request: failures.append('Resource: ' + request.url))
         page.goto((folder / 'index.html').as_uri(), wait_until='load')
-        page.evaluate('document.fonts.ready')
-        fonts = page.evaluate('''() => ['Bebas Neue','Oswald','Jost'].map(name => ({name, loaded:[...document.fonts].some(f => f.family.replaceAll('"','') === name && f.status === 'loaded')}))''')
-        for font in fonts:
-            if not font['loaded']:
-                failures.append('Fonte não carregada: ' + font['name'])
         count = page.locator('.slide').count()
         if not count:
             failures.append('Nenhum slide')
@@ -41,6 +60,8 @@ def verify(folder, channel=None, pdf=False):
             page.keyboard.press('Home')
             for _ in range(n):
                 page.keyboard.press('ArrowRight')
+            used_fonts.update(page.evaluate(SLIDE_FONTS))
+            page.evaluate('document.fonts.ready')
             geometry = page.evaluate('''() => {
               const s=document.querySelector('.slide.active'), errors=[];
               const r=s.getBoundingClientRect(), scale=r.width/1920;
@@ -87,6 +108,13 @@ def verify(folder, channel=None, pdf=False):
             target = qa / f'slide-{n+1:02d}.png'
             page.screenshot(path=str(target))
             captures.append(target.name)
+        loaded_fonts = set(page.evaluate("""() => [...document.fonts]
+            .filter(face => face.status === 'loaded')
+            .map(face => face.family.replaceAll('"', ''))"""))
+        fonts = [{'name': name, 'loaded': name in loaded_fonts} for name in sorted(used_fonts)]
+        for font in fonts:
+            if not font['loaded']:
+                failures.append('Fonte não carregada: ' + font['name'])
         page.keyboard.press('Home')
         if page.locator('.slide.active').get_attribute('aria-label') != f'1 / {count}':
             failures.append('Home falhou')
@@ -165,6 +193,8 @@ def verify(folder, channel=None, pdf=False):
         if pdf:
             expected_text = page.locator('.slide').evaluate_all('''slides => slides.map(s => [...s.querySelectorAll('h1,h3,p,.metric,.chart-col strong,footer span')].map(e=>e.innerText).filter(Boolean))''')
             page.emulate_media(media='print')
+            print_fonts = page.evaluate(SLIDE_FONTS)
+            page.evaluate('document.fonts.ready')
             page.pdf(path=str(folder / 'presentation.pdf'), prefer_css_page_size=True, print_background=True)
             import pymupdf
             document = pymupdf.open(folder / 'presentation.pdf')
@@ -184,11 +214,11 @@ def verify(folder, channel=None, pdf=False):
                             font_names.add(name.lstrip('/'))
             font_names = sorted(font_names)
             pdf_info['fonts'] = font_names
-            for family in ['BebasNeue', 'Oswald', 'Jost']:
-                if not any(family.lower() in name.lower().replace('-', '') for name in font_names):
+            embedded = [re.sub(r'[^a-z]', '', name.lower()) for name in font_names]
+            for family in print_fonts:
+                key = re.sub(r'[^a-z]', '', family.lower())
+                if not any(key in name for name in embedded):
                     failures.append('Fonte ausente no PDF: ' + family)
-            if page.locator('.brand-term').count() and not any('librebaskerville' in name.lower().replace('-', '') for name in font_names):
-                failures.append('Fonte serifada de marca ausente no PDF')
             for n, p in enumerate(document):
                 if abs(p.rect.width / p.rect.height - 16 / 9) > .001:
                     failures.append(f'PDF página {n+1}: proporção inválida')

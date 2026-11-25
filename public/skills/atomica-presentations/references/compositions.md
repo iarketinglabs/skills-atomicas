@@ -14,7 +14,7 @@ Todos os tipos aceitam `eyebrow`, `title`, `subtitle`, `source` e `notes`. Os te
 | team | Mostrar papéis e responsabilidades | `items`: 1–3 com `title`, `text`, `initials` opcional |
 | closing | Encerrar com próximo passo concreto | `items`: 1–3 ações |
 | timeline | Associar fases, atividades e entregáveis | `items`: 2–3 com `label`, `title`, `text` e `icon` opcional |
-| image | Dar destaque a um infográfico ou ilustração completa | `image`: caminho local relativo e `alt`; apenas header + imagem |
+| image | Dar destaque a um infográfico ou ilustração completa | `image`: caminho local relativo e `alt`; header, imagem e crédito quando fornecido |
 | split | Explicar com imagem lateral e linhas de conteúdo | `image` + `items`: 1–3; texto curto em cada linha |
 
 Card: `title`, `text`, `value` opcional para indicador, `label` opcional e `icon` opcional. Ícones disponíveis: `search`, `settings`, `learn`, `time`, `check`, `chart`, `link`. Não aceite SVG arbitrário na entrada. Ícones explicam a função, não preenchem espaço vazio.

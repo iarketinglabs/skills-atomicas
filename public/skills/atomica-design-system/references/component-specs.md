@@ -77,7 +77,7 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.78), rgba(247, 239, 217, 0.78)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 7px 7px 0 var(--amarelo);
 }
 
@@ -87,7 +87,7 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.8), rgba(247, 239, 217, 0.8)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 12px 12px 0 var(--ciano);
 }
 
@@ -97,7 +97,7 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.8), rgba(247, 239, 217, 0.8)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 7px 7px 0 var(--amarelo);
 }
 
@@ -108,7 +108,7 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.72), rgba(247, 239, 217, 0.72)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 14px 14px 0 var(--ciano);
 }
 
@@ -131,7 +131,7 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.76), rgba(247, 239, 217, 0.76)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 8px 8px 0 var(--ciano);
 }
 ```
@@ -360,10 +360,3 @@ O iframe só é montado no DOM depois do clique — antes disso, mostra a `.vide
   object-fit: cover;
 }
 ```
-
----
-
-## 9. Navegação (extrapolação parcial)
-
-
-## 10. Modais, Toasts, Tabelas, Accordion (extrapolação — sem exemplo shippado)

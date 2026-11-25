@@ -139,6 +139,68 @@ class DeckTests(unittest.TestCase):
             self.assertIn('assets/media/video-01.webm', files)
             self.assertIn('assets/media/video-01-poster.png', files)
 
+    def test_image_preserves_source_attribution(self):
+        data = json.loads((ROOT / 'assets/image-only-example.json').read_text(encoding='utf-8'))
+        source = data['slides'][0]['source']
+        self.assertIn(source, render(validate(data)))
+        self.assertIn(source, render(data, True))
+
+    def test_public_package_rejects_remote_src_with_local_poster(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / 'deck'
+            source.mkdir()
+            (source / 'poster.png').write_bytes(b'synthetic poster')
+            (source / 'index.html').write_text(
+                '<video src="https://example.com/motion.webm" poster="poster.png"></video>',
+                encoding='utf-8',
+            )
+            with self.assertRaisesRegex(ValueError, 'Depend.*externa'):
+                package(source, root / 'public')
+            self.assertFalse((root / 'public').exists())
+
+    def test_public_package_rejects_notes_in_linked_html(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / 'deck'
+            source.mkdir()
+            (source / 'index.html').write_text('<a href="page.html">Page</a>', encoding='utf-8')
+            (source / 'page.html').write_text(
+                '<SCRIPT ID = notes-data type="application/json">["Private"]</SCRIPT>',
+                encoding='utf-8',
+            )
+            with self.assertRaisesRegex(ValueError, 'notas privadas'):
+                package(source, root / 'public')
+            self.assertFalse((root / 'public').exists())
+
+    def test_public_package_checks_all_srcset_candidates(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / 'deck'
+            source.mkdir()
+            (source / 'photo.png').write_bytes(b'synthetic photo')
+            (source / 'index.html').write_text(
+                '<img src=photo.png srcset="photo.png 1x, //example.com/photo.png 2x">',
+                encoding='utf-8',
+            )
+            with self.assertRaisesRegex(ValueError, 'Depend.*externa'):
+                package(source, root / 'public')
+
+    def test_public_package_collects_safe_linked_html_and_ignores_external_navigation(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / 'deck'
+            source.mkdir()
+            (source / 'index.html').write_text(
+                '<a href=page.htm>Page</a><a href="https://example.com/help">Help</a>',
+                encoding='utf-8',
+            )
+            (source / 'page.htm').write_text('<img src=photo.png>', encoding='utf-8')
+            (source / 'photo.png').write_bytes(b'synthetic photo')
+            files = package(source, root / 'public')
+            self.assertIn('page.htm', files)
+            self.assertIn('photo.png', files)
+
     def test_public_package_rejects_notes(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
