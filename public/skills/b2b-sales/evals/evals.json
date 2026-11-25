@@ -18,6 +18,12 @@
       "prompt": "Coloque a conta fictícia em Compromisso. A proposta abriu duas vezes e o contato sumiu. Nosso CRM não tem critérios de categoria nem data da próxima conversa.",
       "expected_output": "Não usa abertura como decisão. Propõe manter ou requalificar com evidência e próximo passo, explicita falta de critérios e não grava alterações de CRM.",
       "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Negocie a oportunidade fictícia O-04. A base é €20.000 com duas revisões, aceite por critérios mensuráveis e 16 horas de um especialista do cliente. O comprador diz que fecha se houver desconto de 15%, terceira revisão, aceite por satisfação genérica e só 8 horas do especialista. O limite concedido ao comercial é 5%. Finanças e entrega aprovam exceções. Nenhuma versão alterada foi aceita nem assinada. Prepare a decisão interna e o handoff.",
+      "expected_output": "Calcula €17.000 e identifica que 15% supera o limite de 5%. Separa o impacto de cada mudança, preserva aceite mensurável e trata custo, margem e capacidade como dados a validar. Compara manter a base ou trocar preço por escopo, fase ou compromisso verificável. Encaminha exceções a finanças e entrega. Mantém estágio de negociação, identifica versão e evidência de fechamento exigida e preenche handoff preliminar com papéis, dependências e marco.",
+      "files": []
     }
   ]
 }
