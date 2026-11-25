@@ -1,0 +1,23 @@
+{
+  "skill_name": "mapeamento-de-processos",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Mapeie o processo fictício de devolução do pedido. A política exige validação por Operações; um caso observado foi direto para a mesa financeira por falta de anexo. Quero fluxo e roteiro de confirmação.",
+      "expected_output": "Inclui gatilho, papéis, etapas, handoff, saída e exceção. Distingue política de execução, declara AS-IS preliminar e solicita validação por quem executa.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Já tenho mapa AS-IS assinado. Quero um business case completo de IA com VPL, benchmark e atribuição de ganhos.",
+      "expected_output": "Encaminha para mensuração de ROI ou diagnóstico de IA. Usa o mapa como evidência, sem inventar premissas ou mudar a saída para seleção tecnológica.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Quero fazer Task Mining em mensagens privadas para escolher a ferramenta de IA. Ainda não sabemos como a equipe realiza o trabalho e não há aprovação para esse dado.",
+      "expected_output": "Não coleta mensagens nem escolhe ferramenta. Propõe elicitação autorizada e fontes mínimas, documenta confiança e avalia redesenho e revisão antes de propor IA.",
+      "files": []
+    }
+  ]
+}

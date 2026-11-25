@@ -62,3 +62,7 @@ Entregue em Markdown, conciso e auditável, contendo:
 8. ledger de evidências, sempre que houver benchmark, dado de mercado local ou claim de IA relevante.
 
 Quando o pedido for uma auditoria de um GTM existente, mantenha a estrutura vigente e classifique cada componente como sustentado, frágil, não verificável ou inconsistente, explicando a correção mínima necessária.
+
+## Ferramentas
+
+Organize a decisão em texto. Dados de mercado e sinais de PMF precisam de fonte, contexto e data. Sem pesquisa ou acesso às métricas próprias, documente hipótese e etapa de validação antes de recomendar expansão.

@@ -1,6 +1,6 @@
 ---
 name: b2b-pitch-deck
-description: Ative esta skill SEMPRE que o usuário precisar criar, revisar, avaliar, adaptar ou estruturar pitches e apresentações comerciais B2B para serviços complexos, intangíveis e de alto ticket - consultoria estratégica, treinamento corporativo, sistemas agênticos/IA, engenharia sob demanda ou serviços profissionais. Use para montar decks, slides, narrativas executivas, business cases, propostas comerciais, playbooks de apresentação, ou avaliar qualidade de pitch existente. Ative mesmo quando o usuário usar termos coloquiais como "montar apresentação", "fazer deck de vendas", "pitch para cliente", "revisar proposta comercial", "estruturar reunião de venda", ou "como apresentar para o C-level". Se o tema envolve comunicação comercial B2B de serviços complexos, esta skill se aplica.
+description: Use para criar, revisar, adaptar ou avaliar um pitch, roteiro de slides ou apresentação comercial B2B para serviços complexos. Cobre narrativa executiva, diagnóstico, prova, valor económico, objeções e próximo compromisso. Para especificar escopo, investimento e aceite em uma proposta escrita, use o fluxo de proposta comercial.
 compatibility: Agentes de vendas B2B, consultores comerciais, founders, estrategistas de GTM e equipes de enablement que produzem material de apresentação para serviços de alta complexidade.
 ---
 
@@ -93,6 +93,8 @@ Avalie o material com a **rubrica de 1 a 5** nos critérios:
 **Se a média for alta mas "valor econômico", "diagnóstico" ou "fechamento" forem baixos, o pitch ainda está frágil.**
 
 Entregue: notas por critério, o que cortar, o que provar, o que mover para apêndice.
+
+Se houver Python e um roteiro em Markdown ou texto, rode `python scripts/validate_pitch.py roteiro.md` a partir da pasta da skill. É uma triagem por palavras, que indica quais elementos merecem inspeção. Revise cada evidência, premissa e critério com a rubrica. Sem terminal, aplique a rubrica manualmente.
 
 > Leia `references/playbooks-templates-checklists.md` para rubrica completa com âncoras e checklists de revisão.
 

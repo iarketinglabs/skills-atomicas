@@ -128,6 +128,6 @@ For the full glossary, read `references/glossario.md`.
 4. Would I publish this if my name were audited by someone technical?
 5. Does this feel more like **Kurzgesagt/Ghibli** or more like **guru/urgency**?
 
-## Full manual
+## Tools and limits
 
-For the complete branding manual (including visual system, product architecture, detailed positioning, and objection handling), read `manual interno omitido
+Deliver draft text in the requested locale and voice. Use supplied, authorized material for examples and claims. If supporting evidence is missing, state what to measure and leave performance claims conditional. Channel access and publication depend on tools and authorization.

@@ -1,0 +1,7 @@
+# Copy, cadência e medição
+
+- Use **sinal → relevância → pergunta** para primeiro contato. A pergunta verifica a relevância ou pede permissão para compartilhar algo pequeno. Contexto verdadeiro ganha da escolha de sigla.
+- Use antes/depois/ponte só com situação e mudança descritas sem promessa indevida. Uma pergunta de valor é útil para retomar conversa quando já há contexto. Limite o texto a uma ideia principal e um próximo passo.
+- Um eventual seguimento acrescenta valor ou esclarece o motivo do contato. Defina número, janela e critério de parada antes da operação. Não empilhe canais para contornar recusa. Remova respostas negativas, retiradas e casos incompatíveis do próximo lote.
+- Para piloto, compare segmentos semelhantes e altere uma variável relevante por vez. Registre contatos elegíveis, envios, falhas definitivas, entregas estimadas, respostas humanas, respostas positivas e conversas qualificadas. Defina respostas automáticas e seja explícito quanto a dados ausentes. Exemplo fictício: seis respostas positivas em 120 entregas estimadas = 5% nesse recorte. Reporte números absolutos, janela e critério. Não use o exemplo como meta.
+- Em diagnóstico, primeiro cheque supressão e reprovações do canal. Depois diferencie relevância, qualidade da lista, problema técnico e tamanho insuficiente da amostra. Uma comparação pequena ou mudança de segmento não sustenta conclusão causal.

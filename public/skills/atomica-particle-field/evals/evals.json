@@ -1,0 +1,23 @@
+{
+  "skill_name": "atomica-particle-field",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Instale a camada de partículas da Atomica na home fictícia de um app React/Next.js com CSS global, sem alterar as páginas restantes. Já existe fundo creme. Preciso dos arquivos e da checagem de acessibilidade.",
+      "expected_output": "Integra o componente cliente e CSS somente na home, mantém fundo opaco, valida camadas, clique/scroll, prefers-reduced-motion e não alega instalação caso o projeto não esteja gravável.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Preciso de uma imagem estática de partículas para a capa de um PDF. Não há página ou React neste pedido.",
+      "expected_output": "Encaminha para direção visual ou geração de uma imagem. Não sugere instalar Canvas/React no PDF.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "O canvas aparece sobre o formulário em mobile no app fictício, e não posso abrir o navegador nesta sessão. Diagnostique com os arquivos.",
+      "expected_output": "Verifica fundo, stacking contexts e pointer-events sem esconder o formulário. Entrega correção ou passos de inspeção e marca validação em navegador como pendente.",
+      "files": []
+    }
+  ]
+}

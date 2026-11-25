@@ -1,12 +1,10 @@
 # Design Tokens — Átomica
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ---
 
 ## 1. Paleta de Cores Real
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ```css
 :root {
@@ -23,11 +21,10 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
   --amarelo-soft: #fef8e4;
   --vermelho: #b8302f;
   --radius: 12px;
-  --texture-pulp: url("/assets/textures/pulp.papper-background.png");
+  --texture-pulp: radial-gradient(rgba(27, 27, 27, .09) .7px, transparent 1px);
 }
 ```
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ### 1.2 Tabela de uso
 
@@ -58,7 +55,6 @@ Esta skill documentava, até a correção, um sistema de ramp que **não corresp
 | `color-creme-300` | `#E5DBC7` | → | `--creme-300` | `#dbc9a6` | Sim |
 | `color-gunmetal-900` | `#1B1B1B` | → | `--gunmetal` | `#1b1b1b` | **Não** (só o nome) |
 | `color-gunmetal-700` | `#3D3D3D` | → | `--gunmetal-700` | `#3d3d3d` | **Não** (só o nome) |
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 | `color-ciano-900` | `#006B70` (esta skill) ou `#005F64` (`atomica-key-visuals`, também corrigido) | → | `--ciano-dark` | `#137a80` | Sim — **nenhuma das duas versões antigas estava certa** |
 | `color-ciano-700` | `#008C94` | → | *(sem equivalente)* | — | Removido — o sistema real só tem 3 tons de ciano |
 | `color-ciano-500` | `#67BBC0` | → | `--ciano` | `#63bec2` | Sim, ligeiramente |
@@ -97,7 +93,6 @@ Ver `references/typography-guide.md` para a tabela completa com fonte por papel.
 
 ## 4. Letter Spacing
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ## 5. Espaçamento
 
@@ -134,7 +129,6 @@ Ver `references/layout-patterns.md` para o `.container` real (`min(100% - 64px, 
 
 ## 8. Sombras — Estilo Offset Retrô (real)
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 | Elemento | Sombra | Hover |
 |---|---|---|
@@ -148,7 +142,6 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 | `.atomica-button` | `7px 7px 0 var(--gunmetal)` | `translate(-2px,-2px)` + `9px 9px 0 var(--gunmetal)` |
 | `.atomica-header` | `0 3px 0 rgba(27,27,27,.12)` | — |
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ## 9. Z-Index (confirmado no `.page-shell`/partículas)
 

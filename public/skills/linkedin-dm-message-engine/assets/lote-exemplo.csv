@@ -1,0 +1,4 @@
+id,funcao,fato_profissional,fonte_id,origem_autorizada,estado
+C-01,Coordenação de operações,"Empresa A anunciou um novo turno no boletim fictício",F-01,sim,elegivel
+C-02,Direção comercial,"Empresa B iniciou revisão de handoff no exemplo fictício",F-02,sim,recusou
+C-03,Operações,,F-03,incerto,pendente

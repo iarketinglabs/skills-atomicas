@@ -51,3 +51,7 @@ Entregue em Markdown, conciso e calculável, contendo:
 8. ledger de evidências, se houver benchmark ou alegação externa relevante.
 
 Quando o pedido for uma auditoria, mantenha as metas existentes e classifique cada componente como sustentado, frágil, não verificável ou inconsistente, explicando a correção mínima necessária.
+
+## Ferramentas
+
+A modelagem cabe em texto ou planilha. Use CRM e dados financeiros apenas se fornecidos ou autorizados. Quando histórico ou capacidade estiver incompleto, mostre o cálculo com premissas e deixe a meta em cenário, sujeita a validação.

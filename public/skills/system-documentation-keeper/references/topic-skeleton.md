@@ -29,7 +29,7 @@ Registro curto, estilo ADR (Architecture Decision Record), de decisões técnica
 
 - **Nomenclatura de arquivo:** `kebab-case`, nome descritivo do assunto (não da data nem de quem escreveu) — ex.: `02-integracoes/pagamento-stripe.md`, não `2026-08-12-stripe.md`.
 - **Um assunto coeso por arquivo.** Se ao escrever um tópico você perceber que ele cobre dois assuntos independentes, separe em dois arquivos e linke um no outro.
-- **Referência cruzada:** use link Markdown relativo (`[nome da integração](../02-integracoes/nome.md)`) sempre que um tópico depender de outro, em vez de repetir a explicação. Links quebrados (apontando para arquivo que não existe) são um sinal de documentação desatualizada — corrija ou remova.
+- **Referência cruzada:** use link Markdown relativo (`../02-integracoes/nome.md`) sempre que um tópico depender de outro, em vez de repetir a explicação. Links quebrados (apontando para arquivo que não existe) são um sinal de documentação desatualizada — corrija ou remova.
 - **Numeração dos tópicos** é só ordem de leitura sugerida — não renumere tópicos existentes para "abrir espaço"; um tópico novo pode receber o próximo número livre ou entrar como subpasta dentro de um tópico já numerado, o que fizer mais sentido semanticamente.
 
 ## Adaptando o esqueleto

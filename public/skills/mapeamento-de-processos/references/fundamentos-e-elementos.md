@@ -11,10 +11,10 @@ Um processo de negócio é um conjunto estruturado e mensurável de atividades, 
 Erro de diagnóstico frequente: tratar os três como sinônimos.
 
 - **Função**: agrupamento vertical de competências de um departamento (ex.: "Financeiro", "Comercial"). Descreve *quem* é responsável por um domínio, não *como* o trabalho flui.
-- **Processo**: horizontal e multifuncional. Atravessa várias funções para entregar um resultado de ponta a ponta. Ex.: contratar um colaborador atravessa RH, Financeiro (orçamento), TI (provisionamento de acesso) e a área solicitante.
-- **Procedimento**: instrução normativa, restrita a uma única função, que detalha passo a passo *como* uma tarefa específica dentro do processo deve ser executada tecnicamente (ex.: como configurar um acesso, como preencher um formulário).
+- **Processo**: conjunto de atividades relacionadas que entrega um resultado. Pode atravessar várias funções. Ex.: contratar um colaborador atravessa RH, Financeiro (orçamento), TI (provisionamento de acesso) e a área solicitante.
+- **Procedimento**: instrução de trabalho que detalha passo a passo *como* uma tarefa específica dentro do processo deve ser executada tecnicamente (ex.: como configurar um acesso, como preencher um formulário).
 
-Ao mapear, sempre pergunte: "isto atravessa mais de uma área para entregar o resultado final?" — se sim, é processo; se está contido numa única área/pessoa, é procedimento. Não documente um como se fosse o outro; a granularidade e as métricas certas dependem dessa distinção.
+Ao mapear, pergunte qual resultado é entregue, a quem e que sequência o produz. Um processo ou subprocesso pode acontecer dentro de uma área. Um procedimento descreve como executar uma parte do trabalho, mesmo quando envolve várias funções. Use os limites e a finalidade da análise para escolher a granularidade.
 
 ## 3. Taxonomia de processos (nível macro)
 

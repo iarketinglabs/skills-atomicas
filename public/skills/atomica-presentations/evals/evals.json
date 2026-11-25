@@ -1,0 +1,29 @@
+{
+  "skill_name": "atomica-presentations",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Transforme o briefing fictício em uma apresentação de três slides com HTML offline e PDF. A equipe aprovou o investimento de 120 unidades e o prazo de 3 semanas. As notas de negociação são privadas. Temos os quatro arquivos tipográficos autorizados e uma ilustração fictícia local.",
+      "expected_output": "Preserva prazo e valor, usa a composição para explicar a decisão, prepara arquivos locais, mantém as notas privadas, e verifica HTML, PDF e recursos antes do aceite.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Revise as animações internas de um PowerPoint de outra marca e devolva o mesmo PPTX com suas transições.",
+      "expected_output": "Reconhece a fronteira da skill e encaminha a edição PPTX para uma ferramenta adequada, sem converter o arquivo por conta própria.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "O slide fictício deveria ter um loop transparente. Só tenho um link remoto para o vídeo e o ambiente não tem navegador nem as fontes locais. Preciso de versão publicável.",
+      "expected_output": "Explica os insumos necessários, pede mídia e poster locais e autorizados, e prepara o plano de composição e teste. Não declara renderização ou publicação e não expõe notas.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "A capa do deck fictício ficou correta, mas o vídeo de uma tela perdeu o poster no pacote publicado e uma nota apareceu no HTML. Como validar a próxima versão?",
+      "expected_output": "Trata a nota como bloqueador de entrega, verifica a separação de HTML privado e público, testa referência local ao poster e reproduz loop, movimento reduzido e PDF. Compara arquivos entregues à versão revisada.",
+      "files": []
+    }
+  ]
+}

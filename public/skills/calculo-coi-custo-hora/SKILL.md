@@ -11,7 +11,7 @@ Transforme remuneração e custos do empregador em custo-hora carregado, e custo
 
 Use esta skill para: converter remuneração e custos patronais informados em custo-hora; estimar custo-hora com dados salariais públicos atuais e comparáveis quando o usuário aceitar essa aproximação; calcular COI de uma tarefa manual (único papel ou processo com múltiplos papéis); calcular ROI/payback simples de automatizar essa tarefa quando já há custo-hora e custo de automação.
 
-Não use para montar um business case completo de iniciativa de IA (TCO multi-categoria, NPV/IRR, Balanced Scorecard, estágio de maturidade, plano de monitoramento) — nesse caso, use `ai-roi-measurement` e, se aplicável, `b2b-diagnostic-audit/references/roi-tco-modelo-financeiro.md`. Esta skill resolve o insumo "custo-hora → COI" que alimenta esses business cases; não substitui a análise financeira completa deles.
+Não use para montar um business case completo de iniciativa de IA (TCO multi-categoria, NPV/IRR, Balanced Scorecard, estágio de maturidade, plano de monitoramento) — nesse caso, use `ai-roi-measurement` e, se aplicável, a referência de valor e roadmap de `b2b-diagnostic-audit`. Esta skill resolve o insumo "custo-hora → COI" que alimenta esses business cases; não substitui a análise financeira completa deles.
 
 ## Passo 1 — Levantar a variável central
 
@@ -58,4 +58,4 @@ Entregue sempre:
 ## Ver também
 
 - `ai-roi-measurement` — mensuração de ROI de IA e business case completo (TCO, NPV/IRR, Balanced Scorecard, maturidade).
-- `b2b-diagnostic-audit` (Fase 5, `references/roi-tco-modelo-financeiro.md`) — modelo financeiro de TCO/ROI para diagnóstico B2B.
+- `b2b-diagnostic-audit` (fase de avaliação de valor) — modelo financeiro de TCO/ROI para diagnóstico B2B.

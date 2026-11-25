@@ -1,17 +1,18 @@
 # Tipografia — Átomica
 
-Guia de fontes, hierarquia e mecanismo de carregamento, confirmado contra os `globals.css` reais de LP Consultoria B2B, LP Portefólio pessoa de referência omitida e da site institucional — os três são idênticos neste ponto.
+Guia de hierarquia tipográfica para páginas web Atomica. Os aliases de CSS permitem encaixar fontes autorizadas sem alterar nomes internos dos binários.
 
 ---
 
 ## 1. Mecanismo de Carregamento — self-hosted `@font-face`, com nomes prefixados
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
+
+Os caminhos abaixo são exemplos do projeto de destino. Adicione apenas regras para fontes autorizadas e já presentes no projeto. O perfil principal pode usar uma Atomica Script autorizada, ou Caprasimo como alternativa. Os fallbacks mantêm a interface utilizável com fontes de sistema.
 
 ```css
 @font-face {
   font-family: "Atomica Jost";
-  src: url("/assets/fonts/Google Fonts/Jost-VariableFont_wght.ttf") format("truetype");
+  src: url("/assets/fonts/Jost-VariableFont_wght.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -19,7 +20,7 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 @font-face {
   font-family: "Atomica Oswald";
-  src: url("/assets/fonts/Google Fonts/Oswald-VariableFont_wght.ttf") format("truetype");
+  src: url("/assets/fonts/Oswald-VariableFont_wght.ttf") format("truetype");
   font-weight: 200 700;
   font-style: normal;
   font-display: swap;
@@ -27,15 +28,7 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 @font-face {
   font-family: "Atomica Caprasimo";
-  src: url("/assets/fonts/Google Fonts/Caprasimo-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Atomica Script";
-  src: url("/assets/fonts/Outras/BrushScriptOpti-Regular.otf") format("opentype");
+  src: url("/assets/fonts/Caprasimo-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -43,7 +36,7 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 @font-face {
   font-family: "Atomica Bebas";
-  src: url("/assets/fonts/Google Fonts/BebasNeue-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/BebasNeue-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -51,18 +44,17 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 @font-face {
   font-family: "Atomica Swanky";
-  src: url("/assets/fonts/Google Fonts/FontdinerSwanky-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/FontdinerSwanky-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 ```
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ## 2. Fonte por Papel — stacks reais
 
-Note o detalhe importante: **"Atomica Script" (BrushScriptOpti) é a fonte de headline principal**, com "Atomica Caprasimo" como fallback — não o contrário do que versões anteriores desta skill sugeriam. E **"Atomica Bebas" é o default de labels e botões**, não um tier "premium opcional" — é o que está de fato em produção.
+A interface usa Atomica Script quando fornecida com licença e Caprasimo como alternativa. Bebas identifica labels e botões, com Oswald como fallback.
 
 | Papel | Classe/seletor real | Stack | Peso | Transform |
 |---|---|---|---|---|
@@ -91,7 +83,6 @@ Regra que se mantém: **corpo sempre em Jost — nunca misture fontes no mesmo p
 
 ## 4. Inclinação como efeito tipográfico (real, substitui "outline stroke"/"vintage distress")
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ```css
 .hero-title-tilt {
@@ -119,7 +110,6 @@ Um efeito de sombra real que existe (não confundir com o acima): o `.brand-word
 
 ## 6. Responsividade Tipográfica
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 - `.section-title h2` reduz para `2.15rem`–`2.35rem`.
 - `.hero-title-tilt` mantém o mesmo `clamp()` (já é fluido) mas reduz a inclinação.
 - `.tilt-left`/`.tilt-right`/`.tilt-soft` zeram.

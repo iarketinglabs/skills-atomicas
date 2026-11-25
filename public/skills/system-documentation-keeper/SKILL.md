@@ -1,6 +1,6 @@
 ---
 name: system-documentation-keeper
-description: Mantém `directives/documentacao/` — a documentação técnica viva (para PMs e Devs) do sistema, automação ou agente que está sendo construído para o cliente — sempre organizada, atualizada e legível, em modelo atômico de Markdown por tópico/subtópico, com referências cruzadas entre arquivos. Diferente de `directives/PRD*.md`/`specs*.md` (que registram o porquê e o desenho original de cada marco e não mudam depois de aprovados), esta pasta registra como o sistema funciona hoje. Use SEMPRE que você (qualquer agente de codificação — Claude Code, Codex, Kimi, Composer, Antigravity, etc.) implementar, alterar ou remover um componente de uma automação/sistema/agente para um cliente — novo endpoint, integração, schema de dados, fluxo, decisão de arquitetura, mudança de deploy — como parte da própria tarefa, antes de considerar o trabalho concluído. Use também quando `directives/documentacao/` ainda não existir e for preciso criar o esqueleto inicial, ou quando o usuário pedir para "documentar isso", "atualizar a documentação técnica", "organizar/criar a documentação do projeto". 100% agnóstica a cliente e a stack — reutilizável em qualquer projeto de desenvolvimento de sistemas agênticos.
+description: Use para criar ou manter a documentação técnica viva de um sistema, automação ou agente quando mudar um endpoint, integração, schema, fluxo, arquitetura ou operação. Documente o comportamento atual, mapeie a mudança nos tópicos existentes e vincule suas evidências.
 ---
 
 # System Documentation Keeper — Documentação Viva de Sistemas e Automações
@@ -24,14 +24,14 @@ Skill de disciplina contínua: mantém `directives/documentacao/` — a document
 ## Pré-requisito e Portabilidade
 
 - Client-agnóstica e stack-agnóstica por design: não assume nenhum domínio, linguagem, framework ou conjunto de integrações específico. Funciona em qualquer repositório de projeto que tenha (ou deva ter) uma pasta `directives/` na raiz.
-- Não depende de nenhum MCP, credencial ou arquivo de configuração — só de acesso de leitura/escrita ao repositório local.
+- A edição requer leitura e escrita no repositório ou superfície autorizada. O bootstrap requer terminal e Python 3.8+. Em um runtime sem arquivos, entregue o índice e os rascunhos para aplicação manual, identificando a revisão pendente.
 - Convive com qualquer PRD/specs que o projeto já tenha — usa-os como fonte do "porquê", nunca os reescreve.
 
 ## Modelo
 
 - **Markdown atômico:** um assunto coeso por arquivo, arquivos agrupados em pastas por tópico/subtópico — nunca um único arquivo monolítico cobrindo uma área inteira do sistema.
 - Cada `.md` é escrito para leitura humana em primeiro lugar (PM e Dev); pode referenciar ou anexar outros tipos de arquivo (ex.: exemplo de payload, script, template de prompt) quando isso for mais claro do que descrever em prosa.
-- **Referência cruzada:** arquivos linkam uns aos outros com links Markdown relativos (`[texto](../pasta/arquivo.md)`) sempre que um conceito depender de outro, em vez de duplicar explicação já escrita alhures.
+- **Referência cruzada:** arquivos linkam uns aos outros com links Markdown relativos (`../pasta/arquivo.md`) sempre que um conceito depender de outro, em vez de duplicar explicação já escrita alhures.
 - **Divisão de papel:** `PRD*.md`/`specs*.md` guardam o *porquê* e o desenho original de cada marco (não são reescritos a cada iteração pós-aprovação). `directives/documentacao/` guarda o *como funciona hoje* — reflete o estado real do sistema, atualizado a cada mudança relevante.
 - **Equilíbrio profundidade × legibilidade:** cada arquivo responde "o que é isso e como funciona" de forma direta. Detalhes de implementação que mudam com frequência (nomes de variáveis internas, por exemplo) só entram quando ajudam a entender comportamento — a documentação não é um espelho do código-fonte. Checklist completo em `references/quality-bar.md`.
 
@@ -68,7 +68,8 @@ O script é idempotente: nunca sobrescreve um arquivo já existente, só cria o 
 3. **Verifique se o arquivo do tópico já existe.** Se sim, atualize-o no lugar (nunca duplique); se não, crie um novo arquivo dentro da subpasta correspondente, nomeado em `kebab-case` pelo assunto (ex.: `02-integracoes/nome-da-integracao.md`).
 4. **Adicione referências cruzadas** de/para tópicos relacionados já existentes, em vez de repetir explicação.
 5. **Atualize o índice** (`directives/documentacao/README.md`) sempre que um arquivo ou pasta novo for criado.
-6. **Aplique o checklist de equilíbrio** (`references/quality-bar.md`) antes de considerar a atualização concluída — releia o arquivo como se fosse a primeira vez que alguém o abre.
+6. **Valide as afirmações e referências.** Abra os links alterados, confirme que exemplos usam valores sintéticos e vincule o código, teste ou configuração que sustenta as afirmações. Se faltar prova de produção, preserve o limite na página e informe quem pode confirmá-la. Entregue os tópicos atualizados, a fonte da mudança e as verificações pendentes.
+7. **Aplique o checklist de equilíbrio** (`references/quality-bar.md`) antes de considerar a atualização concluída — releia o arquivo como se fosse a primeira vez que alguém o abre.
 
 ## Anti-Padrões
 

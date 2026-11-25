@@ -1,6 +1,6 @@
 ---
 name: mapeamento-de-processos
-description: Metodologia agnóstica de cliente para mapear o estado atual (AS-IS) de um processo de negócio, criar um processo do zero, ou redesenhar (TO-BE) um processo existente — incluindo diagnóstico voltado a oportunidades de IA/automação. Cobre fundamentos (processo vs. função vs. procedimento, elementos estruturais, métricas), os principais frameworks de referência mundial (BPMN, ABPMP CBOK, APQC PCF, Lean/Value Stream Mapping, Six Sigma DMAIC, Teoria das Restrições, Kanban, Heurísticas de Redesenho de Dumas) e o diagnóstico de processos para IA (Process Mining, Task Mining, framework Desconstruir-Redistribuir-Reconstruir, human-in-the-loop). Use SEMPRE que o usuário pedir para "mapear um processo", "documentar o AS-IS", "desenhar/criar um processo novo", "redesenhar/otimizar um processo", "identificar gargalos", "escolher a metodologia certa (Lean, Six Sigma, TOC, BPMN, Kanban)", "montar um roteiro de entrevista de processo" ou "diagnosticar processos para oportunidades de automação/IA". Aplica-se a qualquer área (comercial, operações, atendimento, RH etc.) e a qualquer cliente da Atomica.
+description: Use para mapear um processo AS-IS, levantar exceções e gargalos, desenhar um TO-BE ou avaliar onde redesenho, automação ou IA podem ajudar. Abrange entrevistas com executores, escolha de método (BPMN, Lean, Six Sigma, TOC, Kanban), comparação de alternativas e validação com responsáveis do processo.
 ---
 
 # Mapeamento, Criação e Reestruturação de Processos
@@ -26,7 +26,7 @@ Skill de método — não de conteúdo de um cliente específico. Ensina como ma
 
 Leia `references/fundamentos-e-elementos.md`. Antes de escrever qualquer linha sobre um processo, confirme:
 
-1. É de fato um **processo** (horizontal, multifuncional) ou um **procedimento** (restrito a uma função)? Isso muda a granularidade e as métricas certas.
+1. É de fato um **processo** (fluxo que transforma entradas em resultado) ou um **procedimento** (instrução de como executar parte do trabalho)? Isso muda a granularidade e as métricas certas.
 2. Em que categoria macro ele se encaixa: primário, de suporte ou de gestão?
 3. Quais dos elementos estruturais (inputs, atividades, outputs, atores, handoffs, regras de negócio, momentos da verdade, controles) já são conhecidos e quais estão em aberto?
 
@@ -68,7 +68,7 @@ Leia `references/diagnostico-ia-e-redesenho.md`. Só entre nesta etapa depois de
 Pontos centrais a aplicar:
 
 - Prefira **redesenhar o processo com IA já incorporada ao desenho** a simplesmente sobrepor uma ferramenta de IA ao fluxo atual ("bolting-on").
-- Combine **Process Mining** (dado de sistema, escopo macro) e **Task Mining** (interação do usuário, escopo micro) quando houver acesso a dados; na ausência, use a triangulação de entrevista como substituto de menor confiabilidade e identifique-a como tal.
+- Combine **Process Mining** (eventos de sistema) e **Task Mining** (interações de trabalho) somente quando houver acesso aprovado, finalidade e escopo definidos. Prefira registros mínimos, transparência com as equipes e agregação sempre que atender à análise. Sem arquivos, conectores ou runtime apropriado, trabalhe com insumos fornecidos, indique a limitação e planeje coleta com os executores.
 - Use o framework **Desconstruir → Redistribuir → Reconstruir** para decidir, tarefa a tarefa, o que é candidato a IA e o que deve permanecer humano.
 - Toda tarefa de decisão com impacto direto e irreversível no cliente (aprovação, recusa, atribuição de valor) exige **human-in-the-loop** explícito no desenho — não como item de compliance adicionado depois.
 - Nunca apresente estatística de mercado (ex.: "IA reduz custo em 60%") como garantia para o caso específico — é indicativo de mercado, sempre citado com fonte.

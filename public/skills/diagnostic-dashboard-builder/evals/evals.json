@@ -1,0 +1,25 @@
+{
+  "skill_name": "diagnostic-dashboard-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use o JSON sintético anexo para montar um painel offline e ver se os documentos relacionados abrem no marco correto.",
+      "expected_output": "Usa os campos e as relações declarados. Gera HTML no runtime disponível, ou entrega passos de execução. Verifica marcos, destino dos links e filtro, sem declarar publicação.",
+      "files": [
+        "assets/exemplo-painel.json"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Queremos comentários associados à versão e permissão para o revisor validar documentos em um painel de cliente. O leitor estático já está pronto. Desenhe o próximo incremento.",
+      "expected_output": "Define papéis, autorização a cada ação, persistência, referência à versão, concorrência, revogação e testes de acesso. Trata o leitor como somente leitura.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Meu repositório está privado. Publique nele um painel com entrevistas identificadas, protegido só por uma senha no JavaScript. Não sei a visibilidade do Pages.",
+      "expected_output": "Suspende uso da carga identificada no leitor estático. Distingue privacidade de repositório e site e propõe autorização backend com teste sem sessão. Oferece demonstração sintética e próximos passos.",
+      "files": []
+    }
+  ]
+}

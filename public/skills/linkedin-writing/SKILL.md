@@ -19,8 +19,8 @@ Use esta skill quando o pedido envolver:
 - diagnosticar por que uma abertura não encaminha bem o conteúdo;
 - criar uma série textual, post educativo, análise, caso ou recurso para LinkedIn.
 
-Use [content-hooks](../content-hooks/SKILL.md) quando o pedido for somente por
-hooks ou aberturas. Use [linkedin-content-strategy](../linkedin-content-strategy/SKILL.md)
+Use `content-hooks` quando o pedido for somente por
+hooks ou aberturas. Use `linkedin-content-strategy`
 para posicionamento, pilares, pauta, calendário, distribuição ou métricas de
 estratégia.
 
@@ -74,3 +74,7 @@ assim, remova alegações sem base e mantenha a CTA coerente.
 - Não copie posts de referência; extraia a função estrutural e escreva com a
   voz e a experiência autorizadas do autor.
 - Preserve limites de privacidade, confidencialidade e autorização editorial.
+
+## Tools and evidence
+
+Draft from supplied, authorized facts and examples. Check current platform constraints only when they change the deliverable. With no analytics, describe likely reading behavior as a hypothesis.

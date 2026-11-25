@@ -1,0 +1,23 @@
+{
+  "skill_name": "gestao-projetos-ia-b2b",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Planeje quatro semanas para um MVP de revisão documental no Projeto A fictício. O cliente disponibiliza amostra na semana dois e há produção limitada só com erro crítico zero na amostra aprovada, revisão humana e failback manual.",
+      "expected_output": "Seleciona trilha de automação, separa viabilidade, avaliação, piloto e operação limitada. Cada marco tem evidência, donos e dependências. Prevê custo, adoção, suporte e rollback.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Só quero uma agenda de kickoff para amanhã. O planejamento e orçamento já foram aprovados.",
+      "expected_output": "Reconhece o fio de kickoff e não cria nova linha de base. Reaproveita as decisões confirmadas para a pauta ou encaminha para skill específica.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "A qualidade de um piloto fictício atingiu a meta, mas prazo e orçamento estouraram. O cliente pediu integrar mais dois sistemas por chat. Atualize o plano pra produção.",
+      "expected_output": "Registra pedido como mudança proposta e desvio em relação à base. Condiciona produção à decisão autorizada sobre custo, prazo, riscos, integração e aceites. Mantém pendências e donos.",
+      "files": []
+    }
+  ]
+}

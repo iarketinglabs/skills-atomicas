@@ -1,0 +1,23 @@
+{
+  "skill_name": "b2b-commercial-offer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Faça proposta para o Projeto A fictício. O diagnóstico custa €5.000 e o piloto opcional €8.000; consumo ferramenta à parte sem valor confirmado. Cliente fornece exportação e aprovador, e o piloto envolve amostra sintética.",
+      "expected_output": "Entrega opções comparáveis, calcula €13.000 fixos quando somados e separa consumo e tributos a confirmar. Define entregáveis, aceite, dependências, exclusões e etapa de revisão.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Reescreva cláusulas de propriedade intelectual e responsabilidade de um contrato final para assinatura.",
+      "expected_output": "Identifica tarefa jurídica e encaminha para revisão especializada. Se útil, separa premissas comerciais a preservar sem apresentar contrato aprovado.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "A proposta do Cliente Fictício A precisa prometer 40% de economia de caixa, mas só sabemos que houve 15 minutos poupados por tarefa em cinco testes de laboratório. O cliente ainda não enviou volume.",
+      "expected_output": "Rotula economia como cenário sem base. Distingue horas, caixa, adoção, volume e baseline. Propõe descoberta/medição e critérios de aceite da entrega sem inventar garantia.",
+      "files": []
+    }
+  ]
+}

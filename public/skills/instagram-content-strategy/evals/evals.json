@@ -1,0 +1,23 @@
+{
+  "skill_name": "instagram-content-strategy",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Planeje quatro semanas de Instagram orgânico da marca fictícia Vila do Norte, que vende kits de horta. Uma pessoa produz tudo, e a meta é gerar conversas qualificadas por DM.",
+      "expected_output": "Entrega objetivo, público, pilares, frequência compatível, formatos escolhidos por função, evidência, ação e leitura de conversa qualificada. Define próximo passo e transbordo humano.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Configure anúncios pagos e publique automaticamente um Reel numa conta de teste.",
+      "expected_output": "Reconhece mídia paga e publicação como fora de escopo. Pode oferecer o roteiro orgânico se solicitado, sem afirmar que executou ações na conta.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Dois Reels fictícios tiveram mais views que os outros. O material não traz denominador, origem de tráfego nem dados de retenção. Qual é o peso de cada sinal no algoritmo em novembro?",
+      "expected_output": "Trata dados como insuficientes para causalidade e separa alcance de retenção/qualificação. Consulta fonte oficial se disponível ou documenta falta de confirmação, e propõe teste definido sem pesos inventados.",
+      "files": []
+    }
+  ]
+}

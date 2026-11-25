@@ -52,3 +52,7 @@ Entregue em Markdown, conciso e rastreável, contendo:
 7. validade da decisão e gatilho de revisão.
 
 Quando o pedido for uma auditoria de um preço já existente, mantenha a estrutura vigente e classifique cada componente como sustentado, frágil, não verificável ou inconsistente, explicando a correção mínima necessária.
+
+## Ferramentas
+
+Calcule cenários a partir das premissas verificáveis. Sem acesso a resultados, custos ou termos atuais do fornecedor, mantenha a premissa explícita, teste sensibilidade e identifique o dado necessário para fechar preço.

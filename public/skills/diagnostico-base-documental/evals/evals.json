@@ -1,0 +1,23 @@
+{
+  "skill_name": "diagnostico-base-documental",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Duas fontes fictícias registram a transferência de pedidos. Relato da liderança F-01 fala em 4 horas; log de cinco casos F-02 registra 6 horas e tem período e população diferentes. Atualize a ficha e a matriz.",
+      "expected_output": "Mantém versões separadas, escopo e período. Registra limitação e pergunta de validação. Classifica os cinco casos observados e não adota 6 horas como baseline global.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Faça uma entrevista ao vivo e calcule o VPL de uma oportunidade fictícia. Ainda não tenho autorização de acesso nem insumos de cálculo.",
+      "expected_output": "Encaminha entrevista e finanças a fluxos específicos. Mantém artefato documental e coleta pendentes e não simula entrevista ou baseline.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Uma validação recente de autoria corrige a atribuição de um relato fictício F-05. O achado aparece no índice, na matriz e em dois documentos. O resto do projeto já tem alterações de outra pessoa.",
+      "expected_output": "Corrige somente as ocorrências materiais, mantém referência à origem da correção e registra mudança e impactos. Não atribui nem sobrescreve alterações alheias.",
+      "files": []
+    }
+  ]
+}

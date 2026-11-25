@@ -26,7 +26,7 @@ urgência ou comportamento de plataforma.
 
 Se o pedido for somente por hooks, mantenha o escopo desta skill. Se pedir um
 post completo, storytelling, revisão do corpo, CTA ou um teste de escrita para
-LinkedIn, use [linkedin-writing](../linkedin-writing/SKILL.md) para o workflow
+LinkedIn, use `linkedin-writing` para o workflow
 integral e leia a referência de padrões abaixo apenas para a entrada.
 
 No LinkedIn, trate a primeira linha como um contrato: ela deve nomear uma
@@ -60,7 +60,7 @@ processo e os critérios.
 
 Para LinkedIn, entregue apenas a entrada quando esse for o pedido. Não transforme
 um pedido de hook em um post completo sem autorização; quando o corpo for parte
-do trabalho, encaminhe para [linkedin-writing](../linkedin-writing/SKILL.md).
+do trabalho, encaminhe para `linkedin-writing`.
 
 ## Revise antes de entregar
 
@@ -102,3 +102,7 @@ Entregue, salvo pedido diferente:
 Separe fatos fornecidos, hipóteses e sugestões. Se o pedido trouxer prova
 autorizada, identifique sua origem; se não trouxer, use formulações que não
 dependam dela.
+
+## Ferramentas
+
+Crie e revise em texto com o material fornecido. Se houver uma atualização de plataforma relevante, confirme-a em fonte oficial. Sem dados de retenção ou distribuição, formule hipótese e critério para testá-la.

@@ -1,0 +1,37 @@
+{
+  "skill_name": "observabilidade-stack-atomica",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Tenho Next.js e um worker Python que processa pedidos fictícios. Já usamos Prometheus e Grafana. Quero detetar atrasos na fila e navegar do erro HTTP até ao worker.",
+      "expected_output": "Plano por sinal com SLI de pedidos no prazo, propagação de contexto, logs correlacionáveis, limite de rótulos e validação em ambiente de teste.",
+      "files": [],
+      "expectations": [
+        "Mantém as ferramentas existentes onde o contrato serve.",
+        "Distingue tempo na fila de latência de requisição.",
+        "Especifica como provar correlação e alerta."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "A plataforma já tem painéis e alertas, mas um agente responde corretamente por caminhos diferentes. Quero avaliar a qualidade da trajetória e calibrar a aprovação humana.",
+      "expected_output": "Reconhece um problema de avaliação agêntica e encaminha para a skill de observabilidade de sistemas agênticos quando disponível.",
+      "files": [],
+      "expectations": [
+        "Não usa p95, uptime ou HTTP 200 como prova de qualidade de resposta.",
+        "Explica a diferença entre instrumentação e avaliação da trajetória."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Depois da última release, não chegam métricas do worker. O serviço responde 200 ao probe de vida. Um colega quer reativar debug com todos os payloads em produção.",
+      "expected_output": "Diagnóstico por trecho do pipeline com evento sintético, revisão da entrega, fallback e prevenção de captura de conteúdo sensível.",
+      "files": [],
+      "expectations": [
+        "Distingue indisponibilidade de sinal, ausência de tráfego e saúde do serviço.",
+        "Mantém payloads sensíveis fora dos logs.",
+        "Indica como validar ou reverter a hipótese sem declarar produção saudável."
+      ]
+    }
+  ]
+}

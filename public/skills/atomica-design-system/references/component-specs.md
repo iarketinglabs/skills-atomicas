@@ -1,6 +1,5 @@
 # Especificações de Componentes — Átomica
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ---
 
@@ -55,7 +54,6 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
 .atomica-button.outline   { background: var(--creme-100); color: var(--gunmetal); }
 ```
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ### 1.3 Mobile (`max-width: 760px`)
 
@@ -79,7 +77,7 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.78), rgba(247, 239, 217, 0.78)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 7px 7px 0 var(--amarelo);
 }
 
@@ -89,7 +87,7 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.8), rgba(247, 239, 217, 0.8)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 12px 12px 0 var(--ciano);
 }
 
@@ -99,7 +97,7 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.8), rgba(247, 239, 217, 0.8)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 7px 7px 0 var(--amarelo);
 }
 
@@ -110,14 +108,13 @@ Nomenclatura real: `.poster-card`, `.poster-card-cyan`, `.poster-card-yellow`, `
   background:
     linear-gradient(rgba(247, 239, 217, 0.72), rgba(247, 239, 217, 0.72)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 14px 14px 0 var(--ciano);
 }
 
 .image-frame-yellow { box-shadow: 12px 12px 0 var(--amarelo); }
 ```
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 **Mobile (`max-width: 760px`)**: toda sombra de `.poster-card`/`.poster-card-cyan`/`.poster-card-yellow`/`.image-frame` colapsa para `box-shadow: 5px 5px 0 var(--gunmetal)`.
 
@@ -134,7 +131,7 @@ Amostras internas de projeto foram anonimizadas nesta versão pública.
   background:
     linear-gradient(rgba(247, 239, 217, 0.76), rgba(247, 239, 217, 0.76)),
     var(--texture-pulp);
-  background-size: auto, 640px auto;
+  background-size: auto, 8px 8px;
   box-shadow: 8px 8px 0 var(--ciano);
 }
 ```
@@ -144,7 +141,6 @@ Usado dentro de `.mechanism-machine` (uma faixa decorativa horizontal atrás dos
 
 ## 3. Cabeçalho de Seção — `.eyebrow` + `.section-title` + `.retro-divider` (confirmado, sem equivalente em versões anteriores)
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ```css
 .eyebrow {
@@ -316,7 +312,6 @@ Aplique a `.image-frame`/`.poster-card` isolados para quebrar o alinhamento ríg
 
 ## 7. Tags / Badges (extrapolação — sem exemplo shippado)
 
-Amostras internas de projeto foram anonimizadas nesta versão pública.
 
 ```css
 .tag {
@@ -365,13 +360,3 @@ O iframe só é montado no DOM depois do clique — antes disso, mostra a `.vide
   object-fit: cover;
 }
 ```
-
----
-
-## 9. Navegação (extrapolação parcial)
-
-Amostras internas de projeto foram anonimizadas nesta versão pública.
-
-## 10. Modais, Toasts, Tabelas, Accordion (extrapolação — sem exemplo shippado)
-
-Amostras internas de projeto foram anonimizadas nesta versão pública.

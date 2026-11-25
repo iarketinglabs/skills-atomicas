@@ -1,0 +1,23 @@
+{
+  "skill_name": "atomica-web-project-playbook",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Planeje a landing page fictícia da oficina Orbital, em pt-BR e pt-PT, para agendar uma demonstração de um serviço B2B. A equipa tem design autorizado e formulário com CRM. Entregue requisitos e aceite, ainda sem implementar.",
+      "expected_output": "Prioriza a decisão e o CTA, especifica jornadas por locale e a captação, políticas de dados, instrumentação sem PII no analytics e cenários de aceite com falha e retomada. Mantém entrega em planejamento.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Escreva somente três alternativas de headline para uma publicação editorial no LinkedIn da marca fictícia Orbital. A publicação não leva a um novo projeto web.",
+      "expected_output": "Responde em escopo editorial ou encaminha a escrita de LinkedIn. Evita PRD, integração ou implantação.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "A página fictícia já funciona, mas o CRM cai depois que o formulário grava, temos reenvios duplicados e staging não tem credenciais reais. Revise só a captação.",
+      "expected_output": "Descreve idempotência final, persistência separada do encaminhamento, estados e retentativas, testes com integração simulada e pendências de prova ao vivo sem prometer envio ou implantação.",
+      "files": []
+    }
+  ]
+}

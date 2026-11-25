@@ -69,3 +69,7 @@ Use tabelas somente se elas tornarem comparações, alternativas, critérios ou 
 - Não force exclusividade quando interseção for parte real do fenômeno; também não esconda sobreposição acidental.
 - Não trate lembrança, atenção ou aceitação visual como prova de aplicação correta.
 - Não associe recomendações a empresa, setor, fornecedor, idioma, tecnologia, país, prazo ou métrica sem dados fornecidos.
+
+## Ferramentas
+
+A análise e as especificações funcionam em texto. Gere ou renderize uma figura somente com ferramentas disponíveis. Quando a informação for insuficiente, entregue o mapa de hipóteses e os critérios para validar o framework.

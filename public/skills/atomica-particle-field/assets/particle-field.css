@@ -49,16 +49,7 @@
   z-index: 2;
 }
 
-/* ── prefers-reduced-motion ────────────────────────────────────────────────────
-Amostras internas de projeto foram anonimizadas nesta versão pública.
-   pessoa de referência omitida, site institucional domínio público da Atomica): o guard de reduced-motion
-   esconde o palco inteiro por CSS — não existe um breakpoint de largura
-   separado removendo só o backdrop-filter em mobile (uma versão anterior
-   deste arquivo tinha essa regra em @media (max-width: 768px), mas nenhum
-Amostras internas de projeto foram anonimizadas nesta versão pública.
-   com o código real). O componente TSX já faz o early-return equivalente em
-   JS, então os dois guards juntos garantem zero custo de CPU sob motion
-   reduzido, sem depender de largura de tela. */
+/* O componente e o CSS respeitam a preferência de movimento reduzido. */
 @media (prefers-reduced-motion: reduce) {
   .particle-stage {
     display: none;
