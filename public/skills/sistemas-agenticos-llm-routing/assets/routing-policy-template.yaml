@@ -1,0 +1,94 @@
+# Modelo de preenchimento. Não use estes campos como defaults de produção.
+schema_version: 1
+
+workload:
+  name: "<nome neutro do workload>"
+  task: "<tarefa>"
+  success_unit: "<o que conta como tarefa concluída>"
+  population: "<população e volume observados>"
+  modalities:
+    - "<modalidade verificada>"
+  languages:
+    - "<idioma observado>"
+  data_sensitivity: "<classificação aprovada>"
+
+requirements:
+  hard_constraints:
+    approved_regions: []
+    approved_providers: []
+    required_capabilities: []
+    disallowed_data_handling: []
+    risk_tier: "<classificação>"
+    max_cost_per_request: null
+    max_cost_per_session: null
+    latency_p95_ms: null
+    quality_floor: null
+  objective:
+    type: "<constrained | weighted | pareto>"
+    optimize: "<ex.: custo por tarefa concluída>"
+    weights_and_units: "<preencher apenas se aprovados>"
+
+baseline:
+  candidate_id: "<melhor candidato fixo escolhido em validação>"
+  selection_method: "<como foi escolhido>"
+  evaluation_set: "<identificador e versão>"
+
+candidates:
+  - id: "<id interno neutro>"
+    provider: "<nome confirmado>"
+    model_or_service_id: "<identificador e versão exatos>"
+    modality_support: []
+    capabilities_verified: []
+    region_and_data_terms: "<fonte e configuração>"
+    pricing:
+      input_unit_price: null
+      output_unit_price: null
+      other_charges: "<detalhar ou desconhecido>"
+      source_url: "<link oficial>"
+      checked_at: "<data>"
+    measured:
+      workload: "<identificador>"
+      sample_size: null
+      quality: null
+      cost_per_completed_task: null
+      latency_p95_ms: null
+    eligible_when: []
+    excluded_when: []
+
+routing:
+  decision_point: "<pre_generation | post_generation | intra_generation | multi_turn>"
+  strategy: "<rules | semantic | classifier | cascade | other>"
+  inputs_used: []
+  calibration_set: "<identificador e versão>"
+  abstention_behavior: "<comportamento explícito>"
+  session_affinity: "<regra ou não aplicável>"
+  fallback:
+    allowed_candidates: []
+    max_escalations: null
+    behavior_when_policy_unavailable: "<parar, recusar ou rota aprovada>"
+    behavior_when_budget_exhausted: "<comportamento>"
+
+budgets:
+  per_request: null
+  per_session: null
+  per_period: null
+  max_retries: null
+  max_steps_or_samples: null
+
+evaluation:
+  test_set: "<identificador e versão>"
+  metrics:
+    - "<qualidade>"
+    - "<custo total por tarefa concluída>"
+    - "<latência de cauda>"
+    - "<política e segurança>"
+  release_gates: []
+  segments_to_report: []
+  rollback_triggers: []
+
+governance:
+  policy_owner: "<responsável>"
+  model_and_policy_version: "<versões>"
+  data_retention: "<regra aprovada>"
+  evidence_links: []
+  last_reviewed: "<data>"
