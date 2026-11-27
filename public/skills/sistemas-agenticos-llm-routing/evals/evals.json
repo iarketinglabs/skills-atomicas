@@ -1,0 +1,126 @@
+{
+  "skill_name": "sistemas-agenticos-llm-routing",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Tenho três modelos com preços e resultados diferentes por tipo de pedido. Um modelo único já cumpre o SLO, mas os custos são altos. Decida se vale implementar roteamento e explique como escolher a referência.",
+      "expected_output": "Verifica complementaridade no workload, inclui overhead, seleciona a melhor política fixa em validação e admite não rotear se não houver ganho líquido.",
+      "files": [],
+      "expectations": [
+        "Não conclui que rotear é sempre mais barato ou melhor.",
+        "Compara segmentos e erros complementares entre candidatos.",
+        "Inclui custo do roteador, validação, escaladas, retentativas e latência.",
+        "Escolhe o baseline sem consultar os rótulos do teste."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Para classificar pedidos, posso sempre usar o modelo mais barato e escalar quando a confiança ficar abaixo de 0,8?",
+      "expected_output": "Compara pré-geração e cascata, exige calibração no workload e rejeita o limiar universal sem validação.",
+      "files": [],
+      "expectations": [
+        "Não endossa 0,8 como limiar universal.",
+        "Distingue roteamento pré-geração de escalada pós-geração.",
+        "Exige medir falsos aceites, falsas escaladas, custo e latência.",
+        "Define abstenção e fallback explícitos."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Há uma regra de residência de dados que só permite dois provedores. Posso deixar um classificador probabilístico escolher qualquer provedor e pedir no prompt que respeite a regra?",
+      "expected_output": "Aplica residência e elegibilidade determinísticas antes da pontuação e restringe a seleção ao conjunto autorizado.",
+      "files": [],
+      "expectations": [
+        "Não delega a regra obrigatória ao prompt ou ao roteador probabilístico.",
+        "Filtra candidatos antes da seleção.",
+        "Define comportamento seguro se a política falhar ou não restar candidato elegível.",
+        "Inclui fonte e versão atuais para comprovar região e tratamento dos dados."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Desenhe um experimento para provar que nosso roteador reduz custo sem piorar resultado. Quero comparar os modelos sob as mesmas tarefas.",
+      "expected_output": "Propõe conjunto representativo, baseline fixo escolhido em validação, teste separado, métricas de qualidade, custo por tarefa concluída, latência e segmentos.",
+      "files": [],
+      "expectations": [
+        "Separa treino, calibração, validação e teste, quando aplicáveis.",
+        "Usa mesmo workload e configuração para as políticas comparadas.",
+        "Mede custo por tarefa concluída e inclui verificadores, falhas e retentativas.",
+        "Mede latência de cauda e qualidade por segmentos relevantes.",
+        "Relata tamanho da amostra, variância ou incerteza e limitações."
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "O classificador é sofisticado, mas escolhe o modelo mais caro em 95% do tráfego. O benchmark agregado ainda parece bom. Como diagnosticar?",
+      "expected_output": "Investiga concentração ou colapso da rota, objetivo, calibração, dados e distribuição; compara com melhor modelo fixo e mostra resultados estratificados.",
+      "files": [],
+      "expectations": [
+        "Trata a concentração como sinal a investigar, não prova isolada de defeito ou sucesso.",
+        "Compara com referência fixa escolhida em validação.",
+        "Examina objetivo, qualidade estimada, limiares, drift e segmentos.",
+        "Apresenta custo total, qualidade e latência por rota e por segmento."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Um agente executa tarefas de muitos turnos. Estou pensando em trocar de modelo a cada turno pelo menor preço unitário. O que devo avaliar?",
+      "expected_output": "Avalia a trajetória completa, orçamento global, afinidade, recomputação de contexto ou perda de cache, sucesso final e custo total.",
+      "files": [],
+      "expectations": [
+        "Não usa preço unitário como medida suficiente de economia.",
+        "Inclui custo por tarefa concluída, verificadores, retries e chamadas auxiliares.",
+        "Avalia afinidade de sessão e possível perda de prefix cache ou estado.",
+        "Define tetos para turnos, escaladas e gasto da sessão."
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Um modelo de decisão retorna JSON válido com confiança 0,98 para aprovar um reembolso. Podemos usar isso como autorização?",
+      "expected_output": "Distingue formato e confiança de correção semântica e autorização; exige política determinística e validação da decisão.",
+      "files": [],
+      "expectations": [
+        "Declara que JSON ou schema válido não prova correção nem autorização.",
+        "Não trata a confiança como garantia sem calibração.",
+        "Mantém autorização e limites de negócio fora do modelo probabilístico.",
+        "Recomenda validar a semântica e o risco dos erros."
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Um fornecedor diz que o roteador dele é 40 vezes mais rápido e corta 85% do custo. Posso usar esses números na decisão de compra?",
+      "expected_output": "Classifica os números como alegação de fornecedor e requer documentação versionada e teste independente no mesmo workload e baseline.",
+      "files": [],
+      "expectations": [
+        "Rotula resultados promocionais como alegações do fornecedor.",
+        "Pede fonte, versão, amostra, tarefa, baseline e configuração.",
+        "Propõe comparação controlada com o workload real e custo total.",
+        "Não recomenda fornecedor nem generaliza percentuais."
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Quero rotear texto, imagens, áudio e vídeo com o mesmo classificador. Que informações preciso confirmar?",
+      "expected_output": "Pede perfis separados de modalidade e limites, valida suporte na versão exata e restringe conclusões ao que foi medido.",
+      "files": [],
+      "expectations": [
+        "Não presume suporte equivalente a todas as modalidades.",
+        "Verifica formatos, limites, custo, região, retenção e falhas por modalidade.",
+        "Propõe avaliação representativa por modalidade.",
+        "Declara lacunas quando não há evidência para uma modalidade."
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Uma entrada adversarial consegue induzir o roteador a escalar para o modelo caro e, se ele falhar, o fallback usa um modelo com proteções mais fracas. Como corrigir o desenho?",
+      "expected_output": "Impõe orçamento e número máximo de escaladas fora do modelo, mantém elegibilidade e nível de segurança em todos os fallbacks e testa abuso e rebaixamento.",
+      "files": [],
+      "expectations": [
+        "Aplica limites de gasto e escalada deterministicamente fora do prompt.",
+        "Não permite fallback para candidato com proteção inferior ou inelegível.",
+        "Define parada ou revisão segura sem rota permitida.",
+        "Inclui testes para concentração em rotas caras, abuso e violações de política."
+      ]
+    }
+  ]
+}

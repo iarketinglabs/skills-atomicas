@@ -1,0 +1,14 @@
+{
+  "specversion": "1.0",
+  "id": "event-example-00042",
+  "source": "urn:example:orders",
+  "type": "com.example.order.paid.v1",
+  "subject": "orders/example-order-42",
+  "time": "2026-01-15T12:34:56Z",
+  "datacontenttype": "application/json",
+  "data": {
+    "order_id": "example-order-42",
+    "status": "paid",
+    "version": 3
+  }
+}
